@@ -19,10 +19,20 @@ int main(){
         cout<< a*b;
         break;
         case '/':
-        cout<< a/b;
+        if(b!=0){
+            cout<< a/b;
+        }
+        else{
+            cout << "nije dozvoljeno deljenje nulom";
+        }
         break;
         case '%':
-        cout<< a%b;
+        if(b!=0){
+            cout<< a%b;
+        }
+        else{
+            cout << "nije dozvoljeno deljenje nulom";
+        }
         break;
     }
     return 0; 
