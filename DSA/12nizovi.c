@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-void promenaZnaka(int a[], int l){
+void promenaZnaka(int *a, int l){
     int i;
     for(i=0; i<l; i+=2){
-        a[i] = - a[i];
+        *(a+i) = - *(a+i);
     }
 }
 
