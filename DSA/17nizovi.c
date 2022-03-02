@@ -19,13 +19,12 @@ int main(){
     for(i = 0; i < n*2; i++){
         scanf("%d", &a[i]);
     }
-    for(i = 0; i < n/2; i++){
-        if(i % 2 == 0){
-            b[i/2] = a[i];
-        }
-        else{
-            b[i/2] = a[i];
-        }
+    //za parne:
+    for(i = 0; i<n*2; i+=2){
+        b[i/2] = a[i];
+    }
+    for(i = 1; i<n*2; i+=2){
+        c[i/2] = a[i];
     }
     //ispis
     printf("\n");
@@ -33,11 +32,11 @@ int main(){
         printf("%d ", a[i]);
     }
     printf("\n");
-    for(i = 0; i < n*2; i++){
+    for(i = 0; i < n; i++){
         printf("%d ", b[i]);
     }
     printf("\n");
-    for(i = 0; i < n*2; i++){
+    for(i = 0; i < n; i++){
         printf("%d ", c[i]);
     }
     return 0;
