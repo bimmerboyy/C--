@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
+
 void unos(int a[],int n){
+    
     cout<<"Unesite elemente niza:\n";
     for(int i=0;i<n;i++){
         cin>>niz[i];
