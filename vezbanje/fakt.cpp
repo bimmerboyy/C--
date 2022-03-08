@@ -1,5 +1,5 @@
 /*Program za testiranje funkcije za racunanje faktorijala program racuna sumu s=1!+..+n!.*/ 
- #include <iostream.h>
+#include <iostream>
 int fakt(int);
 int faktr(int);//rekuzivna funkcija
 main(){
