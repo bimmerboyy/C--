@@ -25,12 +25,10 @@ void provera(char prva[],char druga[]){
     int n1 = strlen(prva);
     int n2 = strlen(druga);
     if(n1 != n2)
-    return 0;
+ 
     for(int i=0;i<n1;i++)
     if(tolower( prva[i])  != tolower(druga[i]))
-    return 0;
-return 1;
-
+  
 }
 
 int main(){
