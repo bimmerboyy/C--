@@ -33,6 +33,7 @@ int main(){
     }
     cout<<endl;
     cout<<"Najveci element u nizu je:"<<max<<endl<<"Suma elemenata na parnim pozicijama u nizu je:"<<s;
+    delete []niz;
 
  
     return 0;
