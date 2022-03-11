@@ -8,23 +8,36 @@ int main(){
     cout <<"unesite m i n: ";
     cin >> m >>n;
     int  matrix[m][n];
-    //posebno :
-    int r[n], v[n], c[n];
+    int v[n], c[n];
+    int* r[m];
+    for(int i = 0; i<m; i++){
+        r[i] = nullptr;
+    }
     for(int i=0; i<m; i++){
         for(int j = 0; j<n; j++){
             cin >> matrix[i][j];
             if(matrix[i][j] != 0){
-                r[brojElemenata] = i; 
                 c[brojElemenata] = j; 
                 v[brojElemenata] = matrix[i][j];
-                cout << "Trenutno  ubacijem : " << matrix[i][j] << "i on se nalazi u " << i << "vrsti " << "I " << j << "Koloni. \n";
+                if(r[i] == nullptr){
+                    r[i] =  &c[brojElemenata];
+                }
                 brojElemenata++;
             }
         }
     }
     cout << " \n R: ";
-    for(int i = 0; i<brojElemenata; i++){
+    for(int i = 0; i<m; i++){
         cout << r[i] << " ";
+    }
+    cout << " \n R: ";
+    for(int i = 0; i<m; i++){
+        if(r[i] != nullptr){
+            cout << *r[i] << " ";
+        }
+        else {
+            cout << 0;
+        }
     }
     cout << " \n C: ";
     for(int i = 0; i<brojElemenata; i++){
