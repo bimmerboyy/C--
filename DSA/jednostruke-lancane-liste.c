@@ -143,6 +143,21 @@ NODE* concat (NODE * list1, NODE* list2){
     return list1;
 }
 
+//inverovantovanje liste
+NODE *invertuj(node *first){
+    NODE *p, *q, *r;
+    p = first;
+    q = NULL;
+    while(p != NULL){
+        r = q;
+        q = p;
+        p = p->next;
+        q->next = r;
+    }
+    first = q;
+    return first;
+}
+
 
 int  main(){
     // ubaci(1);
@@ -177,7 +192,13 @@ int  main(){
     // ubaciDrugu(8);
     // concat(first, first2);
     // ispis();
-    
+    ubaci(1);
+    ubaci(2);
+    ubaci(3);
+    ubaci(4);
+    ubaci(5);
+    first = invertuj(first);
+    ispis();
     return 0;
 
 }
