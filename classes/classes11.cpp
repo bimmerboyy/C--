@@ -1,38 +1,38 @@
-/* realizovati kalsu Tacka sa privatnim atributima x i y.metode inacijalizacije(a,b)koja 
-predtavlja verdonst atributa na vrednosti koje dolazi kao argumeni,translacija(int dx,int dy)
-koja translira tacku za vrednosti dx po x,odnosno dy po y osi;
-pozicija() isipisuje ternutnu poziciju tacke u koordinantnom sistemu (njene x i y koordinate)
-*/
-#include <iostream>
+#include<iostream>
+#include<string.h>
 using namespace std;
-class Tacka{
-    private:
-    float x,y;
+class Studenti{
     public:
-    void inicijalizacija(float a,float b){
-         x = a;
-         y = b;
-    }
-    void translacija(float dx,float dy){
-         x += dx;
-         y += dy;
-
-    }
-   void pozicija();
-
+    char ime[15],prezime[15],pol;
+    float visina,tezina;
+    int starost;
+    public:
+    void inic(char *i,char *pr,char p,float v,float t,int s);
+    void predtaviSe();
+    void starneje(int godine);
 };
-void Tacka::pozicija(){
-    cout<<"Tacka x se nalazi na poziciji "<<x<<endl<<"Tacka y se nalazi na poziciji "<<y<<endl;
+void Studenti::inic(char *i, char *pr, char p, float v, float t, int s){
+    strcpy(i, ime);
+    strcpy(pr,prezime);
+    pol = p;
+    visina = v;
+    tezina = t;
+    starost = s;
+}
+void Studenti::predtaviSe(){
+    cout<<"Ja sam:"<<ime<<" "<<prezime<<endl<<"Visok sam:"<<visina<<"cm"<<endl
+    <<"Tezina:"<<tezina<<"kg"<<endl<<"Imam:"<<" "<<starost<<"godina";
+}
+void Studenti::starneje(int godine){
+    starost += godine;
 }
 int main(){
-    system("clear");
-    Tacka t,z;
-    t.inicijalizacija(2,3);
-    t.translacija(3, 3);
-    t.pozicija();
-    z.inicijalizacija(6,7);
-    z.translacija(5,5);
-    z.pozicija();
-    return 0;
+    Studenti s;
+    Studenti p;
+    s.inic("Tarik","Kucevic", 'M',192,100,19);
+    s.predtaviSe();
+    s.starneje(3);
+    p.inic("Nikola","Matkovic", 'M',170,60,19);
+    p.predtaviSe();
+    p.starneje(3);
 }
-
