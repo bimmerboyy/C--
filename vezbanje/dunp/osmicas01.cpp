@@ -53,18 +53,15 @@ void Student::dodajocenu(int ocena){
     */
     int *pom = new int[brocena];
     int i;
-    for(i = 0;i < brocena;i++){
+    for(i = 0;i < brocena;i++)
     pom[i] = ocene[i];
     delete []ocene;
-    }
     brocena++;
     ocene = new int[brocena];
-    for(i = 0;i < brocena;i++){
+    for(i = 0;i < brocena;i++)
     ocene[i] = pom[i];
     ocene[brocena -1] = ocena;
     delete []pom;
-    }
-   
 
 }
 void Student::ispis(){
