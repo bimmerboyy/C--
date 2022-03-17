@@ -17,7 +17,7 @@ int isEmpty(){
 
 void create(int elem){
     temp = (struct node*)malloc(sizeof(struct node));
-    temp->elem = 10;
+    temp->data = 10;
     temp -> next = NULL;
     if(first == NULL){
         first = temp;
@@ -27,6 +27,30 @@ void create(int elem){
         last -> next = temp;
         last = temp;
     }
+}
+void insertAfter(NODE *pom,int elem){
+    temp = (struct node*)malloc(sizeof(struct node));
+    elem = 3;
+    temp->data = elem;
+    temp -> next = pom -> next;
+    pom -> next = temp;
+    if(pom == last){
+        last = temp;
+    }
+}
+void insert_before(NODE *pom,int elem){
+    temp = (struct node*)malloc(sizeof(struct node));
+    elem = 7;
+    temp->data = elem;
+    temp -> data = pom -> data;
+    temp -> next = pom -> next;
+    pom = pom ->next;
+    if(pom == last){
+        temp = last;
+    }
+}
+void deleteAfter(NODE *pom){
+
 }
 int main(){
 
