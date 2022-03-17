@@ -50,6 +50,37 @@ void insert_before(NODE *pom,int elem){
     }
 }
 void deleteAfter(NODE *pom){
+    temp = pom -> next;
+    pom -> next = temp -> next;
+    temp -> next = NULL;
+    delete temp;
+}
+void deleteActual(NODE *pom){
+    if(pom == first && first == last){
+        first = last = NULL;
+        delete pom;
+    }
+    temp = pom->next;
+    pom -> next = temp -> next;
+    pom -> data = temp -> data;
+    delete temp;
+}
+int deleteonPosition(int position){
+    int brojac = 1;
+    NODE *p,*q;
+    p = first;
+    q = NULL;
+    if(position == 1){
+        first = p -> next;
+        delete p;
+         return 1;
+    }
+    while(position != brojac){
+        q = p;
+        p = p -> next;
+        deleteAfter(q);
+    }
+    
 
 }
 int main(){
