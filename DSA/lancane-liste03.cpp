@@ -83,6 +83,46 @@ int deleteonPosition(int position){
     
 
 }
-int main(){
-
+/*
+NODE *invertuj(NODE *first){
+    NODE *p,*q,*r;
+    NODE *t,*z;
+    int brojac,position;
+    p = first;
+    q = last;
+    r = p->next;
+    t = p;
+    p = q;
+    q = t;
+    for(brojac = 2;brojac < last;brojac++){
+        while(brojac != last){
+        z = r;
+        r = r->next;
+        r->next = r;
+        }
+    }
+}
+*/
+NODE *invertuj(NODE *first){
+    NODE *p,*q,*r;
+    q = NULL;
+    while(first != NULL){
+    p = first-> next;
+    first->next = q;
+    q = first;
+    first = p;
+    }
+}
+NODE *povezivanje(NODE *list1,NODE *list2){
+    NODE *p;
+    if(list2 == NULL){
+        return list1;
+    }
+    if(list1 == NULL){
+        return list2;
+    }
+    p = list1; //Sajanje dve liste
+    p = p->next;
+    p->next = list2;
+    return list1;
 }
