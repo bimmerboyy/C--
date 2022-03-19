@@ -69,9 +69,9 @@ int main(){
     stack.push('a');
      stack.push('c');
       stack.push('u');
-    cout<<"Vrh stack-a je na "<<stack.top_of()<<endl;
-       cout<<"Na vrhu se nalazi karakter "<<stack.pop()<<endl;
-       cout<<"Vrh stack-a je na "<<stack.top_of()<<endl;
+    cout<<"Vrh stack-a je na: "<<stack.top_of()<<endl;
+       cout<<"Na vrhu se nalazi karakter: "<<stack.pop()<<endl;
+       cout<<"Vrh stack-a je na: "<<stack.top_of()<<endl;
        if(!stack.full())
         stack.push('r');
          if(!stack.full())
