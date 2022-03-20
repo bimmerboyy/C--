@@ -1,5 +1,5 @@
 /*Zadatak 6. Napisati rekurzivni potprogram koji nalazi:
-(a) (b) sumu svih elemenata lančane liste 
+(c) ispituje da li se zadati element nalazi u list
 */
 
 #include <stdio.h>

@@ -1,5 +1,5 @@
 /*Zadatak 6. Napisati rekurzivni potprogram koji nalazi:
-(b) sumu svih elemenata lančane liste 
+(d) zamenjuje svako pojavljivanje elementa el1 elementom el2
 */
 
 #include <stdio.h>
@@ -45,19 +45,30 @@ void ispis(){
     }
 }
 
-int suma(node* f){
-    int s = f->value;
-    if(f->next != NULL){
-        s += suma(f->next);
+void zamena(node* f, int elem1, int elem2){
+    if(f->next == NULL){
+        return;
     }
-    return s;
+    if(f->value  == elem1){
+        f->value = elem2;
+    }
+    zamena(f->next,  elem1, elem2);
 }
+
 int main() {
     ubaci(1);
     ubaci(2);
     ubaci(3);
     ubaci(4);
-    int s = suma(first);
-    printf("%d", s);
+    ubaci(1);
+    ubaci(2);
+    ubaci(3);
+    ubaci(4);
+    ubaci(1);
+    ubaci(2);
+    ubaci(3);
+    ubaci(4);
+    zamena(first, 3, 9);
+    ispis();
     return 0;
 }
