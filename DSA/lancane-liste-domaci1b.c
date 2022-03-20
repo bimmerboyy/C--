@@ -44,15 +44,14 @@ void ispis(){
     }
 }
 
-bool pretraga(int a){
+int pretraga(int a){
     temp = first;
     while(temp != NULL){
         if(temp->value == a){
-            return true;
+            return a;
         }
         temp = temp->next;
     }
-    return false;
 }
 
 int main() {
@@ -64,11 +63,8 @@ int main() {
     int brojZaPretragu; 
     printf("Unesite broj koji želite da pretražite: ");
     scanf("%d", &brojZaPretragu);
-    if(pretraga(brojZaPretragu)){
-        printf("Broj %d se nalazi u lisiti", brojZaPretragu);
-    }
-    else{
-        printf("Broj %d se NE nalazi u lisiti", brojZaPretragu);
+    if(pretraga(brojZaPretragu) == brojZaPretragu){
+        printf("Broj %d je pronađen", brojZaPretragu);
     }
     return 0;
 }   
