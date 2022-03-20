@@ -1,6 +1,4 @@
-/*Napisati potprogram koji na osnovu zadate vrednosti elementa:
-(b) vraća element ako je nađen u listi
-*/
+//Zadatak 3. Napisati potprogram kojim se dodaje element na početak lančane liste.
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>

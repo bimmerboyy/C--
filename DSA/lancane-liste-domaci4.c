@@ -1,5 +1,4 @@
-/*Zadatak 2. Napisati program kojim se svako pojavljivanje elementa el1 u listi zamenjuje elementom el2.
-*/
+//Zadatak 4. Napisati program kojim se briše  element s početka lančane liste.
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -43,26 +42,26 @@ void ispis(){
     }
 }
 
-void zamena(int a, int b){
-    temp = first;
-    while(temp != NULL){
-        if(temp->value == a){
-            temp -> value = b;
-        }
-        temp = temp->next;
+void izbrisiSaPocetka(){
+    if(isEmpty()){
+        return;
     }
+    temp = first -> next;
+    if(temp == NULL){
+        free(first);
+        first =  NULL;
+        return ;
+    }
+    first -> next = NULL;
+    free(first);
+    first = temp;
 }
 
+
 int main() {
-    ubaci(5);
-    ubaci(5);
-    ubaci(3);
-    ubaci(5);
-    ubaci(1);
-    ubaci(5);
     ubaci(2);
-    zamena(5, 9);
+    ubaci(1);
+    izbrisiSaPocetka();
     ispis();
-    
     return 0;
 }
