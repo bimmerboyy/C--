@@ -1,9 +1,7 @@
 /*Zadatak 6. Napisati rekurzivni potprogram koji nalazi:
-(a) maksimalni element lančane liste,
+(a) (b) sumu svih elemenata lančane liste 
 */
-/*Napisati potprogram koji na osnovu zadate vrednosti elementa:
-(b) vraća element ako je nađen u listi
-*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -47,26 +45,19 @@ void ispis(){
     }
 }
 
-int najveci(node* f){
-    int max  = f -> value;
-    int t;
+int suma(node* f){
+    int s = f->value;
     if(f->next != NULL){
-        t = najveci(f -> next);
+        s += suma(f->next);
     }
-    if(t > max ){
-        max = t;
-    }
-    return max;
+    return s;
 }
-
-
 int main() {
-    ubaci(5);
-    ubaci(6);
-    ubaci(8);
-    ubaci(11);
+    ubaci(1);
+    ubaci(2);
+    ubaci(3);
     ubaci(4);
-    int max = najveci(first);
-    printf("%d", max);
+    int s = suma(first);
+    printf("%d", s);
     return 0;
 }
