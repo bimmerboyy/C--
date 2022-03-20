@@ -1,5 +1,5 @@
 /*Napisati potprogram koji na osnovu zadate vrednosti elementa:
-(a)vraća 1 ako se elementa nalazi u lančanoj listi, u suprotnom vraća 0
+(b) vraća element ako je nađen u listi
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -67,4 +67,4 @@ int main() {
         printf("Broj %d je pronađen", brojZaPretragu);
     }
     return 0;
-}   
+}
