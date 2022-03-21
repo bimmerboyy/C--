@@ -1,14 +1,8 @@
-/*
-Stack:
-q [3] pop brise ga
-y [2]
-c [1] push c
-a [0]  // push a
- <- top za restet
-*/
 #include<iostream>
 #include<string.h>
+#include<stack>
 using namespace std;
+
 class Stack{
     private:
     char *s;
@@ -20,43 +14,44 @@ class Stack{
         this->size = size;
         top = -1;
     }
-     Stack(int size,char ch[],int lenght){
+    Stack(int size,char ch[],int length){
         s = new char[size];
-        this->size = size;
-        for(int i = 0;i < lenght;i++){
+        this -> size = size;
+        for(int i = 0;i < length;i++){
             s[i] = ch[i];
         }
-        top = lenght -1;
+        top = length -1;
     }
     void reset(){
         top = -1;
     }
-    void push(char c){ // stavlja znac u stek
-        top++; // da dodje do vrha
-        s[top+1] = c; // postavlja na vrh c
+    void push(char c){
+        top++;
+        s[top+1] = c;
     }
-    char pop(){ // uzima vrednost sa vrha steka
+    char pop(){
         char c = s[top];
-        top--;
+        top --;
         return c;
     }
-    int top_of(){ // vraca vredbnost sa vrha
-    return top;
+    int top_of(){
+        return top;
     }
-    int empty(){  // proverava da li  je stek prazan
+    int empty(){
         if(top == -1){
             return 1;
         }
-        return 0;    
+        else{
+            return 0;
+        }
     }
     int full(){
         if(size == top+1){
             return 1;
         }
-        return 0;
-    }
-    ~Stack(){
-        delete [] s;
+        else{
+            return 0;
+        }
     }
 
 };
@@ -69,9 +64,9 @@ int main(){
     stack.push('a');
      stack.push('c');
       stack.push('u');
-    cout<<"Vrh stack-a je na: "<<stack.top_of()<<endl;
-       cout<<"Na vrhu se nalazi karakter: "<<stack.pop()<<endl;
-       cout<<"Vrh stack-a je na: "<<stack.top_of()<<endl;
+    cout<<"Vrh stack-a je na "<<stack.top_of()<<endl;
+       cout<<"Na vrhu se nalazi karakter "<<stack.pop()<<endl;
+       cout<<"Vrh stack-a je na "<<stack.top_of()<<endl;
        if(!stack.full())
         stack.push('r');
          if(!stack.full())
@@ -89,4 +84,3 @@ int main(){
         cout<<"Na vrhu se nalazi karakter"<<stack.pop()<<endl;
         return 0;
 }
-
