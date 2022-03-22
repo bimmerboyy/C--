@@ -26,10 +26,8 @@ void InsertAtTail(int x){
     }
     while(temp->next != NULL){
         temp = temp->next;
-        *temp->next = newNode-prev;
+        temp->next = newNode->prev;
         newNode->prev = temp;
-
-
     }   
 
 }
