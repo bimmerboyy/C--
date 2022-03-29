@@ -1,6 +1,7 @@
 /*
 Napisati funkciju za nalazenje sume max i min elemenata liste
 */
+/*
 #include<stdio.h>
 #include<stdlib.h>
 struct node{
@@ -28,3 +29,4 @@ int najveci(){
         temp = temp->next;
     }
 }
+*/
