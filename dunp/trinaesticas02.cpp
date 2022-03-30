@@ -45,6 +45,7 @@ class Polinom{
             float clan = koeficijenti[i] * pow(x,i);
             s += clan;
         }
+        return s;
     }
     void Ispis(){
         cout<<"Polonom"<<endl;
