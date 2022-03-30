@@ -17,19 +17,20 @@ class Racun{
     Racun(){
         operandi1 = 1;
         operandi2 = 1;
-        operacija = 
+        operacija = operandi1 + operandi2;
     }
     float Izracunaj(){
         switch(operacija){
-            case "+" return operand1 + operand2;
-            case "-" return operand1 - operand2;
-             case "*" return operand1 * operand2;
-              case "/" return operand1 / operand2;
+            case '+': return operandi1 + operandi2;
+            case '-': return operandi1 - operandi2;
+            case '*': return operandi1 * operandi2;
+            case '/': return (float)operandi1 / operandi2;
         }
+        return 0;
     }
     void setOp1(int a){ operandi1 = a; }
      void setOp2(int a){ operandi2 = a; }
-      void setOp(){ operacija = c; }
+      void setOp(char c){ operacija = c; }
       int getOp1(){return operandi1;}
       int getOp2(){return operandi2;}
       int getOp(){return operacija;}
@@ -38,5 +39,8 @@ int main(){
     Racun r;
     r.setOp1(2);
     r.setOp2(5);
+    r.setOp('*');
+    cout<<"Vrednost izraza je  "<<r.Izracunaj()<<endl;
+    return 0;
     
 }
