@@ -20,3 +20,18 @@ void push(int elem){
     }
 
 }
+int pop(){
+    
+    NODE *t;
+    int info;
+    if(top == NULL){
+        printf("Stek je prazan\n");
+        return -1;
+    }
+    top = t;
+    info = top->data;
+    top = top->link;
+    t->link = NULL;
+    free(t);
+    return (info);
+}
