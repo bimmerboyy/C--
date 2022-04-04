@@ -2,7 +2,7 @@
 
 #define SIZE 5
 
-int s[SIZE],top = -1,elem;
+int s[SIZE],top = -1;
 
 int Sfull(){
     if(top == -1){
@@ -27,21 +27,36 @@ void push(int elem){
     }
 }
 int pop(){
+    int elem;
     if(Sempty()){
-        printf("Nema elemenata za brisanje");
+        printf("Nema elemenata za brisanje\n");
         return -1;
     }
     else{
         elem = s[top];
         top--;
+        return elem;
        
     }
 }
+int display(){
+    int i;
+    if(Sempty()){
+        printf("Stek je prazan\n");
+        return -1;
+    }
+    else{
+        for(i = 0;i < top;i++){
+            printf("%d",s[i]);
+             printf("^Top");
+        }
+       
+    }
+    return 0;
+}
 
 int main(){
-    push(1);
-    push(2);
-    pop(2);
+ 
 
     return 0;
 }
