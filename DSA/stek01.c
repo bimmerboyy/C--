@@ -29,7 +29,7 @@ void push(int elem){
 int pop(){
     int elem;
     if(Sempty()){
-        printf("Nema elemenata za brisanje\n");
+        printf("Nema elemenata za brisanje\n\n");
         return -1;
     }
     else{
@@ -42,7 +42,7 @@ int pop(){
 int display(){
     int i;
     if(Sempty()){
-        printf("Stek je prazan\n");
+        printf("Stek je prazan\n\n");
         return -1;
     }
     else{
@@ -53,31 +53,31 @@ int display(){
         }
        
     }
-    return 0;
+    return s[i];
 }
 
 int main(){
     int option,elem;
 
     do{
-       printf("Postoje 4 opcie:1.Push 2.Pop 3.Display 4.Exit");
-       printf("Uneste broj operacije\n");
+       printf("Postoje 4 opcie:1.Push 2.Pop 3.Display 4.Exit\n\n");
+       printf("Uneste broj operacije:");
        scanf("%d",&option);
 
        switch(option){
         case 1:
-        printf("Unesite element\n");
+        printf("Unesite element:");
         scanf("%d", &elem);
         push(elem);         
         break;
         case 2:
         elem = pop();
         if(elem != -1){
-            printf("Element koji je obrisan je: %d\n",elem);
+            printf("Element koji je obrisan je: %d\n\n",elem);
         }
         break;
         case 3:
-        printf("Stek sadrzi elemente:\n");
+        printf("Stek sadrzi elemente:\n\n");
         display();
         break;
         case 4:
