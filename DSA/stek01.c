@@ -48,6 +48,7 @@ int display(){
     else{
         for(i = 0;i < top;i++){
             printf("%d",s[i]);
+            printf("\n");
              printf("^Top");
         }
        
@@ -56,6 +57,36 @@ int display(){
 }
 
 int main(){
+    int option,elem;
+
+    do{
+       printf("Postoje 4 opcie:1.Push 2.Pop 3.Display 4.Exit");
+       printf("Uneste broj operacije\n");
+       scanf("%d",&option);
+
+       switch(option){
+        case 1:
+        printf("Unesite element\n");
+        scanf("%d", &elem);
+        push(elem);         
+        break;
+        case 2:
+        elem = pop();
+        if(elem != -1){
+            printf("Element koji je obrisan je: %d\n",elem);
+        }
+        break;
+        case 3:
+        printf("Stek sadrzi elemente:\n");
+        display();
+        break;
+        case 4:
+        printf("Netacna opcija,pokusajte ponovo\n");
+       break;
+       }
+       
+    }
+    while(option != 4);
  
 
     return 0;
