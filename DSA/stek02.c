@@ -35,3 +35,25 @@ int pop(){
     free(t);
     return (info);
 }
+int display(){
+    NODE *t;
+    if(top == NULL){
+        return -1;
+    }
+    else{
+        t = top;
+        while(t){
+            printf("%d",t->data);
+            t = t->link;
+        }
+      
+    }
+    return t->data;
+}
+int main(){
+    push(1);
+    push(2);
+    push(3);
+    display();
+    return 0;
+}
