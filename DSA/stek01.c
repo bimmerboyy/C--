@@ -16,3 +16,20 @@ int Sempty(){
     }
     else return 0;
 }
+
+void push(int elem){
+    if(Sfull()){
+        printf("Stek je pun\n");
+    }
+    else{
+        top++;
+        s[top] = elem;
+    }
+}
+
+int main(){
+    push(1);
+    push(2);
+
+    return 0;
+}
