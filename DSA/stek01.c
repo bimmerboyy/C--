@@ -1,3 +1,4 @@
+//Implemmentacija preko niza
 #include<stdio.h>
 
 #define SIZE 5
