@@ -38,5 +38,25 @@ int Sempty(int stno){
         }
         break;
     }
+    return 0;
 
+}
+int push(int elem, int stno){
+    int pos;
+    if(Sfull()){
+        printf("1.Stek je pun");
+        return 1;
+    }
+    else{
+        if(stno == 1){
+       pos = ++top[stno];
+   }
+   else if(stno == 2){
+       pos = --top[stno];
+  }
+   s[pos] = elem;
+    }  
+}
+int main(){
+    
 }
