@@ -34,3 +34,39 @@ class Ocena{
     int getO(){return ocena;}
     char* getD(){return datum;}
 };
+class Student{
+    char ime_prezime[30];
+    char broj_indeksa[10];
+    Ocena ocena1,ocena2,ocena3;
+    public:
+    Sudent(){
+        strcpy(ime_prezime, "Ela curic");
+        strcpy(broj_indeksa, "036-010/21");
+        ocena2.setIP("Osnovi racunarstva");
+        ocena2.setD("19.1.2022");
+        ocena2.setO(7);
+        ocena3.setIP("Osnovi programiranja");
+        ocena3.setD("5.4.2022");
+        ocena3.setD(6);
+
+    }
+        Sudent(char *ip,char *bi,Ocena o1,Ocena o2,Ocena o3){
+        strcpy(ime_prezime,ip);
+        strcpy(broj_indeksa, bi);
+        ocena1.setIP(o1.getIP());
+        ocena1.setD(o1.getD());
+        ocena1.setO(o1.getO());
+        ocena2.setIP(o2.getIP());
+        ocena2.setD(o2.getD());
+        ocena2.setO(o2.getO());
+        ocena3.setIP(o3.getIP());
+        ocena3.setD(o3.getD());
+        ocena3.setO(o3.getO());
+    }
+    int ukupnoPolozenih(){
+        int br = 0;
+        if(ocena1.jeLiPOlozio())
+        br++;
+        if()
+    }
+};
