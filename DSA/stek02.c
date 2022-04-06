@@ -21,7 +21,6 @@ void push(int elem){
 
 }
 int pop(){
-    
     NODE *t;
     int info;
     if(top == NULL){
@@ -46,7 +45,6 @@ int display(){
             printf("%d",t->data);
             t = t->link;
         }
-      
     }
     return t->data;
 }
