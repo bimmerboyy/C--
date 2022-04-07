@@ -16,7 +16,8 @@ void insert(int elem){
     if(temp==NULL){
         printf("out of memory");
         return;
-    }else{
+    }
+    else{
         temp -> data = elem;
         temp -> link = NULL;
         if(front == NULL){
@@ -25,16 +26,17 @@ void insert(int elem){
         else{
             rear-> link = temp;
             rear = temp;
-            printf("Node has been inserted on the end successfully")
+            printf("Node has been inserted on the end successfully \n");
         }
     }
 }
 
-int delete(){
+int brisanje(){
     int elem; 
     NODE *t;
     if(front == NULL){
         printf("Underflow");
+        return -1;
     }
     else{
         t = front;
@@ -48,8 +50,32 @@ int delete(){
         return(elem);
     }
 }
+//ispis 
+void display(){
+    NODE *t;
+    t = front;
+    if(front==NULL){
+        printf("Empty");
+        return;
+    }
+    while(t){
+        printf("%d ", t->data);
+        t = t->link;
+    }
+}
+
 
 
 int main(){
+    for(int i= 0; i<10; i++){
+        insert(i);
+    }
+    for(int i= 0; i<5; i++){
+        brisanje();
+    }
+    for(int i= 15; i<20; i++){
+        insert(i);
+    }
+    display();
     return 0;
 }
