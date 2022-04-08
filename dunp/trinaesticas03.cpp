@@ -37,10 +37,6 @@ class Racun{
 };
 int main(){
     Racun r;
-    r.setOp1(2);
-    r.setOp2(5);
-    r.setOp('*');
-    cout<<"Vrednost izraza je  "<<r.Izracunaj()<<endl;
     return 0;
     
 }
