@@ -37,7 +37,7 @@ class Duz{
     float getx2(){ return x2;}
     float gety1(){ return y1;}
     float gety2(){ return y2;}
-    float getyd(){ return d;}
+    float getd(){ return d;}
 };
 class Kvadrat{
     public:
@@ -56,6 +56,7 @@ class Kvadrat{
         dno.racunajDUzinu();
     }
     Kvadrat(Duz a, Duz b){
+    
         vrh.setx1(a.getx1());
         vrh.setx2(a.getx2());
         vrh.sety1(a.gety1());
@@ -66,9 +67,10 @@ class Kvadrat{
        dno.sety1(b.gety1());
        dno.sety2(b.gety2());
        dno.racunajDUzinu();
-       float Povrsina(){
-           return pow(vrh.get(),2);
-       }
+    }   
+    float Povrsina(){
+           return pow(vrh.getd(),2);
+       }  
        float Obim(){
            return 4*vrh.getd();
        }
@@ -77,14 +79,11 @@ class Kvadrat{
            vrh.ispis();
            cout<<"dno kvadrata"<<endl;
            dno.ispis();
+        }
+    };
 
-       }
-
-    }
-
-};
 int main(){
-    kvadrat k;
+    Kvadrat k;
     cout<<"Povrsina kvadrata je "<<k.Povrsina()<<endl;
     cout<<"Obim kvadrata je "<<k.Obim()<<endl;
 
