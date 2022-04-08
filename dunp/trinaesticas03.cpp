@@ -37,6 +37,11 @@ class Racun{
 };
 int main(){
     Racun r;
+    r.setOp('+');
+    r.setOp1(5);
+    r.setOp2(4);
+    cout<<"Rezultat operacije"<<r.getOp()<<" Prvog:"<<r.getOp1()<<" i "<<" Drugog:"<<r.getOp2()<<" broja je:"
+    <<r.Izracunaj();
     return 0;
     
 }
