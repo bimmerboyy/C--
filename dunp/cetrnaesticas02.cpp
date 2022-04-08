@@ -15,9 +15,9 @@ class Ocena{
         strcpy(datum,"6.5.2022");
     }
     Ocena(char *ip,int o,char *d){
-          strcpy(ime_predmeta,ip);
-          ocena = o;
-          strcpy(datum, d); 
+            strcpy(ime_predmeta,ip);
+            ocena = o;
+            strcpy(datum, d); 
     }
     bool jeLiPOlozio(){
         if(ocena == 5)

@@ -29,11 +29,11 @@ class Racun{
         return 0;
     }
     void setOp1(int a){ operandi1 = a; }
-     void setOp2(int a){ operandi2 = a; }
-      void setOp(char c){ operacija = c; }
-      int getOp1(){return operandi1;}
-      int getOp2(){return operandi2;}
-      int getOp(){return operacija;}
+    void setOp2(int a){ operandi2 = a; }
+    void setOp(char c){ operacija = c; }
+    int getOp1(){return operandi1;}
+    int getOp2(){return operandi2;}
+    int getOp(){return operacija;}
 };
 int main(){
     Racun r;
