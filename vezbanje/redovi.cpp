@@ -70,7 +70,20 @@ class Red{
             cout<<niz[(prvi + i)%kap];
         }
     }
+    ~Red(){
+        delete [] niz;
+    }
+
 
 };
+/*
+int main(){
+    Red *rd = new Red(5);
+    rd.stavi(7);
+    rd.stavi(5);
+    rd.stavi(4);
+    rd.stavi(3);
+}
+*/
 
 
