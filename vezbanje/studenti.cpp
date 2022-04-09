@@ -49,6 +49,9 @@ class Ocena{
     int getO(){
         return ocena;
     }
+    void ispis(){
+        cout<<"Ime predmeta:"<<ime_predmeta<<endl<<"Datum:"<<datum<<endl<<"Ocena"<<ocena<<endl;
+    }
 };
 
 class Student{
@@ -70,4 +73,60 @@ class Student{
         ocena3.setIP("Linearna");
         ocena3.setD("04.09.2022");
     }
+    Student(char *ip,int bi,Ocena o1,Ocena o2,Ocena o3){
+        strcpy(ime_prezime,ip);
+        broj_indeksa = bi;
+        ocena1.setIP(o1.getIP());
+        ocena1.setO(o1.getO());
+        ocena1.setD(o1.getD());
+        ocena2.setIP(o2.getIP());
+        ocena2.setO(o2.getO());
+        ocena2.setD(o2.getD());
+        ocena3.setIP(o3.getIP());
+        ocena3.setO(o3.getO());
+        ocena3.setD(o3.getD());
+
+    }
+    int ukupnoPolozenih(){
+        int br = 0;
+        if(ocena1.jeLiPolozio()){
+            br++;
+        }
+         if(ocena2.jeLiPolozio()){
+            br++;
+        }
+         if(ocena3.jeLiPolozio()){
+            br++;
+        }
+        return br;
+    }
+    float prosek(){
+        int s,i;
+        int br_ocena = 3;
+        if(ocena1.jeLiPolozio()){
+            s += ocena1.getO();
+        }
+         if(ocena1.jeLiPolozio()){
+            s += ocena2.getO();
+        }
+         if(ocena1.jeLiPolozio()){
+            s += ocena3.getO();
+        }
+        return (float) s/ukupnoPolozenih();
+    }
+    void ispis(){
+        cout<<"Student "<<ime_prezime<<", broj indeksa:"<<broj_indeksa<<"ima ocene"<<endl;
+        ocena1.ispis();
+        ocena2.ispis();
+        ocena3.ispis();
+    }
 };
+
+int main(){
+   // Student s1("Tarik Kucevic",0360/14/2022,"OOP",9,"04.03.2022","DSA",7,"05.07.2022","C",5,"07.09.2022");
+    Student s1;
+    s1.ispis();
+    cout<<"Student je polozio"<<s1.ukupnoPolozenih()<<endl;
+    cout<<"Njegov prosek ocena polozenih predmeta je:"<<s1.prosek();
+    return 0;
+}
