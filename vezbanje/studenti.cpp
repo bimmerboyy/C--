@@ -22,4 +22,15 @@ class Ocena{
         strcpy(datum,d);
         ocena = o;
     }
+    bool jeLiPolozio(){
+        if(ocena > 5){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    void setIP(){
+        
+    }
 };
