@@ -42,7 +42,9 @@ class Student{
     Student(){
         strcpy(ime_prezime, "Ela curic");
         strcpy(broj_indeksa, "036-010/21");
+        ocena1.setO(6);
         ocena1.setIP("OOP1");
+        ocena1.setD("20.3.2022");
         ocena2.setIP("Osnovi racunarstva");
         ocena2.setD("19.1.2022");
         ocena2.setO(7);
