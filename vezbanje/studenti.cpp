@@ -30,7 +30,22 @@ class Ocena{
             return false;
         }
     }
-    void setIP(){
-        
+    void setIP(char *ip){
+        strcpy(ime_predmeta,ip);        
+    }
+    void setD(char *d){
+        strcpy(datum,d);
+    }
+    void setO(int o){
+        ocena = o;
+    }
+    char *getIP(){
+        return ime_predmeta;
+    }
+    char *getD(){
+        return datum;
+    }
+    int getO(){
+        return ocena;
     }
 };
