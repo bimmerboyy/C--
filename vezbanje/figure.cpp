@@ -37,9 +37,45 @@ class figura{
         return true;
     }
     void pomeri(int x, int y){
+        int temp = temp_index;
+        bool blokirano = false;
         if(!zauzeto(x, y)){
-            this->x = x;
-            this->y = y;
+            //provera da li  ima prepreke da bi se pomerila:
+            if(vrsta == "top"){
+               if(this->x == x ){
+                    if(y > this->y){
+                       for(int i = (this->y + 1); i<y; i++){
+                            if(zauzeto(x, i)){
+                                cout << "blokriano je polje " << x << "  " << i <<endl;
+                                blokirano = true;
+                            }
+                       }
+                    }
+                    if(y < this->y){
+                       for(int i = (this->y - 1); i>this->; i--){
+                            if(zauzeto(x, i)){
+                                cout << "blokriano je polje " << x << "  " << i <<endl;
+                                blokirano = true;
+                            }
+                       }
+                    }
+                    if(blokirano){
+                        cout <<  "blokirano" << endl ;
+                    }
+                    else{
+                        cout << "moguć potez";
+                        this->x = x;
+                        this->y = y;
+                    }
+               }
+            //    if(this->y == y){
+                   
+            //    }
+            }
+            else{
+                this->x = x;
+                this->y = y;
+            }
             return;
         }
         else if(zauzeto(x, y) && razlicita_boja(x, y, this->boja)){
