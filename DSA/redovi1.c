@@ -31,11 +31,11 @@ int deleteFromFront(){
         printf("Underflow");
         return -1;
     }
-    else{
-        int elem = s[r];
+    else{ 
+        int elem = s[f];
         if(f == r){
             f = r = -1;
-            return -1;
+            return elem;
         }
         else{
             f = (f+1) % MAX;
@@ -43,6 +43,8 @@ int deleteFromFront(){
         }
     }
 }
+
+
 void display(){
     int i;
     if(isEmpty()){

@@ -4,6 +4,18 @@
 
 using namespace std;
 
+bool zauzeto(int x, int y);
+void ispis_table();
+void pomeri(int x1, int y1, int x2, int y2);
+void postavi_boje_polja();
+void eat();
+bool razlicita_boja(int x, int y, bool boja);
+
+int temp_index = 0;
+bool tabla[9][9]; //jer se u pravom šahu starta od 1
+bool ima_figuru; 
+char c;
+
 class figura{
     public:
     bool boja; //bele fiugre su true!
@@ -24,9 +36,19 @@ class figura{
     bool canEat(const figura &f){
         return true;
     }
-    void pomeri(x, y){
-        this->x = x;
-        this->y = y;
+    void pomeri(int x, int y){
+        if(!zauzeto(x, y)){
+            this->x = x;
+            this->y = y;
+            return;
+        }
+        else if(zauzeto(x, y) && razlicita_boja(x, y, this->boja)){
+            eat();
+            this->x = x;
+            this->y = y;
+            return;
+        }
+        cout << "Polje je zauzeto!" << endl ; 
     }
 };
 
@@ -64,67 +86,78 @@ figura f1(1, 2, 1, "pesak");
     figura f31(7, 8, 0, "skakac");
     figura f32(8, 8, 0, "top");
     figura figure[32] = {f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14, f15, f16, f17, f18, f19, f20, f21, f22, f23, f24, f25, f26, f27, f28, f29, f30, f31, f32};
+    
 
-    bool tabla[9][9]; //jer se u pravom šahu starta od 1
 
-    bool ima_figuru; 
-    char c;
-
-    void ispis_table(){
-        for(int i=8; i>=1; i--){
-            for(int j=1; j<=8; j++){
-                ima_figuru = false;
-                for(int k = 0; k<32; k++){
-                    if(figure[k].x == j && figure[k].y == i){ 
-                        ima_figuru = true;           
-                        if(figure[k].vrsta == "pesak"){
-                            c = 'P';
-                        }
-                        if(figure[k].vrsta == "top"){
-                            c = 'T';
-                        }
-                        if(figure[k].vrsta == "skakac"){
-                            c = 'S';
-                        }
-                        if(figure[k].vrsta == "lovac"){
-                            c = 'L';
-                        }
-                        if(figure[k].vrsta == "dama"){
-                            c = 'D';
-                        }
-                        if(figure[k].vrsta == "kralj"){
-                            c = 'K';
-                        }
-                        //crni su mala slova, beli velika.
-                        if(figure[k].boja){
-                            cout << c << " ";
-                        }
-                        else{
-                            c = tolower(c);
-                            cout << c << " ";
-                        }
+void ispis_table(){
+    for(int i=8; i>=1; i--){
+        for(int j=1; j<=8; j++){
+            ima_figuru = false;
+            for(int k = 0; k<32; k++){
+                if(figure[k].x == j && figure[k].y == i){ 
+                    ima_figuru = true;           
+                    if(figure[k].vrsta == "pesak"){
+                        c = 'P';
                     }
-                }
-                if(!ima_figuru){
-                    if(tabla[i][j]){
-                        cout << "  ";
+                    if(figure[k].vrsta == "top"){
+                        c = 'T';
+                    }
+                    if(figure[k].vrsta == "skakac"){
+                        c = 'S';
+                    }
+                    if(figure[k].vrsta == "lovac"){
+                        c = 'L';
+                    }
+                    if(figure[k].vrsta == "dama"){
+                        c = 'D';
+                    }
+                    if(figure[k].vrsta == "kralj"){
+                        c = 'K';
+                    }
+                    //crni su mala slova, beli velika.
+                    if(figure[k].boja){
+                        cout << c << " ";
                     }
                     else{
-                        cout << "# ";
+                        c = tolower(c);
+                        cout << c << " ";
                     }
                 }
             }
-            cout <<endl;
+            if(!ima_figuru){
+                if(tabla[i][j]){
+                    cout << "  ";
+                }
+                else{
+                    cout << "# ";
+                }
+            }
+        }
+        cout <<endl;
+    }
+}
+
+bool zauzeto(int x, int y){
+    ima_figuru = false;
+    for(int k = 0; k<32; k++){
+        if(figure[k].x == x && figure[k].y == y){
+            temp_index = k;
+            return true;
         }
     }
-    void pomeri(int x1, int y1, int x2, int y2){
-        for(int k = 0; k<32; k++){
-            if(figure[k].x == x1 && figure[k].y == y1){
-                
-            } 
-    }
+    return false;
+}
 
-int main(){ 
+void pomeri(int x1, int y1, int x2, int y2){
+    if(zauzeto(x1, y1)){
+        figure[temp_index].pomeri(x2, y2);
+    }
+    else{
+        cout << "Nisam pronašao figuru" << endl;
+    }
+}
+
+void postavi_boje_polja(){
     for(int i=1; i<=8; i++){
         for(int j=1; j<=8; j++){
             if( (i+j)  % 2 == 0){
@@ -135,8 +168,30 @@ int main(){
             }
         }
     }
-    ispis_table();
-    while(true){
+}
 
+bool razlicita_boja(int x, int y, bool boja){
+    for(int k = 0; k<32; k++){
+        if(figure[k].x == x && figure[k].y == y){
+            return figure[k].boja != boja;
+        }
+    }
+    return false;
+}
+
+void eat(){
+    figure[temp_index].x = 0;
+    figure[temp_index].y = 0;
+}
+
+int main(){ 
+    postavi_boje_polja();
+    int x1, x2, y1, y2;
+    ispis_table();
+    while(1){
+        cin >> x1 >> y1 >> x2 >> y2 ;
+        system("clear");
+        pomeri(x1, y1, x2, y2); 
+        ispis_table();
     }
 }
