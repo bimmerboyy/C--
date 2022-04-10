@@ -52,7 +52,7 @@ int display(){
         return -1;
     }
     int i;
-    for(i = f;i != r;(i+1)%SIZE){
+    for(i = f;i != r;i = (i+1)%SIZE){
         printf("%d",red[i]);
     }
 }
@@ -88,4 +88,5 @@ int main(){
     }
     while(opcija != 4);
     return 0;
+    
 }
