@@ -175,7 +175,6 @@ bool razlicita_boja(int x, int y, bool boja){
         if(figure[k].x == x && figure[k].y == y){
             return figure[k].boja != boja;
         }
-        
     }
     return false;
 }
