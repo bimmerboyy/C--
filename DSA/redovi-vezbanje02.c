@@ -32,8 +32,27 @@ int brisanje(){
     }
         t = front;
         info = front->data;
-        
-        
+        if(front == rear){
+            rear = NULL;
+        }
+        else{
+            front = front->link;
+            t->link = NULL;
+            free(t);
+        }
+        return info;
+}
+void display(){
+    NODE *t;
+    t = front;
+    if(front == NULL){
+        printf("Red je prazan");
+    }
+    else{
+        while(t){
+            printf("%d",t->data);
+            t = t->link;
+        }
 
-
+    }
 }
