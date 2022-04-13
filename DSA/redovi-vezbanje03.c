@@ -9,7 +9,7 @@ void insert_r(int elem){
     if(f == r+1 % SIZE){
         return;
     }
-    if(f == r){
+    if(r == -1){
         f = r = 0;
         red[r] = elem;
         return;
@@ -19,7 +19,14 @@ void insert_r(int elem){
 }
 void insert_f(int elem){
     if(f == (r+1)%SIZE){
-        
+        return;
 
     }
+    if(r == -1){
+        f = r = 0;
+        red[f] = elem;
+      return;  
+    }
+    
+
 }
