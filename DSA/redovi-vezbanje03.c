@@ -27,6 +27,35 @@ void insert_f(int elem){
         red[f] = elem;
       return;  
     }
-    
+    f = (f + SIZE-1)%SIZE;
+    red[f] = elem;
 
+
+}
+int delete_r(){
+    int elem;
+    if(r == -1){
+        printf("Red je prazan");
+        return -1;
+    }
+    else if(f == r){
+        elem = red[r];
+        f = -1;
+        r = -1;
+    }
+    else{
+        elem = red[r];
+        r = (r + SIZE-1)%SIZE;
+    }
+    return elem;
+}
+int delete_f(){
+    int elem;
+    if(f == -1){
+        printf("Red je prazan");
+    }
+    else if(f == r){
+        elem = red[f];
+        
+    }
 }
