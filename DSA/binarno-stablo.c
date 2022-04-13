@@ -6,6 +6,8 @@ typedef struct bin_tree{
     struct bin_tree*right, *left;
 }TREE;
 
+struct node* 
+
 int main(){
 
     return 0;
