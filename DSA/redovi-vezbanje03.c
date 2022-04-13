@@ -56,6 +56,23 @@ int delete_f(){
     }
     else if(f == r){
         elem = red[f];
-        
+        f = -1;
+        r = -1;
+    }
+    else{
+        elem = red[f];
+        f = (f+SIZE-1)%SIZE;
+    }
+    return elem;
+}
+void dipslay(){
+    int i;
+    if(r == -1){
+        printf("Red je prazan");
+    }
+    else{
+        for(i = f;i != r;i = (i+1)%SIZE){
+            printf("%d",red[i]);
+        }
     }
 }
