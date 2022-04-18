@@ -26,7 +26,7 @@ void unos(int elem){
     }
     else{
         last->next = temp;
-        temp = last;
+        last = temp;
     }
 }
 void display(){
@@ -68,11 +68,35 @@ void brisanjeNakon(struct node *pom){
         first = temp;
         last = temp;
         temp = NULL;
-        free(temp);
     }
     pom->next = temp;
     pom->next = temp->next;
     temp->next = NULL;
     free(temp);
+}
+void brisanjeZadatog(struct node *pom){
+    if(isEmpty()){
+        printf("Prazan");
+        return;
+    }
+    if(pom == first && pom == last){
+        first = last = pom;
+        free(pom);
+    }
+    pom->next = temp;
+    temp->next = pom->next;
+    free(temp);
+
+}
+int main(){
+    unos(1);
+    unos(2);
+    unos(3);
+    unos(4);
+    unos(5);
+    unos(6);
+    display();
+
+    return 0;
 }
 
