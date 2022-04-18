@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct node {
     int data;
@@ -8,11 +9,15 @@ typedef struct node {
 
 struct node *first = NULL, *last=NULL, *temp=NULL;
 
+bool isempty(){
+    return first == NULL;
+}
+
 void unos(int elem){
     temp = (struct node*)malloc(sizeof(struct node)); 
     temp -> data = elem;
     temp ->  next = NULL;
-    if(first == NULL){       
+    if(isempty()){       
         first = temp;   
         last = temp;
     }
