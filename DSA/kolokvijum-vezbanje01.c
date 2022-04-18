@@ -57,7 +57,7 @@ void preZadatog(struct node *pom,int elem){
     temp->next = temp->next;
     pom->next = temp;
     if(isEmpty()){
-        temp = last;
+        last = temp;
     }
 }
 void brisanjeNakon(struct node *pom){
@@ -88,13 +88,18 @@ void brisanjeZadatog(struct node *pom){
     free(temp);
 
 }
+void brisanjeNaZadatojPoziciji(int pos){
+    NODE* p,*q;
+   
+
+}
 int main(){
     unos(1);
     unos(2);
     unos(3);
-    unos(4);
-    unos(5);
-    unos(6);
+   
+    preZadatog(first->next->next,4);
+    
     display();
 
     return 0;
