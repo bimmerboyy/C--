@@ -43,9 +43,21 @@ void display(){
 void posleZadatog(struct node *pom,int elem){
     temp = (struct node*)malloc(sizeof(struct node));
     temp->data = elem;
+    temp->next = pom->next;
+    pom->next = temp;
     if(pom == last){
         last = temp;
     }
-    temp->next = pom->next;
-    pom->next = temp;
+    
 }
+void preZadatog(struct node *pom,int elem){
+    temp = (struct node*)malloc(sizeof(struct node));
+    temp->data = pom->data;
+    pom->data = elem;
+    temp->next = temp->next;
+    pom->next = temp;
+    if(isEmpty()){
+        temp = last;
+    }
+}
+
