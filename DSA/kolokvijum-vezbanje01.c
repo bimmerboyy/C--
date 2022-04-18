@@ -83,8 +83,10 @@ void brisanjeZadatog(struct node *pom){
         first = last = pom;
         free(pom);
     }
-    pom->next = temp;
-    temp->next = pom->next;
+    temp = pom->next;
+    pom->next = temp->next;
+    pom->data = temp->data;
+    temp->next = NULL;
     free(temp);
 
 }
