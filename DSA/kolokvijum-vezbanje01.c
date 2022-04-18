@@ -34,11 +34,18 @@ void display(){
         printf("Lista je prazna");
         return;
     }
+    temp = first;
     while(temp != NULL){
         printf("%d",temp->data);
         temp = temp->next;
     }
 }
-void posleZadatog(){
-    
+void posleZadatog(struct node *pom,int elem){
+    temp = (struct node*)malloc(sizeof(struct node));
+    temp->data = elem;
+    if(pom == last){
+        last = temp;
+    }
+    temp->next = pom->next;
+    pom->next = temp;
 }
