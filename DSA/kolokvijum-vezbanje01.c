@@ -60,4 +60,19 @@ void preZadatog(struct node *pom,int elem){
         temp = last;
     }
 }
+void brisanjeNakon(struct node *pom){
+    if(isEmpty()){
+        printf("Prazna");
+    }
+    if(first == last){
+        first = temp;
+        last = temp;
+        temp = NULL;
+        free(temp);
+    }
+    pom->next = temp;
+    pom->next = temp->next;
+    temp->next = NULL;
+    free(temp);
+}
 
