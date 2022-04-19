@@ -133,7 +133,6 @@ void brisanjePreZadatog(struct node* pom){
     if(pom == first){
         printf("Nemoguce je obrisati");
     }
-    
     struct node* q;
     q = first;
     temp = first->next;
@@ -141,11 +140,7 @@ void brisanjePreZadatog(struct node* pom){
         brisanjeZadatog(q);
         temp = temp->next;
         q = q->next;
-
     }
-   
-  
-    
 }
 
 
