@@ -91,7 +91,16 @@ void brisanjeZadatog(struct node *pom){
 
 }
 void brisanjeNaZadatojPoziciji(int pos){
-    NODE* p,*q;
+    int brojac = 0;
+    temp = first;
+    while(temp != NULL){
+        if(brojac == pos){
+
+            brisanjeZadatog(temp);
+            temp = temp->next;
+        }
+        brojac++;
+    }
    
 
 }
