@@ -96,6 +96,7 @@ public:
     
 };
 int main(){
+    system("clear");
     Razlomak r1(1,2),r2(2,3);
     Razlomak r3 = r1 + r2;
     Razlomak r4 = r1 * 5;
@@ -106,4 +107,5 @@ int main(){
     Razlomak r5 = (++r1);
     cout<<r5;
     r3++;
+    
 }
