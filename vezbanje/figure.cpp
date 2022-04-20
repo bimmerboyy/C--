@@ -39,52 +39,56 @@ class figura{
     void pomeri(int x, int y){
         int temp = temp_index;
         bool blokirano = false;
-        if(!zauzeto(x, y)){
-            //provera da li  ima prepreke da bi se pomerila:
-            if(vrsta == "top"){
-               if(this->x == x ){
-                    if(y > this->y){
-                       for(int i = (this->y + 1); i<y; i++){
-                            if(zauzeto(x, i)){
-                                cout << "blokriano je polje " << x << "  " << i <<endl;
-                                blokirano = true;
-                            }
-                       }
+        //provera da li  ima prepreke da bi se pomerila:
+        if(vrsta == "top"){
+            if(this->x == x ){
+                if(y > this->y){
+                    for(int i = (this->y + 1); i<y; i++){
+                        if(zauzeto(x, i)){
+                            cout << "blokriano je polje " << x << "  " << i <<endl;
+                            blokirano = true;
+                        }
                     }
-                    if(y < this->y){
-                       for(int i = (this->y - 1); i>this->; i--){
-                            if(zauzeto(x, i)){
-                                cout << "blokriano je polje " << x << "  " << i <<endl;
-                                blokirano = true;
-                            }
-                       }
-                    }
-                    if(blokirano){
-                        cout <<  "blokirano" << endl ;
-                    }
-                    else{
-                        cout << "moguć potez";
-                        this->x = x;
-                        this->y = y;
-                    }
-               }
-            //    if(this->y == y){
-                   
-            //    }
+                }
+                if(y< this->y){
+                    for(int i = (this-> y - 1); i>y; i++){
+                        if(zauzeto(x, i)){
+                            cout << "blokriano je polje " << x << "  " << i <<endl;
+                            blokirano = true;
+                        }
+                    } 
+                }
             }
-            else{
-                this->x = x;
-                this->y = y;
+            if(this->y == y){
+                if(x > this->x){
+                    for(int i = (this->x + 1); i<x; i++){
+                        if(zauzeto(i, y)){
+                            cout << "blokriano je polje " << i << "  " << y <<endl;
+                            blokirano = true;
+                        }
+                    }
+                }
+                if(x< this->x){
+                    for(int i = (this-> x - 1); i>x; i++){
+                        if(zauzeto(i, y)){
+                            cout << "blokriano je polje " << i << "  " << y <<endl;
+                            blokirano = true;
+                        }
+                    } 
+                }
             }
-            return;
         }
-        else if(zauzeto(x, y) && razlicita_boja(x, y, this->boja)){
+        if(!blokirano && !zauzeto(x, y)){
+            this->x = x;
+            this->y = y;
+           return;
+        }
+        else if(!blokirano &&  zauzeto(x, y) && razlicita_boja(x, y, this->boja)){
             eat();
             this->x = x;
             this->y = y;
             return;
         }
-        cout << "Polje je zauzeto!" << endl ; 
     }
 };
 

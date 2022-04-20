@@ -64,12 +64,19 @@ void brisanjeNakon(struct node *pom){
     if(isEmpty()){
         printf("Prazna");
     }
-    if(first == last){
-        first = temp;
-        last = temp;
-        temp = NULL;
+    if(first == last & pom == first){
+        first = NULL;
+        last = NULL;
+        free(pom);
     }
-    pom->next = temp;
+    if(pom == last){
+        printf("Nemoguce obrisati");
+        return;
+    }
+    if(pom->next == last){
+        last = pom;
+    }
+    temp = pom->next;
     pom->next = temp->next;
     temp->next = NULL;
     free(temp);
@@ -79,26 +86,72 @@ void brisanjeZadatog(struct node *pom){
         printf("Prazan");
         return;
     }
-    if(pom == first && pom == last){
-        first = last = pom;
+    if(first == last & pom == first){
+        first = NULL;
+        last = NULL;
         free(pom);
+        return;
     }
-    pom->next = temp;
-    temp->next = pom->next;
+    temp = pom->next;
+    pom->next = temp->next;
+    pom->data = temp->data;
+    temp->next = NULL;
     free(temp);
 
 }
 void brisanjeNaZadatojPoziciji(int pos){
-    NODE* p,*q;
-   
-
+    int brojac = 0;
+    temp = first;
+    while(temp != NULL){
+        if(brojac == pos){
+            brisanjeZadatog(temp);
+            return;
+            
+        }
+        brojac++;
+        temp = temp->next;
+    }
 }
+void BrisanjeZadatevrednosti(int vrednost){
+    temp = first;
+    while(temp != NULL){
+        if(temp->data == vrednost){
+            brisanjeZadatog(temp);
+            return;
+        }
+        temp = temp->next;
+    }
+}
+
+void brisanjePreZadatog(struct node* pom){
+    if(isEmpty()){
+        printf("Lista je prazna\n");
+    }
+    if(first == last & pom == first){
+        printf("Nemoguce je obristi pre zadatog elementa\n");
+    }
+    if(pom == first){
+        printf("Nemoguce je obrisati");
+    }
+    struct node* q;
+    q = first;
+    temp = first->next;
+    while(temp != pom){
+        brisanjeZadatog(q);
+        temp = temp->next;
+        q = q->next;
+    }
+}
+
+
 int main(){
     unos(1);
     unos(2);
-    unos(3);
-   
-    preZadatog(first->next->next,4);
+    unos(4);
+    //posleZadatog(first->next,3);
+    brisanjeZadatog(first);
+    //posleZadatog(first->next->next->next,5);
+    //brisanjeNakon(first->next);
     
     display();
 
