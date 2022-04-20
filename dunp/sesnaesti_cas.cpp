@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 
 class X{
     friend void g(int, x&);
@@ -17,3 +17,4 @@ void main(){
     x.f(5);
     g(6,x);
 }
+*/
