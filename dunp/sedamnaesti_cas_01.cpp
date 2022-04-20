@@ -25,13 +25,13 @@ class Vektor{
     void setZ(int value){
         v[2] = value;
     }
-    void getX(){
+    int getX(){
         return v[0];
     }
-    void getY(){
+    int getY(){
         return v[1];
     }
-    void getZ(){
+    int getZ(){
         return v[2];
     }
     //Vektor vNew  v1.dodaj(v2);
@@ -86,7 +86,7 @@ class Vektor{
     }
 };
 
-int main{
+int main(){
     Vektor v1(1,2,3), v2(5,4,3);
     Vektor v3 =  v1.dodaj(v2);
     Vektor v4 = v1 + v2;
