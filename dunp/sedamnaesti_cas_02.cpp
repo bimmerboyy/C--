@@ -69,7 +69,7 @@ class Razlomak{
     //unos bez frendly funkcije
     iostream& operator >>(iostream & in){
         cout << "unesite broj i imen razlomka"<< endl;
-        in>>imen>>broj;
+        in>>imenilac>>brojilac;
         return in;
     }
     void skracivanjeRazlomka(){
@@ -77,7 +77,7 @@ class Razlomak{
     }
 };
 
-int main{
+int main(){
     Razlomak r1(1,2), r2(2,3);
     Razlomak r3 = r1 + r2;
     Razlomak r4 = r1 * 5;

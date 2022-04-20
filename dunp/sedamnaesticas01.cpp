@@ -1,3 +1,6 @@
+
+/* PRAVI GRESKE
+
 #include<iostream>
 using namespace std;
 
@@ -21,12 +24,16 @@ public:
     //Vektor vnew = v1.dodaj(v2);
 
     Vektor dodaj(Vektor v2){
-        Vektor vnew({ v[0] + v2.getX()},v[1] + v2.getY(),v[2] + v2.getZ());
-        ((return vnew;
+        Vektor vnew({v[0]+v2.getX()}, v[1]+v2.getY(), v[2]+v2.getZ());
+        return vnew;
+        //Vektor vnew({ v[0] + v2.getX()},v[1] + v2.getY(),v[2] + v2.getZ());
+        //return vnew;
     }
     Vektor operator +(Vektor v2){
-        Vektor vnew({ v[0] + v2.getX(),v[1] + v2.getY(),v[2] + v2.getZ(),});
+        Vektor vnew({v[0]+v2.getX()}, v[1]+v2.getY(), v[2]+v2.getZ());
         return vnew;
+        //Vektor vnew({ v[0] + v2.getX(),v[1] + v2.getY(),v[2] + v2.getZ(),});
+        //return vnew;
     }
     Vektor operator *(int k){
         Vektor vnew = *this;
@@ -92,3 +99,4 @@ int main(){
     //Vektor v6 = 
     return 0;
 }
+*/
