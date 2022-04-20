@@ -48,21 +48,33 @@ public:
     Razlomak operator++(int){
         brojilac++;
         imenilac++;
+        skracivanjeRazlomaka();
         return *this;
     }
      Razlomak operator++(){
         brojilac++;
         imenilac++;
+        skracivanjeRazlomaka();
         return *this;
     }
     Razlomak operator -(){
-
+        brojilac = -brojilac;
+        return *this;
+    }
+    bool operator ==(Razlomak r){
+        skracivanjeRazlomaka();
+        r.skracivanjeRazlomaka();
+        if(brojilac == r.brojilac && imenilac == r.imenilac)
+            return true;
+        return false;
     }
     
         void skracivanjeRazlomaka(){
             if(brojilac < imenilac){
                 for(int i = brojilac;i > 1;i--){
-                    if(brojilac % i == 0;)
+                    if(brojilac % i == 0 && imenilac % i == 0){
+
+                    }
                 }
             }
         }
@@ -76,7 +88,7 @@ public:
     //unos bez friend funkcije
     istream& operator>>(istream& in){
         cout<<"Unesite brojilac i imenilac razlomka"<<endl;
-        in>>imenilac>>brojilac;
+        in>>brojilac>>imenilac;
         return in;
     }
   

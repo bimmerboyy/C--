@@ -22,14 +22,14 @@ public:
 
     Vektor dodaj(Vektor v2){
         Vektor vnew({ v[0] + v2.getX(),v[1] + v2.getY(),v[2] + v2.getZ(),});
-        return vnew;
+        ((return vnew;
     }
     Vektor operator +(Vektor v2){
         Vektor vnew({ v[0] + v2.getX(),v[1] + v2.getY(),v[2] + v2.getZ(),});
         return vnew;
     }
-    Vektro operator *(int k){
-        Vektro vnew = *this;
+    Vektor operator *(int k){
+        Vektor vnew = *this;
         for(int i = 0;i < 3;i++){
             vnew.v[i] *= k;
         }
@@ -89,6 +89,6 @@ int main(){
     v1.ispis();
     Vektor v5 = -v1;
     v5.ispis();
-    Vektor v6 = 
+    //Vektor v6 = 
     return 0;
 }
