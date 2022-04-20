@@ -10,25 +10,42 @@ using namespace std;
 
 class Animal{
 private:
-    char ime[20];
-    int starost;
+     char ime[20];
+     int starost;
 public:
     Animal(char ime[],int s){
         strcpy(this->ime,ime);
         starost = s;
     }
-    void setValue(char i[]){
+    void setName(char i[]){
         strcpy(ime,i);
     }
     void setValue(int starost){
         this->starost = starost;
     }
+    int getValue(){
+        return starost;
+    }
+    char getName(){
+        return *ime;
+    }
 };
 
 class Zebra{
+private:
     Animal a1;
+public:
+    Zebra(){
+        a1.setValue(5);
+        a1.setName('Zebrica');
+    }
+    Zebra(Animal b1){
+        a1.setValue(b1.getValue());
+        a1.setName(b1.getName());
+    }
+
     void ispis_za_zebru(){
         cout<<"Zebra se zove";
-        a1.setValue();
+        
     }
 };
