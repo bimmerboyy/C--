@@ -27,6 +27,34 @@ void unos(int elem){
     }
 }
 
+void insertAfter(struct node* pom, elem){
+    temp = (struct node*)malloc(sizeof(struc node));
+    temp -> data = elme;
+    temp -> next = pom -> next;
+    pom -> next = temp;
+    if(pom == last){
+        last = temp;
+    }
+}
+
+void insertBefore(struc node *pom, elem){
+    temp = (struc node*)malloc(sizeof(struc node));
+    temp -> data = pom-> data;
+    temp -> next = pom -> next;
+    pom -> data = elem;
+    pom -> next = temp;
+    if(pom==last){
+        temp = last;
+    }
+}
+
+void delete_after(node * pom){
+    temp =  pom -> next;
+    pom -> next = temp -> next;
+    temp -> next = NULL;
+    free(temp);
+}
+
 void display(){
     if(first == NULL){
         printf("Prazno \n");
