@@ -85,7 +85,7 @@ int main(){
     // f1.prosiri(3);
     // cout <<f1.suma() <<endl;
     // cout <<f1.vrednost(7) <<endl;
-    Fibonaci f2(10);
+    Fibonaci f2(5);
     cout << f2.suma();
     Fibonaci f3 = f2;
     cout << f3.suma();
