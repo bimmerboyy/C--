@@ -22,10 +22,52 @@ class Fibonaci{
     int *niz;
     Fibonaci(){
         cout<<"Unesite n:";
-        cin>>n;
+        do{
+            cin>>n;
+        }
+        while(n < 3);
+        
         niz = new int[n];
         for(int i = 2;i < n;i++){
             niz[i] = niz[i-1] + niz[i-2];
+        }
+    }
+    Fibonaci(int n){
+        this->n = n;
+        niz = new int[n];
+        niz[0] = 1;
+        niz[1] = 1;
+        for(int i = 2;i < n;i++){
+            niz[i] = niz[i-1] + niz[i-2];
+        }
+    }
+    Fibonaci(const Fibonaci &f){
+        this->n = f.n;
+        niz = new int[this->n];
+        for(int i = 0;i < n;i++){
+            this->niz[i] = f.niz[i];
+        }
+       
+    }
+    int suma(){
+        int s = 0;
+        for(int i = 0;i < n;i++){
+            s += niz[i];
+        }
+        return s;
+    }
+    int vrednost(int i){
+        if(i > n){
+            return -1;
+        }
+        return niz[i];
+
+    }
+    void prosiri(){
+        int *pomocni;
+        pomocni = new int[n];
+        for(int i = 0;i < n;i++){
+            pomocni[i] = niz[i];
         }
     }
 };
