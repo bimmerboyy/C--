@@ -17,6 +17,8 @@ class ZooAnimal{
     private:
     char ime[20];
     int tezina,brojKaveza;
+    int day;
+    char *name;
     public:
     ZooAnimal(){
         strcpy(ime,"Roki");
@@ -28,15 +30,41 @@ class ZooAnimal{
         this->tezina = tezina;
         this->brojKaveza = brojKaveza;
     }
+    void promeniIme(char *i){
+        name = new char[20];
+        strcpy(name,i);
+    }
+    char* getIme(){
+        return name;
+    }
+
     int promeniTezinu(int t){
         tezina = 0;
         tezina = t;
-        return 0;
+        return tezina;
+    }
+    int danOdPoslednjegMerenja(int dan){
+        day = dan;
+        return day;
+    }
+    void ispis(){
+        cout<<"Zivotinja se zove "<<ime<<",ima "<<tezina<<" i proslo je "<<day<<" dana"<<endl;
+    }
+    void ispisPromenaImena(){
+       
+        cout<<"Novo ime je: ";
+        cout << getIme();
     }
 };
 
 int main(){
     ZooAnimal a1((char*)"Pundja",70,3);
+    a1.promeniTezinu(40);
+    a1.danOdPoslednjegMerenja(4);
+    a1.ispis();
+    a1.promeniIme((char*)"Zoi");
+    a1.ispisPromenaImena();
+
 
     return 0;
 }
