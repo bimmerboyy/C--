@@ -86,5 +86,11 @@ class Fibonaci{
     
 };
 int main(){
-    
+    Fibonaci f1(10);
+    Fibonaci f2(f1);
+    // f1.vrednost(5);
+    // f1.prosiri(4);
+    cout<<f1.suma();
+    cout<<endl;
+    cout<<f2.suma();
 }
