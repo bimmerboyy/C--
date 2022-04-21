@@ -63,11 +63,28 @@ class Fibonaci{
         return niz[i];
 
     }
-    void prosiri(){
+    void prosiri(int x){
         int *pomocni;
         pomocni = new int[n];
         for(int i = 0;i < n;i++){
             pomocni[i] = niz[i];
         }
+        delete []niz;
+        n += x;
+        niz = new int[n];
+        for(int i = 0;i < (n-x);i++){
+            niz[i] = pomocni[i];
+
+        }
+        for(int i = (n-x);i < n;i++){
+            niz[i] = niz[i-1] + niz[i-2];
+        }
     }
+     ~Fibonaci(){
+        delete []niz;
+    }
+    
 };
+int main(){
+    
+}
