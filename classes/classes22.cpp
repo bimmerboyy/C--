@@ -14,15 +14,34 @@ using namespace std;
 class Polinom{
     float *koeficijenti;
     int n;
+    void UnosKoeficijenata(){        
+        float* koeficijenti = new float[n+1];
+        cout<<"Unesite koeficijente:";
+        for(int i = 0;i < n;i++){
+            cin>>koeficijenti[i];
+        }
+        cout<<endl;
+    }
    
 public:
     Polinom(){
-        n = 5;
-        UnosKoeficijenata();
+    n = 5;
+    koeficijenti = new float[n];
+    for(int i = 0;i < n+1;i++){
+        cout<<"Uneiste koeficijente:";
+        cin>>koeficijenti[i];
+    }
+       
     }
     Polinom(int n) {
         this->n = n;
-        UnosKoeficijenata();
+        koeficijenti = new float[n];
+    
+    for(int i = 0;i < n+1;i++){
+        cout<<"Uneiste koeficijente:";
+        cin>>koeficijenti[i];
+    }
+        
     }
     Polinom(const Polinom &p){
         this->n = p.n;
@@ -32,17 +51,6 @@ public:
         }
     }
 
-
-    private:
-    void UnosKoeficijenata(){        
-        float* koeficijenti = new float[n+1];
-        cout<<"Unesite koeficijente:";
-        for(int i = 0;i < n;i++){
-            cin>>koeficijenti[i];
-        }
-        cout<<endl;
-    }
-    public:
     float izracunaj(float x){
         float s = 0;
         for(int i = 0;i < n+1;i++){
@@ -56,12 +64,16 @@ public:
     void ispis(){
        cout<<"Polinom je:"<<endl;
        for(int i = 0;i < n+1;i++){
-           if(i != 0 && koeficijenti[i] > 0){
+           if(i != 0  && koeficijenti[i] > 0){
                cout<<koeficijenti[i];
+               
            }
-           if(i != 0){
-               cout<<n-i<<"x";
-           }
+           if(i == n){
+               //cout<<koeficijenti[i];
+            }
+            else{
+                cout<<"x^"<<n-i<<" ";
+            }
        }
     }
    
