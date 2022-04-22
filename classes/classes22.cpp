@@ -8,17 +8,24 @@ U main funkciji napraviti objekat klase i testirati sve metode
 #include<iostream>
 #include<stdlib.h>
 #include<math.h>
+
 using namespace std;
 
 class Polinom{
     float *koeficijenti;
     int n;
+    void UnosKoeficijenata(){        
+        int* koeficijenti = new int[n+1];
+        cout<<"Unesite koeficijente:";
+        for(int i = 0;i < n;i++){
+            cin>>koeficijenti[i];
+        }
+        cout<<endl;
+    }
 public:
-
     Polinom(){
         n = 5;
         UnosKoeficijenata();
-       
     }
     Polinom(int n) {
         this->n = n;
@@ -31,21 +38,13 @@ public:
             this->koeficijenti[i] = p.koeficijenti[i];
         }
     }
-    private:
-    void UnosKoeficijenata(){        
-        int* koeficijenti = new int[n+1];
-        cout<<"Unesite koeficijente:";
-        for(int i = 0;i < n;i++){
-            cin>>koeficijenti[i];
-        }
-        cout<<endl;
-    }
     float izracunaj(float x){
         float s = 0;
         for(int i = 0;i < n+1;i++){
             float clan = koeficijenti[i] * pow(x,i);
+            s += clan;
         }
-        s += clan;
+        
         return s;
 
     }
@@ -64,6 +63,6 @@ public:
 };
 int main(){
     Polinom p1(5);
-   
+    p1.izracunaj(2);
     return 0;
 }
