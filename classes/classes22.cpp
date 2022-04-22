@@ -45,8 +45,9 @@ public:
         float s = 0;
         for(int i = 0;i < n+1;i++){
             float clan = koeficijenti[i] * pow(x,i);
+            s += clan;
         }
-        s += clan;
+        
         return s;
 
     }
