@@ -17,12 +17,12 @@ public:
 
     Polinom(){
         n = 5;
-        UnosKoeficijenata(n);
+        UnosKoeficijenata();
        
     }
     Polinom(int n) {
         this->n = n;
-        UnosKoeficijenata(n);
+        UnosKoeficijenata();
     }
     Polinom(const Polinom &p){
         this->n = p.n;
@@ -32,13 +32,13 @@ public:
         }
     }
     private:
-    void UnosKoeficijenata(int n){        
-        cout<<"Unesite stepen polinoma";
-        cin>>n;
+    void UnosKoeficijenata(){        
         int* koeficijenti = new int[n+1];
+        cout<<"Unesite koeficijente:";
         for(int i = 0;i < n;i++){
             cin>>koeficijenti[i];
         }
+        cout<<endl;
     }
     float izracunaj(float x){
         float s = 0;
@@ -62,3 +62,8 @@ public:
     }
    
 };
+int main(){
+    Polinom p1(5);
+   
+    return 0;
+}
