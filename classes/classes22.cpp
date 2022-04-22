@@ -26,7 +26,7 @@ public:
     }
     Polinom(const Polinom &p){
         this->n = p.n;
-        int* koeficijenti = new int[this->n+1];
+        float* koeficijenti = new float[this->n+1];
         for(int i = 0;i < n;i++){
             this->koeficijenti[i] = p.koeficijenti[i];
         }
@@ -35,7 +35,7 @@ public:
 
     private:
     void UnosKoeficijenata(){        
-        int* koeficijenti = new int[n+1];
+        float* koeficijenti = new float[n+1];
         cout<<"Unesite koeficijente:";
         for(int i = 0;i < n;i++){
             cin>>koeficijenti[i];
@@ -46,7 +46,7 @@ public:
     float izracunaj(float x){
         float s = 0;
         for(int i = 0;i < n+1;i++){
-            float clan = koeficijenti[i] * pow(x,i);
+            float clan = koeficijenti[i] * pow(x,(n-i));
             s += clan;
         }
         
@@ -60,7 +60,7 @@ public:
                cout<<koeficijenti[i];
            }
            if(i != 0){
-               cout<<i<<"x";
+               cout<<n-i<<"x";
            }
        }
     }
@@ -69,6 +69,7 @@ public:
 int main(){
     Polinom p1(5);
     p1.izracunaj(2);
+    p1.ispis();
     p1.izracunaj(3);
    
     return 0;
