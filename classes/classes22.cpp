@@ -7,6 +7,7 @@ U main funkciji napraviti objekat klase i testirati sve metode
 
 #include<iostream>
 #include<stdlib.h>
+#include<math.h>
 using namespace std;
 
 class Polinom{
@@ -39,15 +40,25 @@ public:
             cin>>koeficijenti[i];
         }
     }
-    void izracunaj(float x){
+    float izracunaj(float x){
         float s = 0;
         for(int i = 0;i < n+1;i++){
-            
+            float clan = koeficijenti[i] * pow(x,i);
         }
+        s += clan;
+        return s;
 
     }
     void ispis(){
-
+       cout<<"Polinom je:"<<endl;
+       for(int i = 0;i < n+1;i++){
+           if(i != 0 && koeficijenti[i] > 0){
+               cout<<koeficijenti[i];
+           }
+           if(i != 0){
+               cout<<i<<"x";
+           }
+       }
     }
    
 };
