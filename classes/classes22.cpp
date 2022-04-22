@@ -40,6 +40,7 @@ public:
         }
         cout<<endl;
     }
+    public:
     float izracunaj(float x){
         float s = 0;
         for(int i = 0;i < n+1;i++){
@@ -64,6 +65,7 @@ public:
 };
 int main(){
     Polinom p1(5);
+    p1.izracunaj(3);
    
     return 0;
 }
