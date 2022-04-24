@@ -103,10 +103,17 @@ public:
         vrh.ispis();
         
         cout<<"Povrsina kvadrata je:"<<Povrsina()<<endl;
-        cout<<"Obim kvadrata je:"<<Obim()<<endl;
+        cout<<"Obim kvadrata je:"<<Obim()<<endl<<endl<<endl;
     }
 
 };
 int main(){
-    
+    Prava p1(1,1,3,1);
+    Prava p2(1,4,3,4);
+    Kvadrat k1(p2,p1);
+    k1.Povrsina();
+    k1.Obim();
+    k1.ispis();
+    Kvadrat k2;
+    k2.ispis();
 }
