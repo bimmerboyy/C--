@@ -63,3 +63,50 @@ private:
     }
 
 };
+
+class Kvadrat{
+private:
+    Prava vrh,dno;
+public:
+    Kvadrat(){
+        vrh.setX1(1);
+        vrh.setY1(1);
+        vrh.setX2(3);
+        vrh.setY2(1);
+        dno.setX1(1);
+        dno.setY1(4);
+        dno.setX2(3);
+        dno.setY2(4);
+    }
+    Kvadrat(Prava gore,Prava dole){
+        vrh.setX1(gore.getX1());
+        vrh.setY1(gore.getY1());
+        vrh.setX2(gore.getX2());
+        vrh.setY2(gore.getY2());
+        dno.setX1(dole.getX1());
+        dno.setY1(dole.getY1());
+        dno.setX2(dole.getX2());
+        dno.setY2(dole.getY2());
+    }
+    float Povrsina(){
+        float p = pow(vrh.RacunajDuzinu(),2);
+        return p;
+    }
+    float Obim(){
+        float o = vrh.RacunajDuzinu() * 4;
+        return o;
+    }
+    void ispis(){
+        cout<<"Dno ima kordinate i duzinu:"<<endl;
+        dno.ispis();
+        cout<<"Vrh ima koordinate i duzinu:"<<endl;
+        vrh.ispis();
+        
+        cout<<"Povrsina kvadrata je:"<<Povrsina()<<endl;
+        cout<<"Obim kvadrata je:"<<Obim()<<endl;
+    }
+
+};
+int main(){
+    
+}
