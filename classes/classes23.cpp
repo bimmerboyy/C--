@@ -8,6 +8,7 @@ Metode:Konstruktor sa i bez argumenata, povrsina(),obim() i ispis().
 */
 
 #include<iostream>
+#include<math.h>
 using namespace std;
 
 class Prava{
@@ -50,6 +51,15 @@ private:
     }
     float getY2(){
         return y2;
+    }
+    float RacunajDuzinu(){
+        d = sqrt(pow((x2 - x1),2) + pow((y2 - y1),2));
+        return d;    
+        
+    }
+    void ispis(){
+        cout<<"Koordinate x1 i y1 su:"<<"("<<x1<<","<<y2<<")"<<", a koordinate x2 i y2 su:"<<"("<<x2<<","<<y2<<")"<<endl;
+        cout<<"Duzina prve izmedju tacaka je:"<<RacunajDuzinu()<<endl;
     }
 
 };
