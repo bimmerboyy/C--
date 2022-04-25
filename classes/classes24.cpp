@@ -131,9 +131,11 @@ float prosek(){
     return s;
 }
 void ispis(){
-    cout<<"Ime i prezime"<<imeiPrezime<<endl<<"Broj indeksa:"<<brIndeksa<<endl;
+    cout<<"Ime i prezime:"<<imeiPrezime<<endl<<"Broj indeksa:"<<brIndeksa<<endl;
     ocena1.ispis();
+    cout<<endl;
     ocena2.ispis();
+    cout<<endl;
     ocena3.ispis();
 }
 
