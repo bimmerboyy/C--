@@ -25,6 +25,9 @@ private:
     string imeIzvodjaca;
     Zanr zanr;
 public:
+    Izvodjac(){
+        
+    }
     Izvodjac(string imeIzvodjaca,Zanr zanr){
         this->imeIzvodjaca = imeIzvodjaca;
         this->zanr = zanr;

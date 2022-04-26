@@ -37,7 +37,7 @@ public:
     int cenaSaPopustom(int popust){
         popust = popust / 100;
         cena = cena * popust;
-        return popust;
+        return cena;
     }
     string nalazenjeProizvoda(Proizvod proizvod){
         switch(proizvod){
@@ -57,9 +57,10 @@ public:
             return "GRESKA";
         }
     }
-  /*
-  Ne moze jer bi trebalo da se koristi preklapanje operatora
+    /*
   
+ // Ne moze jer bi trebalo da se koristi preklapanje operatora
+
     void sadrzajartikla(Proizvod proizvod){
         int kolicinaSastojaka = 0;
         string *sastojci = new string[kolicinaSastojaka];
@@ -75,6 +76,9 @@ public:
 
     }
     */
+    //void setCena(i){
+
+    //}
     
 
 };
