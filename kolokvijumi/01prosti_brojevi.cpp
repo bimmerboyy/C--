@@ -1,6 +1,7 @@
 /*Napisati program kojim se testira f-ja prost  koja 
   proverava da li je broj prost.
-  Program stampa brojeve blizance(susedni neparni brojevi koji su prosti)*/
+  Program stampa brojeve blizance(susedni neparni brojevi koji su prosti)
+  */
 
 #include <iostream>
 
@@ -28,3 +29,14 @@ int main(){
     }
     return 0;
 }
+
+/*
+#include<iostream>
+
+using namespace std;
+
+int main(){
+    cout<<"*"<<endl<<"**"<<endl<<"***"<<endl<<"****"<<endl<<"*****"<<endl<<"******"<<endl<<"*******"<<endl<<"********"<<endl<<"*********"<<endl<<"**********";
+    return 0;
+}
+*/
