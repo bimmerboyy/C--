@@ -56,12 +56,13 @@ private:
     string nazivPesme;
     int min,sek,brIzvodjaca;
     int maksimalniBrIzvodjaca;
+    Izvodjac *izv;
 public:
-    Pesma(string nazivPesme,int min,int sek,int brIzvodjaca){
+    Pesma(string nazivPesme,int min,int sek,int maksmalniBrIzvodjaca){
         this->nazivPesme = nazivPesme;
         this->min = min;
         this->sek = sek;
-        this->brIzvodjaca = brIzvodjaca;
+        this->maksimalniBrIzvodjaca = maksmalniBrIzvodjaca;
     }
     
     int getMin(){
@@ -80,5 +81,20 @@ public:
         else{
             return false;
         }
+    }
+    void dodajIzvodjaca(Izvodjac i){
+        if(brIzvodjaca < maksimalniBrIzvodjaca){
+            izv[brIzvodjaca] = i;
+            brIzvodjaca++;
+        }
+    }
+     /*P(naziv – minuti : sekundi),
+a zatim se pojedinačni izvođači ispisuju u zasebnim redovima.*/
+    void ispis(){
+        cout<<"P"<<"("<<nazivPesme<<" - "<<min<<" : "<<sek<<endl;
+        for(int i = 0;i < brIzvodjaca;i++){
+            izv[i].ispis();
+        }
+        
     }
 };
