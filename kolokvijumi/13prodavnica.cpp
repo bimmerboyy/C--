@@ -57,9 +57,24 @@ public:
             return "GRESKA";
         }
     }
-    void sadrzajartikla(){
-        
+  /*
+  Ne moze jer bi trebalo da se koristi preklapanje operatora
+  
+    void sadrzajartikla(Proizvod proizvod){
+        int kolicinaSastojaka = 0;
+        string *sastojci = new string[kolicinaSastojaka];
+        string *smokic = new string[kolicinaSastojaka];
+        sastojci[kolicinaSastojaka] = {"kikiriki","maslac","soja"};
+        if(proizvod == smoki){
+            for(int i = 0;i < kolicinaSastojaka;i++){
+                smokic[i] = sastojci[i];
+                kolicinaSastojaka++;
+            }
+            
+        }
+
     }
+    */
     
 
 };
