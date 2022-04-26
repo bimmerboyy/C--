@@ -39,8 +39,27 @@ public:
         cena = cena * popust;
         return popust;
     }
-    void sadrzajArtikla(){
+    string nalazenjeProizvoda(Proizvod proizvod){
+        switch(proizvod){
+            case smoki:
+            return "smoki";
+            break;
+             case sladoled:
+            return "sladoled";
+            break;
+             case cips:
+            return "cips";
+            break;
+             case pepsi:
+            return "pepsi";
+            break;
+            default: 
+            return "GRESKA";
+        }
+    }
+    void sadrzajartikla(){
         
     }
+    
 
 };
