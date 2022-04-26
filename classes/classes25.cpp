@@ -54,7 +54,31 @@ a zatim se pojedinačni izvođači ispisuju u zasebnim redovima.*/
 class Pesma{
 private:
     string nazivPesme;
-    int min,sek,maksimalniBrIzvodjaca;
+    int min,sek,brIzvodjaca;
+    int maksimalniBrIzvodjaca;
 public:
+    Pesma(string nazivPesme,int min,int sek,int brIzvodjaca){
+        this->nazivPesme = nazivPesme;
+        this->min = min;
+        this->sek = sek;
+        this->brIzvodjaca = brIzvodjaca;
+    }
     
+    int getMin(){
+        return min;
+    }
+    int getSek(){
+        return sek;
+    }
+    friend bool duza(Pesma &p1,Pesma &p2){
+        if(p1.min > p2.min){
+            return true;
+        }
+        else if(p1.min == p2.min && p1.sek > p2.sek){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 };
