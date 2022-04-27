@@ -11,12 +11,13 @@ using namespace std;
 class Student {
     public:
     string  firstName, lastName, smer;
-    int ocene[MAX];
+    int *ocene;
     Student(string fN, string lN, string s){
         firstName = fN;
         lastName = lN;
         smer = s;
-        ocene[MAX] = o[];
+        ocene = new int[MAX];
+        
     }
     float prosek(){
         int s = 0;
@@ -32,11 +33,11 @@ class Student {
 int main(){
     Student student1("Nikola", "Matković", "SI");
     Student student2("Tarik", "KUčević", "SI");
-    Student studnet3("Ermin", "Paljević", "RT", );
+    Student studnet3("Ermin", "Paljević", "RT");
     Student student4("Hamza", "Murtezić", "Biologija");
     Student studenti[4] = {student1, student2, student3, student4};
     int najveciProsek = 0;
-    Student najbolji; 
+    string najbolji; 
     for (int i = 0; i<4; i++){
         if(studenti[i].prosek() > najveciProsek){
             najveciProsek = studenti[i].prosek();
