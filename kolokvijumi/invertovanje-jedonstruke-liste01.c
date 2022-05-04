@@ -45,10 +45,24 @@ void dipslay(){
     }
 
 }
+void invertThreeElement(){
+    temp = first->next;
+    first->next = NULL;
+    struct node *temp2 = temp->next;
+    temp->next = first;
+    temp2->next = temp;
+}
+void invertMoreThanThreeElements(){
+    struct node *temp2 = first->next;
+    temp = NULL;
+    first->next = temp;
+    temp = first;
+    first = temp2;
+}
 
 int main(){
     ubaci(4);
-    ubaci(2);
+    ubaci(2);   
     dipslay();
     return 0;
 }
