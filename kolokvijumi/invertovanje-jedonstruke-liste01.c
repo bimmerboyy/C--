@@ -53,11 +53,14 @@ void invertThreeElement(){
     temp2->next = temp;
 }
 void invertMoreThanThreeElements(){
-    struct node *temp2 = first->next;
+    while(first != NULL){
     temp = NULL;
+    struct node *temp2 = first->next;
     first->next = temp;
     temp = first;
     first = temp2;
+    }
+    
 }
 
 int main(){
