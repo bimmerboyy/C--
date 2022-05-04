@@ -21,11 +21,23 @@ void ubaci(int elem){
     temp->data = elem;
     temp->next = NULL;
     if(isEmpty()){
-        first = last = NULL;
-        
+        first = temp;
+        last = temp;
     }
+    last->next = temp;
+    last = temp;
+
    
 }
 void dipslay(){
+    if(isEmpty()){
+        printf("Lista je prazna");
+        return;
+    }
+    if(first == last & temp == last){
+        printf("Lista ima samo 1 elem i to je:",temp->data);
 
+    }
+    temp = first;
+    
 }
