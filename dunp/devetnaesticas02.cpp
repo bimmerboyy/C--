@@ -20,8 +20,8 @@ class Flasa{
 
     void setCenaBezKaucije(float value){ cenaBezKaucije = value;}
 
-    friend bool provera(Flasa &f){
-        if(nalepnica == f.nalepnica && cenaBezKaucije == f.cenaBezKaucije)
+    friend bool provera(Flasa &f1,Flasa &f2){
+        if(f1.nalepnica == f2.nalepnica && f1.cenaBezKaucije == f2.cenaBezKaucije)
                 return true;
             return false;
             
@@ -37,10 +37,10 @@ class Staklena : Flasa{
     float cena;
     public:
     Staklena (string n,float cbk,float z = 0.33) : Flasa(n,cbk,z){
-        cena = (zapremina < 0.5) ? cenaBezKaucije = 1.05 : cenaBezKaucije = 1.1;
+        cena = (Zapremina < 0.5) ? cenaBezKaucije = 1.05 : cenaBezKaucije = 1.1;
 
     }
-    ispisStaklena(){
+    void ispisStaklena(){
         cout<<"Flasa je staklena"<<endl;
         ispis();
         cout<<"Ukupna cena staklene flase je "<<cena<<endl;
@@ -50,7 +50,7 @@ class Plasticna : Flasa{
     public:
     Plasticna (string n,float cbk,float z = 0.33) : Flasa(n,cbk,z){
     }
-    ispisPlasticna(){
+    void ispisPlasticna(){
         cout<<"Flasa je plasticna"<<endl;
         ispis();
     }
@@ -58,6 +58,10 @@ class Plasticna : Flasa{
 };
 
 int main(){
+    Plasticna p("Koka kola",5,0.33);
+    Staklena s("Koka kola",10,0.5);
+    p.ispisPlasticna();
+    s.ispisStaklena();
     
     return 0;
 }
