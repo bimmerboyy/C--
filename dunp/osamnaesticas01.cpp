@@ -1,3 +1,5 @@
+//Nasledjivanje klasa
+
 #include<iostream>
 
 using namespace std;
