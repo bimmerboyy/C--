@@ -25,7 +25,7 @@ class Kvadar{
     }
     void ispis(){
         cout<<"Tacke kvadra: "<<"("<<a<<","<<b<<","<<c<<")"<<endl;
-        cout<<"Zapremina kvadra"<<Zapremina()<<endl;
+        cout<<"Zapremina kvadra:"<<Zapremina()<<endl;
     }
 };
 
@@ -54,5 +54,6 @@ class Bazen : public Kvadar{
 int main(){
 
     Bazen b(10,100,30,6);
+    b.ispis();
     b.ispis2();
 }
