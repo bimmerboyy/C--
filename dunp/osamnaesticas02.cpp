@@ -65,28 +65,32 @@ class Rodjendan : public Datum{
         this->m = m;
         this->g = g;
     }
+    
     bool daLije(Datum dat){
         if(d == dat.d && m == dat.m)
             return true;
         return false;
     }
     void ispisSlavljenika(Datum dat){
-       
+      
         if(daLije(dat)){
-             Datum dt(d,m,g);
+            
             cout<<ime<<" "<<prezime<<" je danas rodjendan"<<endl;
         }
         else{
-            Datum razlika = dat.uporedi(this);
+            Datum dt(d,m,g);
+            Datum razlika = dat.uporedi(dt);
             cout<<"Do rodjendana ima jos"<<razlika.d<<"dana i"<<razlika.m<<" meseci"<<endl;
         }
 
     }
     int godine(Datum dat){
+        Datum dt(d,m,g);
         Datum razlika = dat.uporedi(dt);
         return razlika.g;
     }
 };
+
 
 
 int main(){
