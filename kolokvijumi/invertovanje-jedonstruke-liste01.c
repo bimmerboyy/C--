@@ -35,9 +35,20 @@ void dipslay(){
         return;
     }
     if(first == last & temp == last){
-        printf("Lista ima samo 1 elem i to je:",temp->data);
+        printf("Lista ima samo 1 elem i to je: %d",temp->data);
 
     }
     temp = first;
-    
+    while(temp != NULL){
+        printf("%d",temp->data);
+        temp = temp->next;
+    }
+
+}
+
+int main(){
+    ubaci(4);
+    ubaci(2);
+    dipslay();
+    return 0;
 }
