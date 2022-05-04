@@ -45,14 +45,14 @@ void dipslay(){
     }
 
 }
-void invertThreeElement(){
+void invertThreeElement(struct node *first){
     temp = first->next;
     first->next = NULL;
     struct node *temp2 = temp->next;
     temp->next = first;
     temp2->next = temp;
 }
-void invertMoreThanThreeElements(){
+struct node invertMoreThanThreeElements(struct node *first){
     while(first != NULL){
     temp = NULL;
     struct node *temp2 = first->next;
@@ -60,12 +60,22 @@ void invertMoreThanThreeElements(){
     temp = first;
     first = temp2;
     }
+    first = temp;
+    return *first;
     
 }
 
 int main(){
     ubaci(4);
-    ubaci(2);   
+    ubaci(2);
+    ubaci(6);
+    ubaci(16);
+    printf("Ispis pre invertovanja:");   
     dipslay();
+
+    *first = invertMoreThanThreeElements(first);
+    printf("Ispis posle invertovnja:");
+    dipslay();
+
     return 0;
 }
