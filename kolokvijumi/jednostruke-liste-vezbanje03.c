@@ -29,7 +29,7 @@ void unesi(int elem){
 void zamena(int elem,int zamena){
     temp = first;
     while(temp != NULL){
-        if(temp->data = elem){
+        if(temp->data == elem){
             temp->data = zamena;
 
         }
@@ -40,17 +40,20 @@ void zamena(int elem,int zamena){
 void display(){
     temp = first;
     while(temp != NULL){
-        printf("%d",temp->data);
+        printf("%d,",temp->data);
         temp = temp->next;        
     }
 }
-
-
-
-
-
 int main(){
-
+    unesi(1);
+    unesi(2);
+    unesi(3);
+    unesi(4);
+    display();
+    
+    zamena(4,5);
+    printf("\n\nZamena:\n\n");
+    display();
 
     return 0;
 }
