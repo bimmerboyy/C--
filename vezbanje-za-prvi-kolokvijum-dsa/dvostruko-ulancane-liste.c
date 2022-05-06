@@ -65,10 +65,34 @@ void display_reverse(){
 }
 
 void delete_actual(struct node *pom){
-    
+    if(first == pom){
+        first = pom -> next;
+        first -> prev = NULL;
+        free(pom);
+        return;
+    }
+    struct node *prev = pom -> prev;
+    if(pom -> next == NULL){
+        prev -> next = NULL;
+        pom -> prev = NULL;
+        free(pom);
+        return;
+    }
+    struct node *next = pom -> next;
+    pom -> prev = NULL;
+    pom -> next = NULL;
+    free(pom);
+    prev -> next = next;
+    next -> prev = prev;
 }
 
+void delete_before(struct node *pom){
+    delete_actual(pom -> prev);
+}
 
+void delete_after(struct node *pom){
+    delete_actual(pom -> next);
+}
 
 int main(){
     insert_at_head(3);
@@ -77,9 +101,9 @@ int main(){
     insert_at_tail(6);
     insert_at_tail(7);
     insert_at_tail(8);
-    printf("normal:  \n");
+    delete_actual(first -> next);
+    delete_before(first -> next);
+    delete_after(first);
     display();
-    printf("reverse: \n");
-    display_reverse();
     return 0;
 }
