@@ -27,6 +27,7 @@ void unos(int elem){
     if(isEmpty()){
         first = temp;
         last = temp;
+        return;
     }
     last->next = temp;
     last = temp;
@@ -35,6 +36,7 @@ void unos(int elem){
 void dipslay(){
     if(isEmpty()){
         printf("Lista je prazna");
+        return;
     }
     temp = first;
     while(temp != NULL){
