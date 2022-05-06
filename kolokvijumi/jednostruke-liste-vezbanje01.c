@@ -45,18 +45,21 @@ void dipslay(){
     }
 }
 
-/*
-void trazeniElement(int trazeniElem){
+
+bool trazeniElement(int trazeniElem){
     temp = first;
     while(temp != NULL){
         if(temp->data == trazeniElem){
-            printf("Pronasao sam trazeni element i on je: %d",trazeniElem);
+            printf("Trazeni elem je pronadjen\n");
             temp = temp->next;
+            return true;
         }
 
     }
+    printf("Trazeni elem nije pronadejn\n");
+    return false;
 }
-*/
+
 
 int main(){
     unos(1);
