@@ -65,7 +65,7 @@ void delete_after(node *pom){
     free(temp);
 }
 
-void delete_actual(){
+void delete_actual(struct node* pom){
     if(first == last && pom == first){
         first = NULL;
         last = NULL;
@@ -76,6 +76,64 @@ void delete_actual(){
     pom -> next  = temp -> next;
     pom -> data = temp -> data;
     free(temp);
+}
+
+void delete_before(struct node *pom){
+    if(isEmpty()){
+        printf("Nemougće je orbisati praznu listu ");
+        return;
+    }
+    if(first == last & first == pom){
+        printf("nemoguće brisati pre prvog elementa");
+        return;
+    }
+    struct node *p = first;
+    struct node *q = first -> next;
+    while(q != pom){
+        p = q;
+        q = q ->next;
+    }
+    delete_actual(p);
+}
+
+void delete_on_position(int position){
+    int count = 1;
+    temp  = first;
+    if(position == 1){
+        first = temp -> next;
+        free(temp);
+        return;
+    }
+    while(temp !=  NULL){
+        if(position == count){
+            delete_actual(temp);
+            return;
+        }
+        count++;
+        temp = temp -> next;
+    }
+}
+
+void delete_by_value(int vrednost){
+    temp  = first;
+    while(temp != NULL){
+        if(temp -> data == vrednost){
+            delete_actual(temp);
+        }
+        temp = temp -> next;
+    }
+}
+
+void display(){
+    if(isEmpty()){
+        printf("Prazan \n");
+        return;
+    }
+    temp = first;
+    while(temp != NULL){
+        printf("%d \n", temp -> data);
+        temp = temp -> next;
+    }
 }
 
 int  main(){
