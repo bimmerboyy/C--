@@ -75,7 +75,8 @@ int main(){
     display(first1);
     printf("Druga lista:\n");
     display(first2);
-    printf("Presek dve liste je");
+    printf("Presek dve liste je:\n");
     presek(first1,first2);
+    return 0;   
 }
 
