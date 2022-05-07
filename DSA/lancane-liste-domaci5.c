@@ -9,7 +9,7 @@
 
 typedef struct node{
     int value;
-    struct node* next;
+     struct node* next;
 }NODE;
 
 
@@ -17,14 +17,15 @@ typedef struct node{
 NODE *first1 = NULL, *last1=NULL, *temp;
 NODE *first2 = NULL, *last2=NULL;
 
-int isEmpty(node* first){
+
+int isEmpty(struct node* first){
     if(first == NULL){
         return 1;
     }
     return 0;
 }
 
-void ubaci(int a, node** first, node**last){
+void ubaci(int a, struct node** first, struct node**last){
     temp = (struct node*)malloc(sizeof(struct node));
     temp -> value = a;
     temp -> next = NULL;
@@ -38,7 +39,7 @@ void ubaci(int a, node** first, node**last){
     }
 }
 
-void ispis(node* first){
+void ispis(struct node* first){
     temp = first;
     while(temp != NULL){
         printf("%d \n",  temp->value);
@@ -46,10 +47,10 @@ void ispis(node* first){
     }
 }
 
-bool isEaqule(node* first, node* second){
+bool isEaqule(struct node* first, struct node* second){
     bool zastava =  true;
-    node* temp1 = first;
-    node* temp2 = second;
+    struct node* temp1 = first;
+    struct node* temp2 = second;
     while(temp1 != NULL){
         if( temp1->value != temp2->value || temp2->next ==  NULL  && temp1->next != NULL || temp1->next ==  NULL  && temp2->next != NULL ) {
             return false;
