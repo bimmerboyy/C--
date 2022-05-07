@@ -40,11 +40,16 @@ void display(){
 void displayReverse(){
     temp = last;
     while(temp != NULL){
-        printf("%d",temp->data);
+        printf("%d\n",temp->data);
         temp = temp->prev;
     }
 }
 int main(){
-
+    ubaci(1);
+    ubaci(2);
+    ubaci(3);
+    ubaci(4);
+    ubaci(5);
+    displayReverse();
     return 0;
 }
