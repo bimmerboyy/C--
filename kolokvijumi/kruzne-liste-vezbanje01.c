@@ -24,6 +24,32 @@ void unsei(int elem){
     last->next = first;
 }
 
+void deleteFromFirst(){
+    if(first == NULL){
+        printf("Underflow");
+        return;
+    }
+    if(first == last && temp == first){
+        first = last = NULL;
+        return;
+    }
+    temp = first;
+    first = temp->next;
+    last->next = first;
+    temp->next = NULL;
+    free(temp);
+}
+
+void display(){
+    temp = first;
+    while(temp != last){
+    printf("%d\n",temp->data);
+    temp = temp->next;
+    }
+    printf("%d",temp->data);
+}
+
+
 
 int main(){
 
