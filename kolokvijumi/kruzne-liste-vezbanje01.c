@@ -9,7 +9,7 @@ typedef struct node{
 
 NODE *first = NULL,*last = NULL,*temp;
 
-void unsei(int elem){
+void unesi(int elem){
     temp = (struct node*)malloc(sizeof(struct node));
     temp->data = elem;
     temp->next = NULL;
@@ -85,6 +85,11 @@ void display(){
 
 
 int main(){
+    unesi(1);
+    unesi(1);
+    unesi(1);
+    unesi(1);
+    unesi(1);
 
 
     return 0;
