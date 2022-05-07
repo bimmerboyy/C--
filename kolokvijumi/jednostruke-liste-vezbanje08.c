@@ -82,6 +82,13 @@ int main(){
     ubaci(5);
 
     display();
+
+    if(daLiSeNalazi(first,2)){
+        printf("Nalazi se\n");
+    }
+    else{
+        printf("Ne nalazi se");
+    }
     /*
     if(daLiSeNalazi(2)){
         printf("Nalazi se\n");
