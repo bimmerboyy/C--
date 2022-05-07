@@ -31,11 +31,44 @@ void deleteFromFirst(){
     }
     if(first == last && temp == first){
         first = last = NULL;
+        free(temp);
         return;
     }
     temp = first;
     first = temp->next;
     last->next = first;
+    temp->next = NULL;
+    free(temp);
+}
+
+void deleteActual(struct node *pom){
+    if(first == NULL){
+        printf("Underflow");
+        return;
+    }
+    if(first == last && pom == first){
+        first = last = NULL;
+        free(pom);
+        return;
+    }
+    if(pom == first){
+        deleteFromFirst();
+        return;
+    }
+    if(pom == last){
+       struct node *p = first;
+       struct node *q = first->next;
+       while(q != pom){
+           p = q;
+           q = q->next;
+       }
+        pom->next = NULL;
+        p->next = first;
+        free(pom);
+    }
+    temp = pom->next;
+    temp->data = pom->data;
+    pom->next = temp->next;
     temp->next = NULL;
     free(temp);
 }
@@ -52,6 +85,7 @@ void display(){
 
 
 int main(){
+
 
     return 0;
 }
