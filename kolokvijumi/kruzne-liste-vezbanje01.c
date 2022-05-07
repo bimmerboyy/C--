@@ -61,9 +61,11 @@ void deleteActual(struct node *pom){
        while(q != pom){
            p = q;
            q = q->next;
+       
        }
         p->next = first;
         pom->next = NULL;
+        last = p;
         free(pom);
         return;
     }
