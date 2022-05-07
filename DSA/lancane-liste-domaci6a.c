@@ -44,7 +44,7 @@ void ispis(){
     }
 }
 
-int najveci(node* f){
+int najveci(struct node* f){
     int max  = f -> value;
     int t;
     if(f->next != NULL){
