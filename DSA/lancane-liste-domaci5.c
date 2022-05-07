@@ -65,10 +65,10 @@ int main() {
     ubaci(1, &first1, &last1);
     ubaci(2, &first1, &last1);
     ubaci(3, &first1, &last1);
+    
     ubaci(1, &first2, &last2);
     ubaci(2, &first2, &last2);
     ubaci(3, &first2, &last2);
-    ubaci(4, &first2, &last2);
     if(isEaqule(first1, first2)){
         printf("Iste su");
     }
