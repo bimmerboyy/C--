@@ -62,12 +62,13 @@ void deleteActual(struct node *pom){
            p = q;
            q = q->next;
        }
-        pom->next = NULL;
         p->next = first;
+        pom->next = NULL;
         free(pom);
+        return;
     }
     temp = pom->next;
-    temp->data = pom->data;
+    pom->data = temp->data;
     pom->next = temp->next;
     temp->next = NULL;
     free(temp);
@@ -86,11 +87,12 @@ void display(){
 
 int main(){
     unesi(1);
-    unesi(1);
-    unesi(1);
-    unesi(1);
-    unesi(1);
-
-
+    unesi(2);
+    unesi(3);
+    unesi(4);
+    unesi(5);
+    //deleteFromFirst();
+    deleteActual(last);
+    display();
     return 0;
 }
