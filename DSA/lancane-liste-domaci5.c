@@ -69,6 +69,7 @@ int main() {
     ubaci(1, &first2, &last2);
     ubaci(2, &first2, &last2);
     ubaci(3, &first2, &last2);
+    ispis(first1);
     if(isEaqule(first1, first2)){
         printf("Iste su");
     }

@@ -32,6 +32,11 @@ void display(struct node* first){
     }
 }
 int main(){
-
+    unesi(1,first1,last1);
+    unesi(2,first1,last1);
+    unesi(3,first1,last1);
+    unesi(4,first1,last1);
+    unesi(5,first1,last1);
+    display(first1);
     return 0;
 }
