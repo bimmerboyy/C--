@@ -97,15 +97,25 @@ void deleteActual(struct node *pom){
     free(pom);
 }
 
+void deleteAfter(struct node *pom){
+    deleteActual(pom->next);
+}
+void deleteBefore(struct node *pom){
+    deleteActual(pom->prev);
+}
+
+
 
 
 int main(){
     ubaciSaPocetka(1);
-    // ubaciSaKraja(2);
-    // ubaciSaKraja(3);
-    // ubaciSaKraja(4);
-    // ubaciSaKraja(5);
-    deleteActual(first);
+    ubaciSaKraja(2);
+    ubaciSaKraja(3);
+    ubaciSaKraja(4);
+    ubaciSaKraja(5);
+    //deleteAfter(first);
+    deleteBefore(first->next->next);
+    //deleteActual(first);
     display();
     // displayReverse();
     return 0;
