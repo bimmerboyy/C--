@@ -63,17 +63,50 @@ void displayReverse(){
     }
 }
 
-void deleteActual(){
-    
+void deleteActual(struct node *pom){
+  
+    if(first == NULL){
+        printf("Underflow\n");
+    }
+    if(first == pom && pom->next == NULL){
+        pom = NULL;
+        first = NULL;
+        free(pom);
+        return;
+    }
+    if(first == pom){
+       first = pom->next;
+       first->prev = NULL;
+       pom->next = NULL;
+       free(pom);
+       return;
+    }
+    if(pom->next == NULL){
+        temp = pom->prev;
+        temp->next = NULL;
+        pom->prev = NULL;
+        free(pom);
+        return;
+    }
+   
+    temp = pom->prev;
+    temp->next = pom->next;
+    pom->next->prev = temp;
+    pom->next = NULL;
+    pom->prev = NULL;
+    free(pom);
 }
+
+
 
 int main(){
     ubaciSaPocetka(1);
-    ubaciSaKraja(2);
-    ubaciSaKraja(3);
-    ubaciSaKraja(4);
-    ubaciSaKraja(5);
-    //display();
-    displayReverse();
+    // ubaciSaKraja(2);
+    // ubaciSaKraja(3);
+    // ubaciSaKraja(4);
+    // ubaciSaKraja(5);
+    deleteActual(first);
+    display();
+    // displayReverse();
     return 0;
 }
