@@ -88,8 +88,6 @@ void display(){
     printf("%d  \n", red[i]);
 }
 
-
-
 int main(){
     insert_r(1);
     insert_r(2);
