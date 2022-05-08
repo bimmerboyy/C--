@@ -64,6 +64,5 @@ int  main(){
     insert(5);
     delete_cq();
     display();
-
     return 0;
 }
