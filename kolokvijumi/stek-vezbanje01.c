@@ -35,7 +35,7 @@ int pop(){
 
 void display(){
     int i;
-    for(i = 0;i <= top;i++){
+    for(i = top;i >= 0;i--){
         printf("%d,",s[i]);
     }   
 }
@@ -45,6 +45,7 @@ int main(){
     push(2);
     push(3);
     push(4);
+    pop();
     display();
 
     return 0;
