@@ -20,16 +20,17 @@ bool isEmpty(){
     return top == NULL;
 }
 
-void pop(){
+int pop(){
     if(isEmpty()){
         printf("Stek je prazan");
-        return;
+        return -1;
     }
     int elem = top->data;
     temp = top;
     top = top->next;
     temp->next = NULL;
     free(temp);
+    return elem;
 }
 
 void display(){
@@ -41,6 +42,12 @@ void display(){
 }
 
 int main(){
-
+    push(1);
+    push(2);
+    push(3);
+    push(4);
+    push(5);
+    pop();
+    display();
     return 0;
 }
