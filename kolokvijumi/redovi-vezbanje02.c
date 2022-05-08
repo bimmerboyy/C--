@@ -23,12 +23,9 @@ void ubaci(int elem){
     if(isEmpty()){
         f = 0;
         r = 0;
-        red[r] = elem;
-        return;
     }
-    
-    r = (r+1)%SIZE;
     red[r] = elem;
+    r = (r+1)%SIZE;
 }
 
 int izbrisi(){
@@ -50,18 +47,21 @@ void display(){
         printf("%d,",red[i]);
 
     }
-    printf("%d",red[i]);
+    //printf("%d",red[i]);
 }
 
-
-
-int main(){
-    ubaci(1);
-    ubaci(2);
-    ubaci(3);
-    ubaci(4);
-    //izbrisi();
-    display();
-
-    return 0;
+void ubaciF(int elem){
+    if(isFull()){
+        printf("Overflow\n");
+        return;
+    }
+    if(isEmpty()){
+        f = 0;
+        r = 0;
+        red[f] = elem;
+    }
+    else{
+         f = (f + SIZE-1)%SIZE;
+    }
+   
 }
