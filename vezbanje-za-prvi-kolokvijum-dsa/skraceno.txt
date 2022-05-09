@@ -86,3 +86,44 @@ ubacuje  novi noud,
 ako je first == NULL - tu 
 inače spaja rear  sa njim, prebacuje rear na njega 
 //NEMA return
+#####stack preko niza:
+niz, sajt
+empti ako je top -1
+pun ako je top = size - 1
+push - ako nije pun - top se ubvećava i upisuje
+pop - retuna vrh ako nije prazan i smanji top.
+display od 0 do top ako nije prazan
+####stek preko lančane
+is_empty - ako je top NULL
+push - pravi temp, ubacuje, 
+temp -> next = top
+top prebacuje na temp.
+#pop.
+    vraća int,
+    ako je prazan retun
+    uzima sa topa
+    temp  nulira i briše
+    retun  elem.
+display 
+ide od top do null  i ispisuje
+
+#### red. f, r, sq  - size
+prazan  ako je f = -1,
+
+
+pun  ako je f ==0  i r = size - 1 ili f =  r +1  % size.
+insert uzima elem,
+    ako je pun ništa
+    ako je prazan f = 0 - ne retuna
+    r se poveća po modulu.
+    upiši u r.
+delete
+    ako je prazan ništa
+    ako je  f == r
+    vrat na -1
+    f uveća po modulu
+    vrati elem.
+display ide od f do r, uveća se po modulu
+i je lokalno - ne u foru
+print  nakon fora
+
