@@ -56,8 +56,54 @@ int DuzinaListe(){
     return pozicija;
 }
 
-void obrsisTrenutni(){
+void obrisiTrenutni(struct node *pom){
+    if(first == last && pom == first){
+        first = NULL;
+        last = NULL;
+        free(pom);
+        return;
+    }
+    if(pom == first){
+        first = pom->next;
+        pom->next = NULL;
+        first->prev = NULL;
+        free(pom);
+        return;
+    }
+    if(pom == last){
+        temp = pom->prev;
+        temp->next = NULL;
+        pom->prev = NULL;
+        free(pom);
+        return;
+    }
+    temp = pom->prev;
+    temp->next = pom->next;
+    pom->next = NULL;
+    pom->prev = NULL;
+    free(pom);
 
+
+}
+
+void obrisiN(int n){
+    temp = first;
+    while(temp != NULL){
+        if(temp->data == n){
+            obrisiTrenutni(temp);
+        }
+        temp = temp->next;
+    }
+}
+
+void palindrom(){
+    temp = first;
+    struct node *q = first->next;
+    while(temp != NULL){
+        if(temp->data > q->data){
+            
+        }
+    }
 }
 
 int main(){
@@ -66,6 +112,8 @@ int main(){
     unesi(3);
     unesi(4);
     unesi(5);
+    //obrisiTrenutni(last);
+    obrisiN(2);
     dipslay();
     printf("Duzina liste je:%d",DuzinaListe());
 
