@@ -1,0 +1,80 @@
+####################jednostruke lančane:
+
+#Osobine
+frst, last, temp na nul,
+prazna ako nema frst
+#kreiranje
+pri kreiranju uvek pravi temp, ako je prazan stavlja frst i last tu.
+inače spaja i premešta last.
+#insert after:
+pravi temp, temp->next = pom -> next,  pom-> next =  temp.
+ako je poslednji last = temp.
+#insert before
+pravi temp, i ubacuje podatke iz pom-a, 
+elem upisuje u pom data,
+pom next biva temp.
+ako je zadji last = temp.
+#delete_after
+ako je zadji - ništa
+ako je prazna - ništa
+ako je predzasnji last = pom //bez riturna
+temp  kopira sledeći element (jer se briše nakon njega)
+pom-> next biva temp -> next,
+osobađa se temp
+#delete_actual:
+ako je  prazna - ništa,
+ako je jedini  - sve stavi na null, return
+temp = pom -> next,
+pom -> next  = temp -> next;
+pom -> data = temp -> data
+free(temp);
+#delete_before 
+pretraga dok ne dođemo do elementa, zatim  delete actual, čuvamo p i q.
+#delete_on_position 
+samo brojimo koliko puta je bilo next.
+#delete_by_value
+proveri se vrednsot, ako se poklapa pošalje se u delete_actual
+#display
+ako je prazan ništa
+krene od prvog, ide do null, printa
+
+#######dvostruko-ulancane-liste
+#Osobine:
+first, temp // nema last, prev i next
+#kreiranje
+funkcija create_new_node pravi novu granu.
+#insert_at_head
+pravi novu
+ako je first  null, stavlja u first.
+inače, first -> prev = temp, 
+temp -> next = first 
+first = temp //Povezuje ih
+#insert_at_tail
+pošto nemamo last, dobićemo ga  kruženjem, frst stavlja u temp
+pravi novi noud
+ako nema first, ubaci ga tu
+inače kruži dok temp -> next !=  NULL
+onda poveže temp -> next i new_node -> prev.
+#display
+isti.
+#display_reverse 
+isto, prethodno kruži do zadnjeg ( temmp -> next != NULL)
+#delete_actual
+ako je prvi :
+    prvi prebacuje na first -> next
+    briše prev od first
+    briše first, return
+čuva prev // da bi mogao da raskine prev vezu 
+ako je zadnji:
+    prev -> next = NULL
+    pom -> prev = NULL
+    free(pom), return
+čuva next
+briše pom -> prev
+briše pom -> next
+briše pom.
+spava next i prev.
+#delete_after i #delete_before 
+samo pošalješ prev ili next  u delete_actual.
+
+#liste 
