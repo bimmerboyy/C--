@@ -77,4 +77,12 @@ spava next i prev.
 #delete_after i #delete_before 
 samo pošalješ prev ili next  u delete_actual.
 
-#liste 
+#############kružne
+#osobine :
+imaju data i next, 
+rear -> next pokazuje na first
+#crete:
+ubacuje  novi noud,
+ako je first == NULL - tu 
+inače spaja rear  sa njim, prebacuje rear na njega 
+//NEMA return
