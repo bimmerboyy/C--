@@ -154,11 +154,13 @@ int main(){
     (palindrom()) ? printf("Lista je palindrom \n") : printf("Lista nije palindrom \n");
     insert_at_tail(1);
     insert_at_tail(2);
-    insert_at_tail(2);
+    insert_at_tail(4);
+    printf("The list has %d elements \n", lenght());
     insert_at_tail(3);
     insert_at_tail(2);
     insert_at_tail(2);
     insert_at_tail(1);
+    printf("The list has %d elements \n", lenght());
     (palindrom()) ? printf("Lista je palindrom \n") : printf("Lista nije palindrom \n");
     return 0;
 }
