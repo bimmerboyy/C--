@@ -96,26 +96,84 @@ void obrisiN(int n){
     }
 }
 
-void palindrom(){
-    temp = first;
-    struct node *q = first->next;
-    while(temp != NULL){
-        if(temp->data > q->data){
-            
-        }
+// void palindrom(){
+//     temp = first;
+//     struct node *q = first->next;
+//     while(temp != NULL){
+//         if(temp->data > q->data){
+
+//         }
+//     }
+// }
+
+// bool palindrom(){
+//     int sredina = DuzinaListe() / 2;
+//     int pozicija1 = 1;
+//     int pozicija2 = DuzinaListe();
+//     struct node* temp1;
+//     struct node* temp2;
+//    struct node *p = temp1;
+//     struct node *q = last;
+//     while(temp1 != NULL && pozicija1 <= sredina){
+//         pozicija1++;
+//         temp1 = temp1->next;
+       
+//     }
+//      while(temp2 != NULL && pozicija2 >= sredina){
+//         pozicija2--;
+//         temp2 = temp2->next;
+//     }
+//     while(temp1 != NULL){
+//         p = temp1->prev;
+//         q = temp2->next;
+//         if(temp1->data < p->data && temp2->data < q->data){
+//             return true;
+//         }
+//         temp1 = temp1->prev;
+//         p = p ->prev;
+//         temp2 = temp2->next;
+//         q = q->next;
+        
+
+//     }
+   
+// }
+
+bool palindrom(){
+    if(first == NULL){
+        return  false;
     }
+    if(first -> next == NULL){
+        return true;
+    }
+    temp = first;
+    while(temp  != last){
+        if(temp -> data != last -> data){
+            return false;
+        }
+        temp = temp -> next;
+        last = last -> prev;
+    }
+    return true;
 }
 
 int main(){
+    unesi(3);
+    unesi(2);
     unesi(1);
     unesi(2);
     unesi(3);
-    unesi(4);
-    unesi(5);
     //obrisiTrenutni(last);
     obrisiN(2);
     dipslay();
-    printf("Duzina liste je:%d",DuzinaListe());
+
+    printf("Duzina liste je:%d\n",DuzinaListe());
+    if(palindrom()){
+        printf("Lista je palindrom\n");
+    }
+    else{
+        printf("Lista nije palindrom\n");
+    }
 
 
     return 0;
