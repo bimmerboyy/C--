@@ -46,12 +46,53 @@ class Vektor{
     int getZ(){
         return niz[2];
     }
-    Vektor dodaj(Vektor &v1){
+    Vektor dodaj(Vektor v1){
         // int newX,newY,newZ;
         // newX = this->x + v1.getX();
     }
     Vektor operator+(Vektor v1){
-        Vektor vnew = ({v[0] + v1.getX()},{v[1] + v1.getY()},{v[2] + v1.getZ()});
+        Vektor vnew = ({niz[0] + v1.getX()},{niz[1] + v1.getY()},{niz[2] + v1.getZ()});
+        return vnew;
+
+    }
+    Vektor operator*(int k){
+        Vektor vnew = *this;
+        for(int i = 0;i < 3;i++){
+            vnew.niz[i] *= k;
+        }
         return vnew;
     }
+    Vektor& operator=(Vektor& v1){
+        if(&v1 == this){
+            return *this;
+        }
+        for(int i = 0;i < 3;i++){
+            niz[i] = v1.niz[i];
+        }
+        return *this;
+    }
+    Vektor operator++(){
+        for(int i = 0;i < 3;i++){
+            niz[i]++;   
+        }
+        return *this;
+    } 
+      Vektor operator++(int){
+        for(int i = 0;i < 3;i++){
+            niz[i]++;   
+        }
+        return *this;
+    }
+    Vektor operator-(){
+        for(int i = 0;i < 3;i++){
+            niz[i] - niz[i];    
+        }
+        return *this;
+    }
+    int& operator [](int i){
+        if(i > 2){
+            return niz[0];
+        }
+        return niz[i];
+    } 
 };
