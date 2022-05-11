@@ -69,3 +69,8 @@ class Ispit : Dosije,Predmet{
         datum = d;
     }
 };
+
+int main(){
+    
+    return 0;
+}
