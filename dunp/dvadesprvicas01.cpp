@@ -83,6 +83,10 @@ class Kvadrat{
         float d = sqr(pow(2*(izracunajStranicu(),2));
         return d;
     }
+    void ispis(){
+        cout<<"Kvadrat ima tacke:"<<"("<<a<<","<<b<<","<<c<<","<<d<<")"<<endl;
+        cout<<"Stranica kvadrata je:"<<izracunajStranicu()<<",a dijagonala je:"<<izracunajDijagonalu()<<endl;
+    }
 
     
 };
