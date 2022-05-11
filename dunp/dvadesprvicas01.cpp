@@ -49,6 +49,7 @@ class Tacka{
     void ispis(){
         cout<<"Tacka ima koordinate"<<"("<<x<<","<<y<<","<<z<<") "<<endl;
     }
+
 };
   
 
@@ -78,6 +79,11 @@ class Kvadrat{
     float izracunajStranicu(){
         return sqrt(pow(a.getX() - b.getX()),2) + sqrt(pow(a.getY() - b.getY()),2) + sqrt(pow(a.getZ() - b.getZ()),2);
     }
+    float izracunajDijagonalu(){
+        float d = sqr(pow(2*(izracunajStranicu(),2));
+        return d;
+    }
+
     
 };
 
