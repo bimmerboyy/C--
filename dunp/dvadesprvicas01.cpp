@@ -27,7 +27,7 @@ class Tacka{
         this->y = y;
         this->z = z;
     }
-    Tacka operator=(Tacka &t){
+    Tacka operator=(Tacka t){
         if(&t == this){
             return *this;
         }
@@ -76,7 +76,7 @@ class Kvadrat{
 
     // 
     float izracunajStranicu(){
-        return sqrt(pow(a.getX() - b.getX()),2) + sqrt(pow(a.getY() - b.getY()),2) + sqrt(pow(a.getZ() - b.getZ()),2) 
+        return sqrt(pow(a.getX() - b.getX()),2) + sqrt(pow(a.getY() - b.getY()),2) + sqrt(pow(a.getZ() - b.getZ()),2);
     }
     
 };
@@ -86,11 +86,12 @@ class Piramida: Tacka,Kvadrat{
     float visina;
     public:
     Piramida(){
-        Tacka sredina((B.getX() = A.getX()))/2,(D.getY()) - A.getY()/2
+        Tacka sredina((b.getX() - a.getX())/2,(d.getY()) - a.getY())/2,(c.getZ() - a.getZ())/2);
         visina = this->z - sredina.getZ();
     }
     float Povrsina(){
-        float h = pow(izracunajStranicu(),2);
+        Tacka sredinaStranice((b.getX() - a.getX())/2,(d.getY() - a.getY())/2,(c.getZ() - a.getZ())/2);
+        float h = sqrt(pow(x - sredinaStranice.getX(),2) + pow((y - sredinaStranice.getY()),2) + pow((z - sredinaStranice.getZ()),2));
         float B = pow(izracunajStranicu(),2);
         float M = 4*(((izracunajStranicu()*h)/2));
         return B * M;
@@ -99,6 +100,8 @@ class Piramida: Tacka,Kvadrat{
 };
 
 int main(){
+    Piramida p;
+    cout<<"Povrsina piramide iznosi "<<p.Povrsina()<<endl;
 
     return 0;
 }
