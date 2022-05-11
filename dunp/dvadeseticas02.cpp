@@ -53,7 +53,7 @@ class Predmet{
 
 };
 
-class Ispit : Dosije,Predmet{
+class Ispit : protected Dosije,protected Predmet{
     public:
     int ocena;
     string datum;
@@ -71,6 +71,6 @@ class Ispit : Dosije,Predmet{
 };
 
 int main(){
-    
+
     return 0;
 }
