@@ -22,8 +22,8 @@ class Dosije{
         index =ind;
     }
     void predstaviSe(){
-        cout<<"Ja sam"<<ime<<endl;
-        cout<<"Prezivam se"<<prezime<<endl;
+        cout<<"Ja sam "<<ime<<endl;
+        cout<<"Prezivam se "<<prezime<<endl;
         cout<<"Moj br indeksa je"<<index<<endl;
     }
     
@@ -68,9 +68,21 @@ class Ispit : protected Dosije,protected Predmet{
         ocena = o;
         datum = d;
     }
+    void ispis(){
+        predstaviSe();
+        opisPredmeta();
+        cout<<"Student je "<<datum<<" dobio ocenu:"<<ocena<<endl;
+    }
+    bool JeLiPolozio(){
+        if(ocena <= 5){
+            return false;
+        }
+        return true;
+    }
 };
 
 int main(){
-
+    Ispit s;
+    s.ispis();
     return 0;
 }
