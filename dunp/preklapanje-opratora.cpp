@@ -84,6 +84,7 @@ class Vektor{
         if(i==1) return y;
         return z;
     }
+
     // Vektor operator ++(int){
     //     Vektor novi = *this;
     //     novi.x++;

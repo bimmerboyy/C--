@@ -30,11 +30,11 @@ class MyCollection{
 
 };
 
-ostream& operator<<(ostream& COUT,MyCollection& myCollection){
-    for(YouTubeChannel ytChannel:myCollection.myChannels)
-    COUT<<ytChannel<<endl;
-    return COUT;
-}
+// ostream& operator<<(ostream& COUT,MyCollection& myCollection){
+//     for(YouTubeChannel ytChannel:myCollection.myChannels)
+//     COUT<<ytChannel<<endl;
+//     return COUT;
+// }
 
 
 ostream&  operator<<(ostream& COUT,YouTubeChannel& ytChannel){
@@ -54,11 +54,11 @@ int main(){
 
     //cout<<myCollection;
 
-   // cout << y1<<y2;
+    cout << y1;
 
   // operator<<(cout,myCollection);
 
-   operator<<(cout,y1);
+  // operator<<(cout,y1);
   
     
     return 0;
