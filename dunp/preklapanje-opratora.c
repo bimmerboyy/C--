@@ -94,7 +94,12 @@ class Vektor{
     void ispis(){
         cout << "(" << x << "," << y << "," << z <<")" << endl;
     }
+    ostream& operator<<(ostream& os){
+        os << x << '/' << y << '/' << z;
+        return os;
+    }
 };
+
 
 int main(){
     Vektor v1(1,2,3);
@@ -105,6 +110,7 @@ int main(){
     Vektor v4 = -v1;
     v1.ispis();
     v4.ispis();
-    cout  << v1[0];
+    cout << v1[0];
+    cout << v1;
     return 0;
 }
