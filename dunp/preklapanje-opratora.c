@@ -33,12 +33,22 @@ class Vektor{
     //     levi.z += desni.z;
     //     return levi; 
     // }
+    //množenje vektora skalarom
     Vektor operator *(int s){
-        vektor levi = *this;
+        Vektor levi = *this;
         levi.x *= s;
         levi.y *= s;
         levi.z *= s;
         return levi;
+    }
+    //skalarni proizvod  dva vektora
+    float operator *(Vektor desni){
+        Vektor levi = *this;
+        float s = 0;
+        s += levi.x * desni.x;
+        s += levi.y * desni.y;
+        s += levi.z * desni.z;
+        return s;
     }
     void ispis(){
         cout << "(" << x << "," << y << "," << z <<")";
@@ -52,5 +62,6 @@ int main(){
     v1.ispis();
     v2.ispis();
     v3.ispis();
+    cout << v1 * v2;
     return 0;
 }
