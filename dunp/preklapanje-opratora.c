@@ -91,15 +91,17 @@ class Vektor{
     //     novi.z++;
     //     return novi; // return nema poentu jer svejendo  menja x, y, z
     // }
+    friend ostream&  operator<<(ostream& COUT,Vektor& v1){
+        COUT<< "(" << v1.x << "," << v1.y << "," << v1.z <<")" << endl;
+        return COUT;
+    }
     void ispis(){
         cout << "(" << x << "," << y << "," << z <<")" << endl;
     }
-    ostream& operator<<(ostream& os){
-        os << x << '/' << y << '/' << z;
-        return os;
-    }
 };
 
+
+ 
 
 int main(){
     Vektor v1(1,2,3);
