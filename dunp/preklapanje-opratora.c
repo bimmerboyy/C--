@@ -50,18 +50,30 @@ class Vektor{
         s += levi.z * desni.z;
         return s;
     }
+    void operator ++(int){
+        x++;
+        y++;
+        z++;
+    }
+    // Vektor operator ++(int){
+    //     Vektor novi = *this;
+    //     novi.x++;
+    //     novi.y++;
+    //     novi.z++;
+    //     return novi; // return nema poentu jer svejendo  menja x, y, z
+    // }
     void ispis(){
-        cout << "(" << x << "," << y << "," << z <<")";
+        cout << "(" << x << "," << y << "," << z <<")" << endl;
     }
 };
 
 int main(){
     Vektor v1(1,2,3);
     Vektor v2(3,4,5);
-    Vektor v3 = v1 + v2; 
+    Vektor v3 = v1 + v2; ;
+    //cout << v1 * v2;
     v1.ispis();
-    v2.ispis();
-    v3.ispis();
-    cout << v1 * v2;
+    v1++;
+    v1.ispis();
     return 0;
 }
