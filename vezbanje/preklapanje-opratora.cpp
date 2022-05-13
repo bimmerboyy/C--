@@ -84,7 +84,19 @@ class Vektor{
         if(i==1) return y;
         return z;
     }
-
+    friend Vektor vektorski_proizvod(Vektor v1, Vektor v2){
+        int a = v1.x;
+        int b = v1.y;
+        int c = v1.z;
+        int d = v2.x;
+        int e = v2.y;
+        int f = v2.z;
+        int i = b * f - c * e;
+        int j = c * d - a * f;
+        int k = a * e - b * d;
+        Vektor proizvod(i, j, k);
+        return proizvod;
+    }
     // Vektor operator ++(int){
     //     Vektor novi = *this;
     //     novi.x++;
@@ -96,6 +108,25 @@ class Vektor{
         COUT<< "(" << v1.x << "," << v1.y << "," << v1.z <<")" << endl;
         return COUT;
     }
+    friend int mesoviti_proizvod(Vektor v1, Vektor v2, Vektor v3){
+        int s = 0;
+        int a1 = v1.x;
+        int a2 = v1.y;
+        int a3 = v1.z;
+        int b1 = v2.x;
+        int b2 = v2.y;
+        int b3 = v2.z;
+        int c1 = v3.x;
+        int c2 = v3.y;
+        int c3 = v3.z;
+        s += a1 * b2 * c3;
+        s += a2 * b3 * c1;
+        s += a3 * b1 * c2;
+        s -= c1 * b2 * a3;
+        s -= c2 * b3 * a1;
+        s -= c3 * b1 * a2;
+        return s;
+    }
     void ispis(){
         cout << "(" << x << "," << y << "," << z <<")" << endl;
     }
@@ -105,15 +136,22 @@ class Vektor{
  
 
 int main(){
-    Vektor v1(1,2,3);
-    Vektor v2(3,4,5);
-    Vektor v3 = v1 + v2; ;
-    //cout << v1 * v2;
-    v1++;
-    Vektor v4 = -v1;
+    Vektor v1(1,5,3);
+    Vektor v2(3,4,12);
+    Vektor v3(1,2,0); 
     v1.ispis();
-    v4.ispis();
-    cout << v1[0];
-    cout << v1;
+    v2.ispis();
+    v3.ispis();
+    // //cout << v1 * v2;
+    // v1++;
+    // Vektor v4 = -v1;
+    // v1.ispis();
+    // v4.ispis();
+    // cout << v1[0];
+    // cout << v1;
+    // Vektor v5 = vektorski_proizvod(v1, v2);
+    // v5.ispis();
+    int proizvod = mesoviti_proizvod(v1,v2,v3);
+    cout << proizvod;
     return 0;
 }
