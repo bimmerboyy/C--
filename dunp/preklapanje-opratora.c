@@ -55,6 +55,35 @@ class Vektor{
         y++;
         z++;
     }
+    void operator ++(){
+        x++;
+        y++;
+        z++;
+    }
+    void operator --(int){
+        x--;
+        y--;
+        z--;
+    }
+    void operator --(){
+        x--;
+        y--;
+        z--;
+    }
+    Vektor operator -(){
+        Vektor novi = *this;
+        novi.x *= -1;
+        novi.y *= -1;
+        novi.z *= -1;
+        return novi;
+    }
+    int & operator [](int i){
+        if(i==0){
+            return x;
+        }
+        if(i==1) return y;
+        return z;
+    }
     // Vektor operator ++(int){
     //     Vektor novi = *this;
     //     novi.x++;
@@ -72,8 +101,10 @@ int main(){
     Vektor v2(3,4,5);
     Vektor v3 = v1 + v2; ;
     //cout << v1 * v2;
-    v1.ispis();
     v1++;
+    Vektor v4 = -v1;
     v1.ispis();
+    v4.ispis();
+    cout  << v1[0];
     return 0;
 }
