@@ -1,0 +1,4 @@
+/*
+Napravi klasu Datum konstruktor sa i bez ar
+
+*/
