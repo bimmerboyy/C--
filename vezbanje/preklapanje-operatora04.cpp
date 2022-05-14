@@ -32,6 +32,17 @@ class Razlomak{
     int getI(){
         return imenilac;
     }
+    Razlomak operator +(Razlomak r2){
+        Razlomak r1 = *this;
+        Razlomak novi;
+        //Razlomak novi;
+        if(r1.imenilac == r2.imenilac){
+            novi(r1.brojilac + r2.brojilac,r1.imenilac);
+        }
+        return novi;
+        
+    }
+
     float skracivanjeRazlomaka(){
         int skraceniRazlomak;
         if(brojilac % 2 == 0 && imenilac % 2 == 0  && brojilac > imenilac){
@@ -91,6 +102,7 @@ class Razlomak{
         //return skraceniRazlomak;
         
     }
+
     void ispis(){
         if(skracivanjeRazlomaka()){
             cout<<skracivanjeRazlomaka();
