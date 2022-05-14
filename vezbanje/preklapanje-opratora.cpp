@@ -132,9 +132,6 @@ class Vektor{
     }
 };
 
-
- 
-
 int main(){
     Vektor v1(1,5,3);
     Vektor v2(3,4,12);
