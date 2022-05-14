@@ -129,17 +129,28 @@ class Razlomak{
         }
         return NZS;
     }
+    void skrati(){
+        int NZD = nzd(brojilac, imenilac);
+        brojilac /= NZD;
+        imenilac /= NZD;
+    }
+    int nzd(int a, int b){
+        if (a == 0)
+            return b;
+        return nzd(b % a, a);
+    }
 };
 int main(){
-    Razlomak r1(5,8);
-    Razlomak r2(1,3);
-    Razlomak r3 = r1 + r2;
-    Razlomak r4 = -r3;
-    r1++;
-    ++r1;
-    --r1;
-    r1--;
-    Razlomak r5 = r1 / r2;
-    cout << r5;
+    Razlomak r1(50,20);
+    // Razlomak r2(1,3);
+    // Razlomak r3 = r1 + r2;
+    // Razlomak r4 = -r3;
+    // r1++;
+    // ++r1;
+    // --r1;
+    // r1--;
+    // Razlomak r5 = r1 / r2;
+    r1.skrati();
+    cout << r1;
     return 0;
 }
