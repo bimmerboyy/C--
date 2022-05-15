@@ -63,26 +63,43 @@ void deltree(struct node * tree){
     }
 }
 
-struct node *parent(struct node *root, struct node *child){
-    struct node *temp = root;
-    if(root != NULL){
-        temp = root -> left;
-        if(temp == child){
-            return temp;
+struct node *parent = NULL; 
+char strana;
+
+
+void find_parent(struct node *root,  struct node *child){
+	struct node *a = root;
+    if(a != NULL){
+		if(a -> left == child ){
+            if(parent == NULL){
+                strana = 'l';
+                parent = a;
+                return;
+            }
         }
-        temp = root -> right;
-        if(temp == child){
-            return temp;
+		if(a -> right == child) {
+            if(parent == NULL){
+                strana = 'd';
+                parent = a;
+                return;
+            }
         }
-        return parent(temp, child);
-    }
+        find_parent(a->left, child);
+	    find_parent(a->right, child);
+	}
 }
 
 void full_delete(struct node * tree){
-    struct node *roditelj = nadji_roditelja(tree);
-    char strana = nad
+    find_parent(root, tree);
     deltree(tree);
-    roditelj
+    if(strana == 'l'){
+        parent -> left = NULL;
+    }
+    else if(strana == 'd'){
+        parent -> right = NULL;
+    }
+    parent = NULL;
+    strana = '0';
 }
 
 int main(){
@@ -96,25 +113,7 @@ int main(){
     struct node *E = insert(C, 'E', 'l');
     struct node *H = insert(E, 'H', 'l');
     struct node *I = insert(E, 'I', 'd');
-    deltree(C);
-    A->right = NULL;
-    // struct node *B = insert(A, 'B', 'l');
-    // struct node *D = insert(B, 'D', 'l');
-    // struct node *C = insert(A, 'C', 'd');
-    // struct node *E = insert(C, 'E', 'l');
-    // struct node *F = insert(C, 'F', 'd');
-    // struct node *G = insert(E, 'G', 'd');
-    // struct node *H = insert(F, 'H', 'l');
-    // struct node *I = insert(F, 'I', 'd');
+    full_delete(B);
     print_inorder(root);
-    printf("\n");
-
-    print_postorder(root);
-    printf("\n");
-    
-    print_preorder(root);
-    printf("\n");
-  
- 
     return 0;
 }
