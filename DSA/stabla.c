@@ -55,6 +55,36 @@ struct node* insert(struct node* grana, int data_element, char strana = 'k' ){
     return grana;
 }
 
+void deltree(struct node * tree){
+    if (tree){
+        deltree(tree->left);
+        deltree(tree->right);
+        free(tree);
+    }
+}
+
+struct node *parent(struct node *root, struct node *child){
+    struct node *temp = root;
+    if(root != NULL){
+        temp = root -> left;
+        if(temp == child){
+            return temp;
+        }
+        temp = root -> right;
+        if(temp == child){
+            return temp;
+        }
+        return parent(temp, child);
+    }
+}
+
+void full_delete(struct node * tree){
+    struct node *roditelj = nadji_roditelja(tree);
+    char strana = nad
+    deltree(tree);
+    roditelj
+}
+
 int main(){
     struct node *A = root;
     A = insert(A, 'A');
@@ -66,6 +96,8 @@ int main(){
     struct node *E = insert(C, 'E', 'l');
     struct node *H = insert(E, 'H', 'l');
     struct node *I = insert(E, 'I', 'd');
+    deltree(C);
+    A->right = NULL;
     // struct node *B = insert(A, 'B', 'l');
     // struct node *D = insert(B, 'D', 'l');
     // struct node *C = insert(A, 'C', 'd');
