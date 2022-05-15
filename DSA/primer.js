@@ -6,3 +6,7 @@ let osoba = {
     normalan : false,
     prijatelji: ["tarik", "ermin", "bahir"]
 };
+
+for( kljuc in osoba){
+    console.log(kljuc, vrednost);
+}
