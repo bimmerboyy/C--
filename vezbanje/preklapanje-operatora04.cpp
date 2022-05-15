@@ -32,16 +32,16 @@ class Razlomak{
     int getI(){
         return imenilac;
     }
-    Razlomak operator +(Razlomak r2){
-        Razlomak r1 = *this;
-        Razlomak novi;
-        //Razlomak novi;
-        if(r1.imenilac == r2.imenilac){
-            novi(r1.brojilac + r2.brojilac,r1.imenilac);
-        }
-        return novi;
+    // Razlomak operator +(Razlomak r2){
+    //     Razlomak r1 = *this;
+    //     Razlomak novi;
+    //     //Razlomak novi;
+    //     if(r1.imenilac == r2.imenilac){
+    //         novi(r1.brojilac + r2.brojilac,r1.imenilac);
+    //     }
+    //     return novi;
         
-    }
+    // }
 
     float skracivanjeRazlomaka(){
         int skraceniRazlomak;
@@ -115,7 +115,7 @@ class Razlomak{
 };
 
 int main(){
-    Razlomak r1(4,8);
+    Razlomak r1(50,20);
     r1.skracivanjeRazlomaka();
     r1.ispis();
 
