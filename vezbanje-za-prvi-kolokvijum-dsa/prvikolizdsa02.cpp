@@ -23,9 +23,12 @@ bool isFull(){
 string unesi(){
     string rec;
     printf("Unesi string:");
-    scanf("%c",&rec);
-    return rec;
+    scanf("%i",&rec);
+    char length = sizeof(rec) / sizeof(char);
+}
 
+ void pop2(){
+     rec = 
 }
 
 void push(int elem){
