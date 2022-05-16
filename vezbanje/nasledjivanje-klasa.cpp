@@ -25,6 +25,24 @@ class Datum{
     int dan;
     int mesec;
     int godina;
+    public:
+    Datum(int d = 5,int m = 7,int g = 2022){
+        dan = d;
+        mesec = m;
+        godina = g;
+    }
+    void ispis(){
+        if(dan < 10){
+            cout<<"0"<<dan;
+        }
+        if(mesec < 10){
+            cout<<"0"<<mesec;
+        }
+        cout<<godina;
+    }
+    Datum uporedi(Datum dat){
+        
+    }
 };
 
 int main(){
