@@ -21,25 +21,26 @@ class Datum{
             cout<<"Danas je"<<d<<"."<<m<<"."<<g<<endl;
         }
     }
-    Datum uporedi(Datum dat){
+    Datum uporedi(Datum d2){
         Datum pom(0,0,0);
-        if(d > dat.d){
-            pom.d = d - dat.d;
+        Datum  d1 =  *this;
+        if(d1.d > d2.d){
+            pom.d = d1.d - d2.d;
         }
-        else{
+        else if(d1.d  < d2.d) {
             switch(m-1){
                 case 1:  case 3:  case 5:  case 7:  case 8:  case 10:
-                pom.d = 31 + d - dat.d;
+                pom.d = 31 + d - d2.d;
                 break; 
                  case 4:  case 6:  case 9:  case 11:
-                 pom.d = 30 + d - dat.d;
+                 pom.d = 30 + d - d2.d;
                  case 2:
                  if(g % 4 == 0 && g % 100 != 0 || g % 400 == 0){
-                     pom.d = 29 + d - dat.d;
+                     pom.d = 29 + d - d2.d;
                  } 
                  else{
-                     pom.d = 20 + d - dat.d;
-                 }
+                     pom.d = 28 + d - d2.d;
+                 } 
             }
         }
         m--;
@@ -66,8 +67,8 @@ class Rodjendan : public Datum{
         this->g = g;
     }
     
-    bool daLije(Datum dat){
-        if(d == dat.d && m == dat.m)
+    bool daLije(Datum d2){
+        if(d == d2.d && m == dat.m)
             return true;
         return false;
     }

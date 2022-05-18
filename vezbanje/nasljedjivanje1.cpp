@@ -37,15 +37,8 @@ class Datum {
         Datum d1 = *this;
         Datum veci = veci(d1, d2);
         if(veci == d1){
-            
+
         }
-    }
-    friend Datum veci(Datum dat1, datum dat2){
-        if(dat1.godina > dat2.godina || 
-        dat1.godina == dat2.godina  && dat1.mesec > dat2.mesec || 
-        dat1.godina == dat2.godina  && dat1.mesec == dat2.mesec  && dat1.dan > dat2.dan){
-            return dat1;
-        }
-        return dat2;
     }
 };
+// tu bi kontinju on konsultejšns
