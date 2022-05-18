@@ -31,9 +31,14 @@ class Izraz1{
     int getOperand2(){
         return operand2;
     }
-    virtual double izracunaj(){
+    virtual float izracunaj(){
         switch(op1){
-            case 
+            case '+':
+            return operand1 + operand2;
+             case '-':
+            return operand1 - operand2;
+             case '*':
+            return (operand2 != 0)? operand1 / operand2 : 0;
         }
     }
 
