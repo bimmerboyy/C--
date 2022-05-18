@@ -117,7 +117,7 @@ class Bazna{
     }
 
 };
-class Izvedena : Bazna{
+class Izvedena : public Bazna{
     public:
     void ispis(){
         cout<<"Ja sam ispis iz izvedene klase"<<endl;
@@ -129,6 +129,10 @@ class Izvedena : Bazna{
 };
 
 int main(){
-
+    Bazna *b;
+    Izvedena i;
+    b = &i;
+    b->ispis();
+    b->ispis2();
     return 0;
 }
