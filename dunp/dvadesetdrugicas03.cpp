@@ -136,3 +136,6 @@ int main(){
     b->ispis2();
     return 0;
 }
+
+
+/* Primer kalsa */
