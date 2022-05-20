@@ -9,6 +9,9 @@ class OsnovnaKlasa{
     public:
     OsnovnaKlasa(int i = 0);
     ~OsnovnaKlasa();
+    virtual void ispis(){
+        cout<<"Broj iz osnovne klase je:"<<n<<endl;
+    }
 
 };
 
@@ -36,4 +39,18 @@ class IzvedenaKlasa : public OsnovnaKlasa{
     ~IzvedenaKlasa(){
         cout<<"Izvrsen je destruktor IzvedenaKlasa"<<endl;
     }
+    void ispis(){
+        cout<<"Zbir dva broja je:"<<saberi()<<endl;
+    }
+
 };
+
+int main(){
+    OsnovnaKlasa o1;
+    IzvedenaKlasa i1;
+    o1.ispis();
+    cout<<endl;
+    i1.ispis();
+    
+    return 0;
+}
