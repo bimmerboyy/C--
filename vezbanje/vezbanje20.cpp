@@ -25,8 +25,15 @@ class IzvedenaKlasa : public OsnovnaKlasa{
     protected:
     int m;
     public:
-    IzvedenaKlasa(int j = 7){
+    IzvedenaKlasa(int j = 7,int i = 4) : OsnovnaKlasa(i){
         m = j;
         cout<<"Izvrsen je konstruktor IzvedenaKlasa"<<endl;
+    }
+    int saberi(){
+        int p = m + n;
+        return p;
+    }
+    ~IzvedenaKlasa(){
+        cout<<"Izvrsen je destruktor IzvedenaKlasa"<<endl;
     }
 };
