@@ -52,8 +52,8 @@ class Bazen : public Kvadar{
     }
 };
 int main(){
-
     Bazen b(10,100,30,6);
     b.ispis();
     b.ispis2();
 }
+
