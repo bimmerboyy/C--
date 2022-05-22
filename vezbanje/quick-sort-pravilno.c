@@ -1,10 +1,14 @@
 #include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+
   void swap(int *x, int *y){
       *x = *x ^ *y;
       *y = *x ^ *y;
       *x = *x ^ *y;
   }
   int podela(int niz[], int pocetakNiza,int krajNiza){
+      int pivot = pocetakNiza + (rand() & (pocetakNiza - krajNiza));
       int vrednostPivota = niz[krajNiza];
       int i = pocetakNiza;
       for(int j = pocetakNiza; j < krajNiza; j++){
@@ -24,9 +28,8 @@
       }
    
   }
-
-    
-    void QuickSort(int niz[], int n){
+void QuickSort(int niz[], int n){
+    srand(time(NULL));
         QuickSortRekurzija(niz,0,n-1);
     }
 int main(){
