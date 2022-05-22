@@ -3,6 +3,9 @@
 using namespace std;
 
 
+// Lupetanje 
+
+
 class QuickSort{
     private:
     int n;
