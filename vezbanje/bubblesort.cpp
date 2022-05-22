@@ -22,20 +22,19 @@ int main(){
     for(i = 0; i < n; i++){
         cout<<niz[i]<<",";
     }
-    cout<<"Bubblesort:"<<endl;
+    cout<<endl<<"Bubblesort:"<<endl;
+   
     for(i = 0; i < n; i++){
-        for(j = i +1;j < n; j++){
-
+        for(j = 0; j < n-1-i; j++){
+            if(niz[j] > niz[j+1]){
+                niz[j] = niz[j] ^ niz[j+1];
+                niz[j+1] = niz[j] ^ niz[j+1];
+                niz[j] = niz[j] ^ niz[j+1];
+            }
         }
-       if(niz[i] > niz[j]){
-           niz[i] = niz[i] ^ niz[j];
-           niz[j] = niz[i] ^ niz[j];
-           niz[i] = niz[i] ^ niz[j];
     }
-        
-
-    
-
+    for(i = 0;i < n;i++){
+        cout<<" "<<niz[i];
     }
         
 
