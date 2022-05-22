@@ -4,7 +4,18 @@
       *y = *x ^ *y;
       *x = *x ^ *y;
   }
-  int podela(int niz[], int pocetakNiza,int krajNiza);
+  int podela(int niz[], int pocetakNiza,int krajNiza){
+      int vrednostPivota = niz[krajNiza];
+      int i = pocetakNiza;
+      for(int j = pocetakNiza; j < krajNiza; j++){
+          if(niz[j] <= vrednostPivota){
+              swap(&niz[i], &niz[j]);
+              i++;
+          }
+      }
+      swap(&niz[i],&niz[krajNiza]);
+      return i;
+  }
   void QuickSortRekurzija(int niz[], int pocetakNiza,int krajNiza){
       if(pocetakNiza < krajNiza){
     int pivot = podela(niz,pocetakNiza,krajNiza);
@@ -18,15 +29,6 @@
     void QuickSort(int niz[], int n){
         QuickSortRekurzija(niz,0,n-1);
     }
-
-    
-    
-
-    
-    
-
-    
-
 int main(){
     int niz[] = {10,11,23,44,8,15,3,9,12,45,56,45,45};
     int n = 13;
