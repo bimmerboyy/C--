@@ -1,6 +1,8 @@
 //napraviti program koji rešava linarnu i kvadratnu jednačinu, preko klasa, rešenje da je virtuelno.
 #include <iostream>
 #include <cmath>
+#include <string>
+
 using namespace std;
 
 class Linearna{
@@ -43,7 +45,10 @@ class Kvadratna : public Linearna {
             cout<<"Resenja kvadratne jednacine su x1 = "<<x1<<","<<"x2 ="<<x2<<endl;
         }
         else{
-            cout << "kvadratna jedančina ima kompleksna rešenja";
+            float pod_korenom = sqrt(-D);
+            float realan_deo = -b / (2 * a);
+            float imaginarni_deo = pod_korenom / (2 * a);
+            cout<<"Resenja kvadratne jednacine su x1 = "<<realan_deo << "+" <<imaginarni_deo << "i, "<<realan_deo << "-" <<imaginarni_deo << "i, "<<endl;
         }
     }
     void ispis(){
@@ -55,7 +60,9 @@ class Kvadratna : public Linearna {
 int main() {
     Linearna l;
     Kvadratna k;
+    Kvadratna k2(3, 2, 1);
     k.resenje();
     l.resenje();
+    k2.resenje();
     return 0;
 }
