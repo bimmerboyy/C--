@@ -13,11 +13,16 @@ class Pravougaonik{
     int a;
     int b;
     public:
-    Pravougaonik(int a, int b){
+    Pravougaonik(int a = 7, int b = 10){
         this->a = a;
         this->b = b;
     }
-    
+    int Obim(){
+        int o;
+        o = 2*a + 2*b;
+        return o;
+    }
+
 };
 
 int main(){
