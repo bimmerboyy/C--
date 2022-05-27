@@ -16,9 +16,6 @@ struct node * create_node(char value){
     temp->right = NULL;
     return temp;
 }
-//- inorder: LKD
-//- preorder: KLD
-//- postorder: LDK
 
 void inorder(struct node * root){
     if(root != NULL){
@@ -95,6 +92,11 @@ void full_delete_tree(struct node * tree) {
     }
     delete_tree(tree);
 }
+
+
+
+
+
 
 int main(int argc, char ** argv){
     NODE * A = add_tree(root, 'K', 'A');
