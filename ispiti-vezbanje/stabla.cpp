@@ -44,11 +44,11 @@ void postorder(struct node * root){
    }
 }
 
-void delete_tree(struct node * root){
-    if(root){
-        delete_tree(root->left);
-        delete_tree(root->right);
-        free(root);
+void delete_tree(struct node * tree){
+    if(tree){
+        delete_tree(tree->left);
+        delete_tree(tree->right);
+        free(tree);
     }   
 }
 
@@ -85,6 +85,17 @@ NODE * get_parent(struct node * tree, struct node * child ){
     return temp;
 }
 
+void full_delete_tree(struct node * tree) {
+    struct node *parent = get_parent(root, tree);
+    if(parent -> left  == tree){
+        parent -> left = NULL;
+    } 
+    if(parent -> right == tree){
+        parent -> right = NULL;
+    }
+    delete_tree(tree);
+}
+
 int main(int argc, char ** argv){
     NODE * A = add_tree(root, 'K', 'A');
     NODE * B = add_tree(root, 'L', 'B');
@@ -95,7 +106,7 @@ int main(int argc, char ** argv){
     NODE * G = add_tree(E, 'R', 'G');
     NODE * H = add_tree(F, 'L', 'H');
     NODE * I = add_tree(F, 'R', 'I');
-    struct node * parent = get_parent(A,E);
-    printf("%c", parent->value);
+    full_delete_tree(F);
+    inorder(root);
     return 0;
 }
