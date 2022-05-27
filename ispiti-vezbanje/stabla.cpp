@@ -69,21 +69,18 @@ struct node * add_tree(struct node * grana , char side ='U', char value = ' ' ){
 }
 
 NODE * get_parent(struct node * tree, struct node * child ){
-    if(child == NULL || tree == child) return NULL;
+    if(tree == NULL || tree == child) return NULL;
 
-    if(tree->left != NULL  && tree->left == child){
-        return tree;
-    } 
+    if(tree->left != NULL  && tree->left == child)
+        return tree; 
 
-    if(tree->right != NULL && tree->right == child){
+    if(tree->right != NULL && tree->right == child)
         return tree;
-    }
 
     temp = get_parent(tree->left, child);
-    
-    if(temp != NULL){
-        return temp;
-    }
+
+    if(temp != NULL) return temp;
+
     temp = get_parent(tree->right, child);
     return temp;
 }
@@ -98,8 +95,7 @@ int main(int argc, char ** argv){
     NODE * G = add_tree(E, 'R', 'G');
     NODE * H = add_tree(F, 'L', 'H');
     NODE * I = add_tree(F, 'R', 'I');
-    preorder(A);
-    printf("\n");
-    postorder(root);
+    struct node * parent = get_parent(A,E);
+    printf("%c", parent->value);
     return 0;
 }
