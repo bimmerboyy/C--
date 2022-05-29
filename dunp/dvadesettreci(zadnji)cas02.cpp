@@ -55,8 +55,8 @@ class Firma{
 };
 
 int main(){
-    Firma<Radnik,5> radnici;
-    Firma<Sef,5> sefovi;
+    Firma<Radnik> radnici;
+    Firma<Sef> sefovi;
     radnici.ispis();
     sefovi.ispis();
     return 0;
