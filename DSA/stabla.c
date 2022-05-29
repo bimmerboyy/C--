@@ -69,8 +69,8 @@ char strana;
 
 void find_parent(struct node *root,  struct node *child){
 	struct node *a = root;
-    if(a != NULL){
-		if(a -> left == child ){
+    if(a != NULL && parent != NULL){
+		if(a -> left ==  child ){
             if(parent == NULL){
                 strana = 'l';
                 parent = a;
@@ -84,8 +84,12 @@ void find_parent(struct node *root,  struct node *child){
                 return;
             }
         }
-        find_parent(a->left, child);
-	    find_parent(a->right, child);
+        if(parent == NULL){
+            find_parent(a->left, child); 
+        }
+	    if(parent == NULL){
+            find_parent(a->right, child);
+        }
 	}
 }
 
