@@ -62,6 +62,10 @@ fraction operator/(fraction f1, fraction f2) {
     return f;
 }
 ostream& operator<<(ostream& out, fraction f) {
+    if (f.numerator == f.denominator) {
+        out << f.numerator;
+        return out;
+    }
     out << f.numerator << "/" << f.denominator;
     return out;
 }
@@ -70,54 +74,23 @@ istream& operator>>(istream& in, fraction& f) {
     return in;
 }
 bool operator==(fraction f1, fraction f2) {
-    if (f1.numerator == f2.numerator && f1.denominator == f2.denominator) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return (f1.numerator == f2.numerator && f1.denominator == f2.denominator);
 }
 bool operator!=(fraction f1, fraction f2) {
-    if (f1.numerator != f2.numerator || f1.denominator != f2.denominator) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return (f1.numerator != f2.numerator || f1.denominator != f2.denominator);
 }
 bool operator>(fraction f1, fraction f2) {
-    if (f1.numerator * f2.denominator > f2.numerator * f1.denominator) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return (f1.numerator * f2.denominator > f2.numerator * f1.denominator);
 }
 bool operator<(fraction f1, fraction f2) {
-    if (f1.numerator * f2.denominator < f2.numerator * f1.denominator) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return (f1.numerator * f2.denominator < f2.numerator * f1.denominator);
 }
 bool operator>=(fraction f1, fraction f2) {
-    if (f1.numerator * f2.denominator >= f2.numerator * f1.denominator) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return (f1.numerator * f2.denominator >= f2.numerator * f1.denominator);
 }
 bool operator<=(fraction f1, fraction f2) {
-    if (f1.numerator * f2.denominator <= f2.numerator * f1.denominator) {
-        return true;
-    }
-    else {
-        return false;
-    }
+    return (f1.numerator * f2.denominator <= f2.numerator * f1.denominator);
 }
-
 int main() {
     fraction f1(1, 2);
     fraction f2(2, 3);
@@ -132,41 +105,25 @@ int main() {
     fraction f7;
     cin >> f7;
     cout << f7 << endl;
-    if (f1 == f2) {
-        cout << "f1 == f2" << endl;
+    fraction f8(1, 2);
+    fraction f9(2, 3);
+    if (f8 == f9) {
+        cout << "f8 == f9" << endl;
     }
-    else {
-        cout << "f1 != f2" << endl;
+    if (f8 != f9) {
+        cout << "f8 != f9" << endl;
     }
-    if (f1 != f2) {
-        cout << "f1 != f2" << endl;
+    if (f8 > f9) {
+        cout << "f8 > f9" << endl;
     }
-    else {
-        cout << "f1 == f2" << endl;
+    if (f8 < f9) {
+        cout << "f8 < f9" << endl;
     }
-    if (f1 > f2) {
-        cout << "f1 > f2" << endl;
+    if (f8 >= f9) {
+        cout << "f8 >= f9" << endl;
     }
-    else {
-        cout << "f1 < f2" << endl;
-    }
-    if (f1 >= f2) {
-        cout << "f1 >= f2" << endl;
-    }
-    else {
-        cout << "f1 < f2" << endl;
-    }
-    if (f1 < f2) {
-        cout << "f1 < f2" << endl;
-    }
-    else {
-        cout << "f1 >= f2" << endl;
-    }
-    if (f1 <= f2) {
-        cout << "f1 <= f2" << endl;
-    }
-    else {
-        cout << "f1 > f2" << endl;
+    if (f8 <= f9) {
+        cout << "f8 <= f9" << endl;
     }
     return 0;
 }
