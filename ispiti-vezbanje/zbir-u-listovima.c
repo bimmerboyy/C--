@@ -59,13 +59,15 @@ void print_postorder(struct node * root){
 }
 
 int zbir_listova(struct node * root){
+    int zbir = 0;
     if(root){
         if(root -> left == NULL && root-> right == NULL ){
             return root->key;
         }
-        print_listovi(root->left);
-        print_listovi(root->right);
+        zbir += zbir_listova(root->left);
+        zbir += zbir_listova(root->right);
     }
+    return zbir;
 }
 
 
@@ -79,8 +81,8 @@ int main(){
     struct node* sest = add_tree(tri, 'L',6);
     struct node* sedam = add_tree(tri, 'R',7);
     struct node* osam = add_tree(sedam, 'R',8);
-    print_inorder(root);
-    printf("\n");
-    print_listovi(root);
+    struct node* devet = add_tree(osam, 'R',9);
+
+    printf("%d", zbir_listova(root));
     return 0;
 }
