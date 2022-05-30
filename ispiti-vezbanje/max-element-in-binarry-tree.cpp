@@ -1,4 +1,4 @@
-//Zadatak 9. Napisati rekurzivnu funkciju kojom se izračunava zbir elemenata u listovima binarnog stabla.
+//Zadatak 10. Napisati rekurzivnu funkciju kojom se izračunava 
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -58,16 +58,20 @@ void print_postorder(struct node * root){
     }
 }
 
-int zbir_listova(struct node * root){
-    int zbir = 0;
+int max_in_tree(struct node * root){
     if(root){
-        if(root -> left == NULL && root-> right == NULL ){
-            return root->key;
+        int max = root->key;
+        int max_levo = max_in_tree(root->left);
+        if(max_levo > max) {
+            max = max_levo;
         }
-        zbir += zbir_listova(root->left);
-        zbir += zbir_listova(root->right);
+        int max_desno = max_in_tree(root->right);
+        if(max_desno > max) {
+            max = max_desno;
+        }
+        return max;
     }
-    return zbir;
+    return 0;
 }
 
 int main(){
@@ -80,6 +84,6 @@ int main(){
     struct node* sedam = add_tree(tri, 'R',7);
     struct node* osam = add_tree(sedam, 'R',8);
     struct node* devet = add_tree(osam, 'R',9);
-    printf("%d", zbir_listova(root));
+    printf("%d", max_in_tree(root));
     return 0;
 }
