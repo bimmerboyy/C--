@@ -1,10 +1,10 @@
 /*
-Create a simple “shape” hierarchy: a base class called
-Shape and derived classes called Circle, Square, and Triangle.
-In the base class, make a virtual function called draw( ), and override this in the derived classes.
-Make an array of pointers to Shape objects that you create on the heap (and thus perform upcasting of the pointers), 
-and call draw( ) through the base-class pointers, to verify the behavior of the virtual function. 
-If your debugger supports it, single-step through the code
+Направите једноставну хијерархију „облика“: базна класа тзв
+Облик и изведене класе под називом Круг, квадрат и троугао.
+У основној класи направите виртуелну функцију која се зове драв () и замените је у изведеним класама.
+Направите низ показивача на објекте Схапе које креирате на хрпи (и тако извршите упцастинг показивача),
+и позовите драв () кроз показиваче основне класе, да бисте проверили понашање виртуелне функције.
+Ако ваш програм за отклањање грешака то подржава, прођите кроз цод у једном кораку
 
 */
 
@@ -15,17 +15,17 @@ using namespace std;
 
 class Shape{
     virtual void draw(){
-        
+        .
     }
 
 };
 
-class Circle{
+class Circle : Shape {
 
 
 };
 
-class Square{
+class Square : Shape{
 
 };
 class Triangle{
