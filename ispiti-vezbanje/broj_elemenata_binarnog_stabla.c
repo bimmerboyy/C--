@@ -1,5 +1,5 @@
-// Zadatak 1. Napisati rekurzivnu funkciju u pseudokodu kojom se ispisuje sadržaj
-// informacionih polja u listovima binarnog stabla.
+//Zadatak 3. Napisati rekurzivnu funkciju kojom se izračunava broj elemenata nepraznog binarnog stabla.
+
 #include <stdio.h>
 #include <stdlib.h>
 

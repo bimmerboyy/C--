@@ -1,7 +1,9 @@
-//Zadatak 2. Napisati rekurzivnu funkciju kojom se izračunava zbir elemenata nepraznog binarnog stabla.
+//Zadatak 4. Napisati rekurzivnu funkciju kojom se
+// ispituje da li se element E nalazi u binarnom stablu.
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct node{
     int key;
@@ -43,14 +45,16 @@ void print_postorder(struct node * root){
     }
 }
 
-int zbir_elemenata(struct node * root){
+bool nalazi_se(struct node * root, int element){
     if(root){
-        int s = root->key;
-        s += zbir_elemenata(root->left);
-        s += zbir_elemenata(root->right);
-        return s;
+        if(root->key == element){
+            return true;
+        }
+        else{
+            return (nalazi_se(root->left, element) || nalazi_se(root->right, element) );
+        }
     }
-    return 0;
+    return false;
 }
 
 struct node * add_tree(struct node * grana , char side ='U', int value = 0 ){
@@ -78,7 +82,11 @@ int main(){
     struct node* sest = add_tree(tri, 'L',6);
     struct node* sedam = add_tree(tri, 'R',7);
     struct node* osam = add_tree(sedam, 'R',8);
-    print_inorder(root);
-    printf("\nZbir elementa: %d", zbir_elemenata(root));
+    if(nalazi_se(root, 9)){
+        printf("Nalazi se");
+    }
+    else{
+        printf("Ne Nalazi se");
+    }
     return 0;
 }
