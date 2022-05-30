@@ -1,5 +1,5 @@
-//Zadatak 6. Napisati rekurzivnu funkciju kojom se izračunarava broj elemenata na n-tom nivou stabla, 
-//pri čemu se koren stabla tretira kao nulti nivo.
+//Zadatak 7. Napisati rekurzivnu funkciju kojom se ispisuju elemenati na n-tom nivou stabla,
+// pri čemu se koren stabla tretira kao nulti nivo.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -44,17 +44,15 @@ void print_postorder(struct node * root){
     }
 }
 
-int broj_elemenata_na_n_nivou(struct node *root, int n){
+void print_on_lvl(struct node *root, int n){
     if(root!=NULL){
         if(n!=0){
-            return broj_elemenata_na_n_nivou(root->left, n-1) + broj_elemenata_na_n_nivou(root->right, n-1);
+            print_on_lvl(root->left, n-1) ;
+            print_on_lvl(root->right, n-1);
         }
         else{
-            return 1;
+            printf("%d", root->key);
         }
-    }
-    else{
-        return 0;
     }
 }
 
@@ -84,6 +82,6 @@ int main(){
     struct node* sedam = add_tree(tri, 'R',7);
     struct node* osam = add_tree(sedam, 'R',8);
     struct node* devet = add_tree(osam, 'R',9);
-    printf("%d", broj_elemenata_na_n_nivou(root, 4));
+    print_on_lvl(root, 3);
     return 0;
 }

@@ -1,6 +1,4 @@
-//Zadatak 6. Napisati rekurzivnu funkciju kojom se izračunarava broj elemenata na n-tom nivou stabla, 
-//pri čemu se koren stabla tretira kao nulti nivo.
-
+//Zadatak 9. Napisati rekurzivnu funkciju kojom se izračunava zbir elemenata u listovima binarnog stabla.
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -18,6 +16,22 @@ struct node * create_new_node(int key){
     temp->left = NULL;
     temp->right = NULL;
     return temp;
+}
+
+struct node * add_tree(struct node * grana , char side ='U', int value = 0 ){
+    if(grana == NULL){
+        root = create_new_node(value);
+        return root;
+    }
+    if(side == 'L'){
+        grana->left = create_new_node(value);
+        return grana->left;
+    }
+    if(side == 'R'){
+        grana->right = create_new_node(value);
+        return grana->right;
+    }
+    return grana;
 }
 
 void print_preorder(struct node * root){
@@ -44,35 +58,17 @@ void print_postorder(struct node * root){
     }
 }
 
-int broj_elemenata_na_n_nivou(struct node *root, int n){
-    if(root!=NULL){
-        if(n!=0){
-            return broj_elemenata_na_n_nivou(root->left, n-1) + broj_elemenata_na_n_nivou(root->right, n-1);
+int zbir_listova(struct node * root){
+    if(root){
+        if(root -> left == NULL && root-> right == NULL ){
+            return root->key;
         }
-        else{
-            return 1;
-        }
-    }
-    else{
-        return 0;
+        print_listovi(root->left);
+        print_listovi(root->right);
     }
 }
 
-struct node * add_tree(struct node * grana , char side ='U', int value = 0 ){
-    if(grana == NULL){
-        root = create_new_node(value);
-        return root;
-    }
-    if(side == 'L'){
-        grana->left = create_new_node(value);
-        return grana->left;
-    }
-    if(side == 'R'){
-        grana->right = create_new_node(value);
-        return grana->right;
-    }
-    return grana;
-}
+
 
 int main(){
     struct node* root = create_new_node(1);
@@ -83,7 +79,8 @@ int main(){
     struct node* sest = add_tree(tri, 'L',6);
     struct node* sedam = add_tree(tri, 'R',7);
     struct node* osam = add_tree(sedam, 'R',8);
-    struct node* devet = add_tree(osam, 'R',9);
-    printf("%d", broj_elemenata_na_n_nivou(root, 4));
+    print_inorder(root);
+    printf("\n");
+    print_listovi(root);
     return 0;
 }
