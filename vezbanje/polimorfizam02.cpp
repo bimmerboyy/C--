@@ -15,7 +15,7 @@ using namespace std;
 
 class Shape{
     virtual void draw(){
-        .
+        
     }
 
 };
