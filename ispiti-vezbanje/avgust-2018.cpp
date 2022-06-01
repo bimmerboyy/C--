@@ -65,16 +65,18 @@ class Flasa{
     float cena_bez_kaucije;
     float zapremina;
     Vrsta vrsta;
+    int kaucija;
     public:
     Flasa(float cena_bez_kaucije, float zapremina = 0.33, Vrsta vrsta = BEZALKOHOLNO ){
         this-> cena_bez_kaucije = cena_bez_kaucije;
         this-> zapremina = zapremina;
         this-> vrsta = vrsta;
+        kaucija = 0;
     }
     Nalepnica get_nalepnica(){
         return nalepnica;
     }
-    float get_cenabez_kaucije(){
+    float get_cena_bez_kaucije(){
         return cena_bez_kaucije;
     }
     float get_zapremina(){
@@ -92,7 +94,7 @@ class Flasa{
     void set_cena_bez_kaucije(float cena_bez_kaucije){
         this-> cena_bez_kaucije = cena_bez_kaucije;
     }
-    virtual float cena_sa_kaucijom(float kaucija = 0 ){
+    virtual float cena_sa_kaucijom(){
         return cena_bez_kaucije + (cena_bez_kaucije / 100 * kaucija);
     }
     friend bool da_li_su_jednake(Flasa f1, Flasa f2){
@@ -110,9 +112,41 @@ class Flasa{
     friend ostream& operator<<(ostream& out, Flasa f1){
         out << f1.nalepnica;
         out << "cena bez kaucije: " << f1.cena_bez_kaucije << ", Cena sa kaucijom " << f1.cena_sa_kaucijom() << endl;
-        out << "Zapemina : " << f1.zapremina  << "ml, vrsta: " << f1.get_vrsta(); 
+        out << "Zapemina : " << f1.zapremina  << "l, vrsta: " << f1.get_vrsta(); 
         return out;
     }
+    virtual void ispis(){
+        cout << nalepnica;
+        cout << "cena bez kaucije: " <<cena_bez_kaucije << ", Cena sa kaucijom " << cena_sa_kaucijom() << endl;
+        cout << "Zapemina : " << zapremina  << "l, vrsta: " << get_vrsta() << endl; 
+    }
+};
+
+class Staklena : public Flasa{
+    public:
+    Staklena(float cena_bez_kaucije, float zapremina = 0.33, Vrsta vrsta = BEZALKOHOLNO ) : Flasa(cena_bez_kaucije, zapremina, vrsta) {
+        if(zapremina < 0.5){
+            kaucija = 5;
+        }
+        else{
+            kaucija = 10;
+        }
+    }
+    float cena_sa_kaucijom(){
+        return cena_bez_kaucije + (cena_bez_kaucije / 100 * kaucija);
+    }
+    void ispis() {
+        cout << nalepnica;
+        cout << "cena bez kaucije: " <<cena_bez_kaucije << ", Cena sa kaucijom " << cena_sa_kaucijom() << endl;
+        cout << "Zapemina : " << zapremina  << "l, vrsta: " << get_vrsta() << endl;
+        cout << "Flaša je staklena i kaucija na nju iznosi " << kaucija << "%" << endl;
+    }
+};
+// 4. Plastična flaša pića je flaša pića kod koje je cena sa kaucijom jednaka ceni bez kaucije. Preklopiti metodu za ispis da 
+//     ispisuje podatke o flaši i poruku da je flaša plastnična.
+
+class Plasticna{
+    
 };
 
 
@@ -120,13 +154,19 @@ class Flasa{
 int Nalepnica::brojac = 0;
 
 int main(){
-    Flasa f1(70, 0.5,  BEZALKOHOLNO);
-    Flasa f2(70, 0.5,  BEZALKOHOLNO);
-    Flasa f3(100, 0.5,  BEZALKOHOLNO);
-    Flasa f4(70,  0.5,  BEZALKOHOLNO);
-    if(f1 == f2){
-        cout << "f1 == f2" << endl;
-    }
-    cout << f1;
+    // Flasa f1(70, 0.5,  BEZALKOHOLNO);
+    // Flasa f2(70, 0.5,  BEZALKOHOLNO);
+    // Flasa f3(100, 0.5,  BEZALKOHOLNO);
+    // Flasa f4(70,  0.5,  BEZALKOHOLNO);
+    // if(f1 == f2){
+    //     cout << "f1 == f2" << endl;
+    // }
+    // cout << f1;
+    Staklena s1(100, 0.33, BEZALKOHOLNO);
+    Staklena s2(110, 0.5, ALKOHOLNO);
+    Staklena s3(120, 1, BEZALKOHOLNO);
+    s1.ispis();
+    cout << s2 << endl;
+    cout << s3.cena_sa_kaucijom();
     return 0;
 }
