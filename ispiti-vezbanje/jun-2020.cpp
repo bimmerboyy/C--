@@ -77,16 +77,6 @@ class Odgovor{
         return out;
     }
 };
-//     Klasa Pitanje sadrži zadate podatke koji su zaštićeni: 
-//     tekst, broj poena koji nosi, broj ponuđenih odgovora (podrazumevano 5),
-//     kao i ponuđene odgovore(dinamičko alocirani niz odgovora). 
-//     Stvara se bez ponuđenih odgovora, nakon čega se oni dodaju pojedinačno (pitanje+=odgovor).
-//     Prilikom dodavanja ponuđenog odgovora računaju se jednaki procentualni udeli svih tačnih odgovora dodatih 
-//     u dato pitanje(u zbiru daju 100%), dok svaki netačan odgovor nosi -100%.
-//     Pomoću polimorfne metode može da se odgovori na pitanje, tada se zadaje niz koji 
-//     sadrži redne brojeve ponuđenih odgovora koje ispitanik smatra tačnim i dužina tog 
-//     niza(odgovori(int niz[],int br);). 
-//     Tada se računa koliko je procentualno tačno odgovoreno na to pitanje. 
 //     Na glavnom izlazu se ispisuje (out<<pitanje) tako što se u prvom redu ispiše tekst: poeni(maksimalni koje pitanje nosi), 
 //     a potom se u zasebnim redovima ispišu sadržani ponuđeni odgovori.
 class Pitanje{
@@ -96,11 +86,9 @@ class Pitanje{
     int broj_ponudjenih_odgovora;
     Odgovor * ponudjeni_odgovori; 
     int trenutni_broj_odgovora;
-    int broj_tacnih_odgovora;
     public:
     Pitanje(string tekst, int broj_poena, int broj_ponudjenih_odgovora = 5){
         trenutni_broj_odgovora = 0;
-        broj_tacnih_odgovora = 0;
         this->tekst = tekst;
         this->broj_poena = broj_poena;
         this->broj_ponudjenih_odgovora = broj_ponudjenih_odgovora;
@@ -121,20 +109,34 @@ class Pitanje{
         }
         return *this;
     }
-    int odgovori(int niz[], int broj){
+    int odgovori(int niz[], int duzina){
         int suma = 0;
-        for(int i = 0; i<broj; i++){
-            cout << ponudjeni_odgovori[0];
-            if(!ponudjeni_odgovori[niz[i]-1].get_tacnost()){
-                suma -= 100;
+        for(int i = 0; i < duzina; i++){
+            if(ponudjeni_odgovori[niz[i] - 1 ].get_tacnost()){
+                suma += ponudjeni_odgovori[niz[i] - 1].get_udeo(); 
             }
             else{
-                suma += ponudjeni_odgovori[niz[i]-1].get_udeo();
+                suma -= 100;
             }
         }
         return suma;
     }
+    void ispis_svih_odgovra(){
+        int i; 
+        for(i = 0; i<trenutni_broj_odgovora; i++){
+            cout << ponudjeni_odgovori[i];
+        }
+    }
+    friend ostream& operator<<(ostream& out, const Pitanje  &p1){
+        out << p1.tekst << "( " << p1.broj_poena << ")" << endl;
+        for(int i = 0; i<p1.trenutni_broj_odgovora; i++){
+            out << p1.ponudjeni_odgovori[i];
+        }
+        return out;
+    }
 };
+
+
 
 int main(){
     Pitanje p1("Šta je html ?", 10, 4 ); 
@@ -142,6 +144,12 @@ int main(){
     Odgovor o2("Best way to  hack nasa", true, 99);
     Odgovor o3("I do not know", false, -10);
     Odgovor o4("Pitaću suada", false, -100);
-    int niz[2] = {1, 2};
-    cout << p1.odgovori(niz,2); 
+    p1+=o1;
+    p1+=o2;
+    p1+=o3;
+    p1+=o4;
+    // p1.ispis_svih_odgovra();
+    int niz[2] = {3,2};
+    cout << p1.odgovori(niz, 2);
+    cout << p1;
 }
