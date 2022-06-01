@@ -145,8 +145,15 @@ class Staklena : public Flasa{
 // 4. Plastična flaša pića je flaša pića kod koje je cena sa kaucijom jednaka ceni bez kaucije. Preklopiti metodu za ispis da 
 //     ispisuje podatke o flaši i poruku da je flaša plastnična.
 
-class Plasticna{
-    
+class Plasticna : public Flasa{
+    public:
+    Plasticna (float cena_bez_kaucije, float zapremina = 0.33, Vrsta vrsta = BEZALKOHOLNO ) : Flasa(cena_bez_kaucije, zapremina, vrsta) {}
+    void ispis() {
+        cout << nalepnica;
+        cout << "cena bez kaucije: " <<cena_bez_kaucije << ", Cena sa kaucijom " << cena_sa_kaucijom() << endl;
+        cout << "Zapemina : " << zapremina  << "l, vrsta: " << get_vrsta() << endl;
+        cout << "Flaša je plastična i kaucija na nju iznosi " << kaucija << "%" << endl;
+    }
 };
 
 
@@ -162,11 +169,13 @@ int main(){
     //     cout << "f1 == f2" << endl;
     // }
     // cout << f1;
-    Staklena s1(100, 0.33, BEZALKOHOLNO);
-    Staklena s2(110, 0.5, ALKOHOLNO);
-    Staklena s3(120, 1, BEZALKOHOLNO);
-    s1.ispis();
-    cout << s2 << endl;
-    cout << s3.cena_sa_kaucijom();
+    // Staklena s1(100, 0.33, BEZALKOHOLNO);
+    // Staklena s2(110, 0.5, ALKOHOLNO);
+    // Staklena s3(120, 1, BEZALKOHOLNO);
+    // s1.ispis();
+    // cout << s2 << endl;
+    // cout << s3.cena_sa_kaucijom();
+    Plasticna p1(70, 0.5, BEZALKOHOLNO);
+    p1.ispis();
     return 0;
 }
