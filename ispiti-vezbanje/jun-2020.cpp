@@ -96,35 +96,45 @@ class Pitanje{
     int broj_ponudjenih_odgovora;
     Odgovor * ponudjeni_odgovori; 
     int trenutni_broj_odgovora;
+    int broj_tacnih_odgovora;
     public:
     Pitanje(string tekst, int broj_poena, int broj_ponudjenih_odgovora = 5){
         trenutni_broj_odgovora = 0;
+        broj_tacnih_odgovora = 0;
         this->tekst = tekst;
         this->broj_poena = broj_poena;
         this->broj_ponudjenih_odgovora = broj_ponudjenih_odgovora;
     }
     Pitanje operator +=(Odgovor &o){
-        Odgovor* pomocni = new Odgovor[trenutni_broj_odgovora];
-        for(int i = 0; i < trenutni_broj_odgovora; i++){
-            pomocni[i] = ponudjeni_odgovori[i];
+        if(trenutni_broj_odgovora < broj_ponudjenih_odgovora){
+            Odgovor* pomocni = new Odgovor[trenutni_broj_odgovora];
+            for(int i = 0; i < trenutni_broj_odgovora; i++){
+                pomocni[i] = ponudjeni_odgovori[i];
+            }
+            trenutni_broj_odgovora++;
+            ponudjeni_odgovori =  new  Odgovor[trenutni_broj_odgovora];
+            for(int i = 0; i < trenutni_broj_odgovora-1; i++){
+                ponudjeni_odgovori[i] = pomocni[i];
+            }
+            ponudjeni_odgovori[trenutni_broj_odgovora-1] = o;
+            return *this;
         }
-        trenutni_broj_odgovora++;
-        ponudjeni_odgovori =  new  Odgovor[trenutni_broj_odgovora];
-        for(int i = 0; i < trenutni_broj_odgovora-1; i++){
-            ponudjeni_odgovori[i] = pomocni[i];
-        }
-        ponudjeni_odgovori[trenutni_broj_odgovora-1] = o;
         return *this;
     }
-    void ispis_svih_odgovra(){
-        int i; 
-        for(i = 0; i<trenutni_broj_odgovora; i++){
-            cout << ponudjeni_odgovori[i];
+    int odgovori(int niz[], int broj){
+        int suma = 0;
+        for(int i = 0; i<broj; i++){
+            cout << ponudjeni_odgovori[0];
+            if(!ponudjeni_odgovori[niz[i]-1].get_tacnost()){
+                suma -= 100;
+            }
+            else{
+                suma += ponudjeni_odgovori[niz[i]-1].get_udeo();
+            }
         }
+        return suma;
     }
 };
-
-
 
 int main(){
     Pitanje p1("Šta je html ?", 10, 4 ); 
@@ -132,9 +142,6 @@ int main(){
     Odgovor o2("Best way to  hack nasa", true, 99);
     Odgovor o3("I do not know", false, -10);
     Odgovor o4("Pitaću suada", false, -100);
-    p1+=o1;
-    p1+=o2;
-    p1+=o3;
-    p1+=o4;
-    p1.ispis_svih_odgovra();
+    int niz[2] = {1, 2};
+    cout << p1.odgovori(niz,2); 
 }
