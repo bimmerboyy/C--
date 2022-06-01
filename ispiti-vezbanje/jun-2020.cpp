@@ -77,8 +77,6 @@ class Odgovor{
         return out;
     }
 };
-//     Na glavnom izlazu se ispisuje (out<<pitanje) tako što se u prvom redu ispiše tekst: poeni(maksimalni koje pitanje nosi), 
-//     a potom se u zasebnim redovima ispišu sadržani ponuđeni odgovori.
 class Pitanje{
     protected:
     string tekst;
@@ -109,7 +107,7 @@ class Pitanje{
         }
         return *this;
     }
-    int odgovori(int niz[], int duzina){
+    virtual int odgovori(int niz[], int duzina){
         int suma = 0;
         for(int i = 0; i < duzina; i++){
             if(ponudjeni_odgovori[niz[i] - 1 ].get_tacnost()){
@@ -121,12 +119,6 @@ class Pitanje{
         }
         return suma;
     }
-    void ispis_svih_odgovra(){
-        int i; 
-        for(i = 0; i<trenutni_broj_odgovora; i++){
-            cout << ponudjeni_odgovori[i];
-        }
-    }
     friend ostream& operator<<(ostream& out, const Pitanje  &p1){
         out << p1.tekst << "( " << p1.broj_poena << ")" << endl;
         for(int i = 0; i<p1.trenutni_broj_odgovora; i++){
@@ -136,7 +128,38 @@ class Pitanje{
     }
 };
 
-
+class Student : public Pitanje{
+    private:
+    int broj_indeksa;
+    string ime_studenta;
+    float broj_osvojenih_poena;
+    public:
+    Student(int b_i, string i_s, string t_p = "", int b_p = 0, int b_p_o  = 5 ) : Pitanje(t_p, b_p, b_p_o){
+        this->broj_indeksa = b_i;
+        this->ime_studenta = i_s;
+        this->broj_osvojenih_poena = 0;
+    }
+    int get_broj_indeksa(){ return broj_indeksa; }
+    string get_ime_studenta(){return ime_studenta;}
+    float get_broj_osvojenih_poena(){ return broj_osvojenih_poena;}
+    int odgovori(int niz[], int duzina){
+        int suma = 0;
+        for(int i=0; i<duzina; i++){
+            if(!ponudjeni_odgovori[niz[i]-1].get_tacnost()){
+                suma -= 100;
+            }else suma += ponudjeni_odgovori[niz[i]-1].get_udeo();
+        }
+        broj_osvojenih_poena = (float)broj_poena/100*suma;
+        return broj_osvojenih_poena;
+    }
+    friend ostream& operator<<(ostream& out, const Student& s){
+        out << s.broj_indeksa << " " << s.ime_studenta << " " << s.broj_osvojenih_poena << endl;
+        out << s.tekst << ":" << s.broj_poena << endl;
+        for(int i=0;i<=s.trenutni_broj_odgovora;i++)
+            out << s.ponudjeni_odgovori[i] << endl;
+        return out;
+    }
+};
 
 int main(){
     Pitanje p1("Šta je html ?", 10, 4 ); 
@@ -148,7 +171,6 @@ int main(){
     p1+=o2;
     p1+=o3;
     p1+=o4;
-    // p1.ispis_svih_odgovra();
     int niz[2] = {3,2};
     cout << p1.odgovori(niz, 2);
     cout << p1;
