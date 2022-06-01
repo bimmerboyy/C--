@@ -94,19 +94,26 @@ class Pitanje{
     string tekst;
     int broj_poena;
     int broj_ponudjenih_odgovora;
-    Odgovor* ponudjeni_odgovori;
-    public:
+    Odgovor * ponudjeni_odgovori; 
     int trenutni_broj_odgovora;
+    public:
     Pitanje(string tekst, int broj_poena, int broj_ponudjenih_odgovora = 5){
         trenutni_broj_odgovora = 0;
         this->tekst = tekst;
         this->broj_poena = broj_poena;
         this->broj_ponudjenih_odgovora = broj_ponudjenih_odgovora;
     }
-    Pitanje operator +=(Odgovor o){
-        this->ponudjeni_odgovori = new Odgovor[trenutni_broj_odgovora+1];
-        this->ponudjeni_odgovori[trenutni_broj_odgovora] = o;
+    Pitanje operator +=(Odgovor &o){
+        Odgovor* pomocni = new Odgovor[trenutni_broj_odgovora];
+        for(int i = 0; i < trenutni_broj_odgovora; i++){
+            pomocni[i] = ponudjeni_odgovori[i];
+        }
         trenutni_broj_odgovora++;
+        ponudjeni_odgovori =  new  Odgovor[trenutni_broj_odgovora];
+        for(int i = 0; i < trenutni_broj_odgovora-1; i++){
+            ponudjeni_odgovori[i] = pomocni[i];
+        }
+        ponudjeni_odgovori[trenutni_broj_odgovora-1] = o;
         return *this;
     }
     void ispis_svih_odgovra(){
