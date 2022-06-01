@@ -73,6 +73,7 @@ class Flasa{
         this-> vrsta = vrsta;
         kaucija = 0;
     }
+    Flasa(){}
     Nalepnica get_nalepnica(){
         return nalepnica;
     }
@@ -142,8 +143,6 @@ class Staklena : public Flasa{
         cout << "Flaša je staklena i kaucija na nju iznosi " << kaucija << "%" << endl;
     }
 };
-// 4. Plastična flaša pića je flaša pića kod koje je cena sa kaucijom jednaka ceni bez kaucije. Preklopiti metodu za ispis da 
-//     ispisuje podatke o flaši i poruku da je flaša plastnična.
 
 class Plasticna : public Flasa{
     public:
@@ -156,9 +155,49 @@ class Plasticna : public Flasa{
     }
 };
 
-
-
 int Nalepnica::brojac = 0;
+
+// 5. Formirati funkciju UKUPNO, van klasa koja formira dinamički niz staklenih i plastičnih flaša
+//     čije podatke unosi korisnik sa tastature i zatim računa i vraća ukupan zbir svih flaša sa kaucijom.
+
+float ukupno(){
+    cout << "Unesite koliko flaša želite: \n ";
+    int n;
+    char vrsta;
+    float cena;
+    float suma = 0;
+    float zapremina;
+    string alkoholno;
+    Vrsta vrsta_pica;
+    cin >> n;
+    Flasa * niz = new Flasa[n];
+    for(int i = 0; i < n; i++){
+        cout <<  "Unesite da li je flaša plastičan ili staklena (s / p) : \n";
+        cin >> vrsta;
+        cout <<  "uneste cenu:" << endl;
+        cin >> cena;
+        cout <<  "uneste zapreminu:" << endl;
+        cin >> zapremina;
+        cout <<  "da li je piće alkoholno ?  (da/ne)" << endl;
+        cin >> alkoholno;
+        if(alkoholno == "da"){
+            vrsta_pica = ALKOHOLNO;
+        }
+        else{
+            vrsta_pica = BEZALKOHOLNO;
+        }
+        if(vrsta == 's'){
+            Staklena f(cena, zapremina, vrsta_pica);
+            suma += f.cena_sa_kaucijom();
+            niz[i] = f;
+        }
+        else if(vrsta == 'p'){
+            Plasticna f(cena, zapremina, vrsta_pica);
+            niz[i] = f;
+        }
+    }
+    return suma;
+}
 
 int main(){
     // Flasa f1(70, 0.5,  BEZALKOHOLNO);
@@ -175,7 +214,8 @@ int main(){
     // s1.ispis();
     // cout << s2 << endl;
     // cout << s3.cena_sa_kaucijom();
-    Plasticna p1(70, 0.5, BEZALKOHOLNO);
-    p1.ispis();
+    // Plasticna p1(70, 0.5, BEZALKOHOLNO);
+    // p1.ispis();
+    cout << ukupno() << endl;
     return 0;
 }
