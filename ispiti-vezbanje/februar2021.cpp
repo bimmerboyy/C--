@@ -78,16 +78,6 @@ class Stavka{
     }
 };
 
-// 3. (35 poena)   Koristeći klase iz prethodnog zadatka proširiti program tako da se doda klasa Račun koja sadrži proizvoljan
-//    broj stavki(niz stavki) i celobrojni iznos dodatnog popusta.
-//    Stvara se prazan, nakon čega se stavke dodaju pojedinačno. Dodavanje stavke odraditi
-//    preklapanjem operatora += (račun += stavka). Može da se postavi iznos dodatnog popusta.
-//    Može da se izračuna iznos računa kao suma iznosa svih pojedinačnih stavki na računu. 
-//    Ukoliko postoji dodatni popust, on se obračunava samo za artikle koji već nisu na popustu. 
-//    Na glavnom izlazu se ispisuje u obliku Racun: iznos_računa,
-//    a zatim se u svakom redu ispisuje po jedna stavka u obliku: stavka [iznos_sa_dodatnim_popustom].
-//    U main funkciji stvoriti jedan  objekat klase račun i u njega dodati nekoliko stavki
-//    sa po jednim artiklom. Ispisati stanje računa nakon dodavanja tih stavki.
 class Racun{
     protected:
     Stavka * stavke;
@@ -147,7 +137,6 @@ class Racun{
     }
 };
 
-
 int main() {
     Artikal a1("Smokva", 100, 0);
     Artikal a2("Borovnica", 700, 5);
@@ -162,4 +151,3 @@ int main() {
     cout << r1;
     return 0;
 }
-//odraditi za redni broj posle
