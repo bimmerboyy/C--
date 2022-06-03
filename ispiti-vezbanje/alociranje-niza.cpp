@@ -39,8 +39,9 @@ class Niz{
         return niz[index];
 
     }
-    Niz(Niz &n1){
+    Niz(const Niz &n1){
         duzinaNiza = n1.duzinaNiza;
+        cout<<"Duzina drugog je"<<n1.duzinaNiza<<endl;
         for(int i = 0;i < duzinaNiza;i++){
             niz[i] = n1.niz[i];
         }
