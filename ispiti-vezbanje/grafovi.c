@@ -4,12 +4,7 @@
 
 #define SIZE 6
 
-
 //define graph
-
-
-
-
 
 int main(){
 
