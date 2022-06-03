@@ -51,15 +51,7 @@ class Artikal{
         return out;
     }
 };
-// 2.	
-//    Klasa Stavka računa se kreira za zadati artikal i zadatu celobrojnu količinu.
-//    Stavki računa se dodeljuje redni broj na računu prilikom dodavanja stavke na račun. 
-//    Može da se izračuna iznos stavke računa kao proizvod količine i cene artikla. 
-//    Omogućiti kopiranje vrednosti pomoću kopi konstruktora.
-//    Može se ispisati artikal stavke. Na glavnom izlazu se ispisuje u obliku:
-//    S redni_broj_na_računu(artikal):količina|iznos.
-//    U main funkciji kreirati 2 objekta klase Stavka i testirati sve metode.
-//    Kreirati i treći objekat kao kopiju prvog.
+
 class Stavka{
     protected:
     Artikal a1;
@@ -90,7 +82,7 @@ int main() {
     Artikal a2("Borovnica", 700, 5);
     Stavka s1(a1, 5);
     Stavka s2(a2, 10);
-    Stavka s3 = s2;
+    Stavka s3 = s1;
     cout << s3;
     return 0;
 }
