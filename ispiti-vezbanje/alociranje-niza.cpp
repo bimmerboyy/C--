@@ -9,6 +9,9 @@ class Niz{
     int duzinaNiza;
     int *niz;
     public:
+    Niz(){
+
+    }
     Niz(int duzinaNiza = 5){
         niz = new int[ duzinaNiza];
         for(int i = 0; i < duzinaNiza;i++){
@@ -63,12 +66,9 @@ class Niz{
         for(int i = 0; i < duzinaNiza; i++){
             temp[i] = n1.niz[i];
         }
-        duzinaNiza++;
-        for(int i = 0; i < duzinaNiza-1; i++){
-            n1.niz[i] = temp[i];
-        }
+       // *temp = *n1.niz;
 
-
+        return *this;
     }
    
     friend ostream&  operator<<(ostream& COUT,Niz n1){
@@ -89,8 +89,10 @@ class Niz{
 
 int main(){
     Niz n1(3);
-    Niz n2;
+    Niz n2(3);
     n1.unosNiza();
+    n2 = n1;
+    cout<<n2;
    
    
 
