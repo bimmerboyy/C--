@@ -73,17 +73,93 @@ class Stavka{
         out << "( " <<  s1.a1.get_naziv() << " ) : " << s1.kolicina << " | " << s1.cena()  << endl;
         return out;
     }
+    Artikal get_artikal(){
+        return a1;
+    }
+};
+
+// 3. (35 poena)   Koristeći klase iz prethodnog zadatka proširiti program tako da se doda klasa Račun koja sadrži proizvoljan
+//    broj stavki(niz stavki) i celobrojni iznos dodatnog popusta.
+//    Stvara se prazan, nakon čega se stavke dodaju pojedinačno. Dodavanje stavke odraditi
+//    preklapanjem operatora += (račun += stavka). Može da se postavi iznos dodatnog popusta.
+//    Može da se izračuna iznos računa kao suma iznosa svih pojedinačnih stavki na računu. 
+//    Ukoliko postoji dodatni popust, on se obračunava samo za artikle koji već nisu na popustu. 
+//    Na glavnom izlazu se ispisuje u obliku Racun: iznos_računa,
+//    a zatim se u svakom redu ispisuje po jedna stavka u obliku: stavka [iznos_sa_dodatnim_popustom].
+//    U main funkciji stvoriti jedan  objekat klase račun i u njega dodati nekoliko stavki
+//    sa po jednim artiklom. Ispisati stanje računa nakon dodavanja tih stavki.
+class Racun{
+    protected:
+    Stavka * stavke;
+    int dodatni_popust;
+    int broj_stavki;
+    public:
+    Racun(){
+        broj_stavki = 0;
+        dodatni_popust = 0;
+    }
+    Racun& operator+=(Stavka s){
+        Stavka * pomocni = new Stavka[broj_stavki];
+        for(int i = 0; i < broj_stavki; i++){
+            pomocni[i] = stavke[i];
+        }
+        broj_stavki++;
+        stavke  = new Stavka[broj_stavki];
+        for(int i = 0; i < broj_stavki - 1; i++){
+            stavke[i] = pomocni[i];
+        }
+        stavke[broj_stavki-1] = s;
+        return *this;
+    }
+    void set_dodatni_popust(int popust){
+        this->dodatni_popust = popust;
+    }
+    float ukupna_cena(){
+        float ukupno_koje_vec_imaju_popust = 0;
+        float ukupno_koje_nemaju_popust = 0;
+        for(int i = 0; i < broj_stavki; i++){
+            if(stavke[i].get_artikal().get_popust() == 0){
+                ukupno_koje_nemaju_popust += stavke[i].cena();
+            }
+            else{
+                ukupno_koje_vec_imaju_popust += stavke[i].cena();
+            }
+        }
+        float cena_sa_dodatnim_popustom = ukupno_koje_nemaju_popust - ukupno_koje_nemaju_popust  / 100 * dodatni_popust;
+        return cena_sa_dodatnim_popustom + ukupno_koje_vec_imaju_popust;
+    }
+    friend ostream& operator<<(ostream& out, Racun r1){
+        out << "Račun: " << r1.ukupna_cena() << endl;
+        for(int i = 0; i < r1.broj_stavki; i++){
+            if(r1.stavke[i].get_artikal().get_popust() == 0){
+                if(r1.dodatni_popust == 0){
+                    out << r1.stavke[i] << " [ " << r1.stavke[i].cena() << " ] "  <<endl;
+                }
+                else{
+                    out << r1.stavke[i] << "[" <<   r1.stavke[i].cena()  / 100 * r1.dodatni_popust << " ]" << endl; 
+                }
+            }
+            else{
+                out << r1.stavke[i] << " [ " << r1.stavke[i].cena() << " ] "  <<endl;
+            }
+        }
+        return out;
+    }
 };
 
 
-
 int main() {
-    Artikal a1("Smokva", 100, 10);
+    Artikal a1("Smokva", 100, 0);
     Artikal a2("Borovnica", 700, 5);
     Stavka s1(a1, 5);
     Stavka s2(a2, 10);
     Stavka s3 = s1;
-    cout << s3;
+    Racun r1;
+    r1 += s1;
+    r1 += s2;
+    r1 += s3;
+    r1.set_dodatni_popust(50);
+    cout << r1;
     return 0;
 }
 //odraditi za redni broj posle
