@@ -34,6 +34,11 @@ class Niz{
         niz[index] = element;
 
     }
+    int &operator () (int index){
+
+        return niz[index];
+
+    }
    
     friend ostream&  operator<<(ostream& COUT,Niz n1){
         COUT<<"Niz je:"<<endl;
@@ -54,7 +59,8 @@ class Niz{
 int main(){
     Niz n1;
     n1(0,1);
-    cout <<n1;
+ 
+    //cout <<n1;
     return 0;
 
 }
