@@ -12,9 +12,13 @@ class Array{
     Array(int duzinaNiza = 5){
         niz = new int[ duzinaNiza];
         for(int i = 0; i < duzinaNiza;i++){
-            
+            niz[i] = 0;
         }
         this->duzinaNiza = duzinaNiza;
+    }
+    ~Array(){
+        delete []niz;
+        niz = nullptr;
     }
 };
 
