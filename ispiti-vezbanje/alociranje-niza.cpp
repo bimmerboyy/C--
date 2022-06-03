@@ -24,6 +24,16 @@ class Niz{
             cin >> niz[i];
         }
     }
+    void dodajElement(int index,int element){
+        niz[index] = element;
+    }
+    int getElement(int index){
+        return niz[index];
+    }
+    void operator()(int index,int element){
+        niz[index] = element;
+
+    }
    
     friend ostream&  operator<<(ostream& COUT,Niz n1){
         COUT<<"Niz je:"<<endl;
@@ -43,7 +53,7 @@ class Niz{
 
 int main(){
     Niz n1;
-    n1.unosNiza();
+    n1(0,1);
     cout <<n1;
     return 0;
 
