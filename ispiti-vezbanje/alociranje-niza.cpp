@@ -39,12 +39,36 @@ class Niz{
         return niz[index];
 
     }
-    Niz(const Niz &n1){
-        duzinaNiza = n1.duzinaNiza;
-        cout<<"Duzina drugog je"<<n1.duzinaNiza<<endl;
-        for(int i = 0;i < duzinaNiza;i++){
-            niz[i] = n1.niz[i];
+    // Niz(const Niz &n1){
+       
+    //     duzinaNiza = n1.duzinaNiza;
+         
+    //     cout<<"Duzina drugog je"<<n1.duzinaNiza<<endl;
+    //     for(int i = 0;i < duzinaNiza;i++){
+    //         niz[i] = n1.niz[i];
+    //     }
+    // }
+
+    Niz operator = (Niz &n1){
+
+        if(this == &n1){
+            return *this;
         }
+        else{
+            delete [] niz;
+        }
+        int *temp;
+        duzinaNiza = 0;
+        temp = new int[duzinaNiza];
+        for(int i = 0; i < duzinaNiza; i++){
+            temp[i] = n1.niz[i];
+        }
+        duzinaNiza++;
+        for(int i = 0; i < duzinaNiza-1; i++){
+            n1.niz[i] = temp[i];
+        }
+
+
     }
    
     friend ostream&  operator<<(ostream& COUT,Niz n1){
@@ -67,8 +91,8 @@ int main(){
     Niz n1(3);
     Niz n2;
     n1.unosNiza();
-    n2 = n1;
-    cout<<n2;
+   
+   
 
  
     //cout <<n1;
