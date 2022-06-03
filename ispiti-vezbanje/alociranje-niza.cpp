@@ -39,6 +39,12 @@ class Niz{
         return niz[index];
 
     }
+    Niz(Niz &n1){
+        duzinaNiza = n1.duzinaNiza;
+        for(int i = 0;i < duzinaNiza;i++){
+            niz[i] = n1.niz[i];
+        }
+    }
    
     friend ostream&  operator<<(ostream& COUT,Niz n1){
         COUT<<"Niz je:"<<endl;
@@ -57,8 +63,12 @@ class Niz{
 };
 
 int main(){
-    Niz n1;
-    n1(0,1);
+    Niz n1(3);
+    Niz n2;
+    n1.unosNiza();
+    n2 = n1;
+    cout<<n2;
+
  
     //cout <<n1;
     return 0;
