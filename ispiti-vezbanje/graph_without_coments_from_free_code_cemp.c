@@ -13,7 +13,7 @@ struct Edge {
 };
 struct Graph* createGraph(struct Edge edges[], int n){
     struct Graph* graph = (struct Graph*)malloc(sizeof(struct Graph));
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i <= N; i++) {
         graph->head[i] = NULL;
     }
     for (int i = 0; i < n; i++){
@@ -27,7 +27,7 @@ struct Graph* createGraph(struct Edge edges[], int n){
     return graph;
 }
 void printGraph(struct Graph* graph){
-    for (int i = 0; i < N; i++){
+    for (int i = 0; i <= N; i++){
         // print current vertex and all its neighbors
         struct Node* ptr = graph->head[i];
         while (ptr != NULL)
@@ -41,11 +41,10 @@ void printGraph(struct Graph* graph){
 }
 int main(){
     struct Edge edges[] ={
-        {0, 1}, {1, 2}, {2, 0}, {2, 1}, {3, 2}, {4, 5}, {5, 4}
+        {1, 3}, {1, 2}, {3, 5}, {5, 2}, {2, 4}, {6, 4}
     };
     int n = sizeof(edges)/sizeof(edges[0]);
     struct Graph *graph = createGraph(edges, n);
     printGraph(graph);
-    printf("%d\n", n);
     return 0;
 }
