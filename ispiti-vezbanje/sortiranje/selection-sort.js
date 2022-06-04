@@ -5,29 +5,6 @@ for (let i = 0; i < 10; i++) {
 }
 console.log(arr);
 
-
-//create selection sort algorithm
-
-
-//create selectionsort algorithm
-// function selectionSort(arr) {
-//     let min;
-//     for (let i = 0; i < arr.length; i++) {
-//         min = i;
-//         for (let j = i + 1; j < arr.length; j++) {
-//             if (arr[j] < arr[min]) {
-//                 min = j;
-//             }
-//         }
-//         if (min !== i) {
-//             let temp = arr[i];
-//             arr[i] = arr[min];
-//             arr[min] = temp;
-//         }
-//     }
-//     return arr;
-// }
-
 function selectionSort(arr) {
     let min
     for (let i = 0; i < arr.length; i++) {   
@@ -37,7 +14,7 @@ function selectionSort(arr) {
                 min = j;
             }
         }
-        if(min !== i){
+        if(min !== i){ //  može da ga preskoči jer je  već na mestu zbog optimizacije (i ne radi XOR sa i  = min)
             arr[i] =  arr[i] ^ arr[min]; 
             arr[min] =  arr[i] ^ arr[min]; 
             arr[i] =  arr[i] ^ arr[min]; 
