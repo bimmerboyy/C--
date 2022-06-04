@@ -80,20 +80,26 @@ class Niz{
         return COUT;
 
     }
-     ~Niz(){
-        delete []niz;
-        niz = nullptr;
-        cout<<"Obrisao sam niz pomocu destrutor"<<endl;
+    void ispis() {
+        for(int i = 0;i < duzinaNiza;i++){
+            cout<<niz[i];
+        }
     }
+    //  ~Niz(){
+    //     delete []niz;
+    //     niz = nullptr;
+    //     cout<<"Obrisao sam niz pomocu destrutor"<<endl;
+    // }
 };
 
 int main(){
     Niz n1(3);
     Niz n2(3);
-    n1.unosNiza();
+    n1.dodajElement(0, 1);
+    n1.dodajElement(1, 2);
+    n1.dodajElement(2, 3);
     n2 = n1;
-    cout<<n2;
-   
+    cout<<n2(1);   
    
 
  
