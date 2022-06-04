@@ -1,5 +1,6 @@
 import pygame
-import sys
+import syspath
+
 
 pygame.init()
 display = pygame.display.set_mode((400,300,))
@@ -13,7 +14,7 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()   
-            sys.exit()
+            exit()
     display.fill((0,0,0))
 
     display.blit(mytext,(100,120))
