@@ -2,9 +2,9 @@
 #include <stdlib.h>
 
 void selection_sort(int array[], int n){
-    for (int i = 0; i < n - 1; i++){
+    for (int i = 0; i < n; i++){
         int min = i;
-        for (int j = i + 1; j < n; j++){
+        for (int j = i + 1; j < n ; j++){
             if (array[j] < array[min]){
                 min = j;
             }
@@ -18,7 +18,7 @@ void selection_sort(int array[], int n){
 }
 
 int main(){
-    int array[6] = {5, 2, 4, 1, 3, 6};
+    int array[] = {6, 5, 4, 3, 2, 1, 7, 8, 0};
     int n = sizeof(array)/sizeof(array[0]);
     selection_sort(array, n);
     for (int i = 0; i < n; i++){
