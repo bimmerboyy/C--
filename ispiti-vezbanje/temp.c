@@ -46,5 +46,6 @@ int main(){
     int n = sizeof(edges)/sizeof(edges[0]);
     struct Graph *graph = createGraph(edges, n);
     printGraph(graph);
+    printf("%d\n", n);
     return 0;
 }
