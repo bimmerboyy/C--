@@ -76,16 +76,16 @@ using namespace std;
 
 class Student{
     private:
-    int brojBodova;
     int brIndeksa;
     int brBodovazaLabvezbe;
     int brBodovanaUsmenom;
     int brBodovanaPismenom;
+    int BrBodovanaKolokvijumu;
     public:
-    Student(int brIndeksa,int brBodovazaLabvezbe,int brBodovanaUsmenom,int brBodovanaPismenom){
+    Student(int brIndeksa,int brBodovazaLabvezbe,int brBodovanaUsmenom,int brBodovanaPismenom,
+    int BrBodovanaKolokvijumu){
         this->brIndeksa = brIndeksa;
-        this->brBodovanaUsmenom = brBodovanaUsmenom;
-        this->brBodovanaPismenom = brBodovanaPismenom;
+        
          if(brBodovazaLabvezbe <= 20){
             this->brBodovazaLabvezbe = brBodovazaLabvezbe;
         }
@@ -99,7 +99,14 @@ class Student{
         else{
             cout<<"Uneli ste pogresan br bodova"<<endl;
         }
-        if()
+        if(BrBodovanaKolokvijumu <= 20){
+            this->BrBodovanaKolokvijumu = BrBodovanaKolokvijumu;
+        }
+    }
+    int ukupanBrBodova(){
+        int ukupanBrBodova = 0;
+        ukupanBrBodova = brBodovazaLabvezbe + brBodovanaPismenom + brBodovanaUsmenom + BrBodovanaKolokvijumu;
+        return ukupanBrBodova;
     }
    
 
