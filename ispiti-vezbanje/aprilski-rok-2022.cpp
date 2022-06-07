@@ -57,3 +57,55 @@ oryhe lос листовала по броју елементаta), елемен
 
 
 */
+
+#include<iostream>
+
+using namespace std;
+
+// Задатак 1. (24 бодова) Асистент води евиденцију о броју бодова студената на излазе на испит 
+// и предмета Програмиране Студенти освају болон 10 лабораторијске вежбе писали и усмени део испита,
+//  при чему па део испита могу полагати у целину или путем два колоквиума. За све студе де памти се по индекса, 
+//  број бодова за лабораторијске ребе и број бодова на усменом испиту за Студенте који пола у писани испит
+// у целини памти се освојени број бодова на њему. док се за оне који пола у путем колоквијума памти број
+// бодова та сваки колок Укупан број бодов. се одређује као збир сик бодова које је студент со пр чему
+// је највећи број бодова на лабораторијским небама 20 капсу испиту 40 и на колоквијумима 20. Студент
+// који пола писани испит у це је положно испит ко је на писаном, усменом и целом испиту освојио од 50%
+// од максималног броја бодова. Студент који полаже писани испит прекоме положно испит ако је на усменом
+// и целом испиту освојио више од 50% од максималног броја бодова и на сваком од колоквијума освојио више од 25%,
+// а у збиру на оба колоквиума више од 50% од максималног броја бодова
+
+class Student{
+    private:
+    int brojBodova;
+    int brIndeksa;
+    int brBodovazaLabvezbe;
+    int brBodovanaUsmenom;
+    int brBodovanaPismenom;
+    public:
+    Student(int brIndeksa,int brBodovazaLabvezbe,int brBodovanaUsmenom,int brBodovanaPismenom){
+        this->brIndeksa = brIndeksa;
+        this->brBodovanaUsmenom = brBodovanaUsmenom;
+        this->brBodovanaPismenom = brBodovanaPismenom;
+         if(brBodovazaLabvezbe <= 20){
+            this->brBodovazaLabvezbe = brBodovazaLabvezbe;
+        }
+        else{
+            cout<<"Uneli ste pogresan br bodova"<<endl;
+        }
+        if(brBodovanaPismenom + brBodovanaPismenom <= 40){
+            this->brBodovanaPismenom = brBodovanaPismenom;
+            this->brBodovanaUsmenom = brBodovanaUsmenom;
+        }
+        else{
+            cout<<"Uneli ste pogresan br bodova"<<endl;
+        }
+        if()
+    }
+   
+
+};
+
+int main(){
+
+    return 0;
+}
