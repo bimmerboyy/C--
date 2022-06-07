@@ -88,9 +88,11 @@ class Student{
         
          if(brBodovazaLabvezbe <= 20){
             this->brBodovazaLabvezbe = brBodovazaLabvezbe;
+            
         }
         else{
             cout<<"Uneli ste pogresan br bodova"<<endl;
+            
         }
         if(brBodovanaPismenom + brBodovanaPismenom <= 40){
             this->brBodovanaPismenom = brBodovanaPismenom;
@@ -107,6 +109,23 @@ class Student{
         int ukupanBrBodova = 0;
         ukupanBrBodova = brBodovazaLabvezbe + brBodovanaPismenom + brBodovanaUsmenom + BrBodovanaKolokvijumu;
         return ukupanBrBodova;
+    }
+    bool daLiJePolozio(){
+        int maxBrBodova = 80;
+        int procenat = 50;
+        int brPoenaStudenta = brBodovanaPismenom + brBodovanaPismenom;
+        float brPoenaZaProlaz;
+        brPoenaZaProlaz = (float)maxBrBodova * procenat / 100;
+        if(brPoenaStudenta >= brPoenaZaProlaz){
+            cout<<"Student je polozio"<<endl;
+            return true;
+        }
+        else{
+             cout<<"Student nije polozio"<<endl;
+             return false;
+        }
+
+
     }
    
 
