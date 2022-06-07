@@ -131,14 +131,20 @@ class Student{
         //POlaganje preko kolokvijuma
         if(Kolokvijumi(BrBodovanaKolokvijumu1,BrBodovanaKolokvijumu2)){
             if(Kolokvijumi(BrBodovanaKolokvijumu1,BrBodovanaKolokvijumu2) + brBodovanaUsmenom >= brPoenaZaProlaz){
-
+                cout<<"Student je polozio"<<endl;
+                return true;
 
             }
+            else{
+                cout<<"Student nije polozio"<<endl;
+                return false;
+            }
         }
-        
-
-
     }
+   Student dodajStudenta(Student &s1){
+       
+
+   }
    
 
 };
