@@ -80,10 +80,10 @@ class Student{
     int brBodovazaLabvezbe;
     int brBodovanaUsmenom;
     int brBodovanaPismenom;
-    int BrBodovanaKolokvijumu;
+    int BrBodovanaKolokvijumu1;
+    int BrBodovanaKolokvijumu2;
     public:
-    Student(int brIndeksa,int brBodovazaLabvezbe,int brBodovanaUsmenom,int brBodovanaPismenom,
-    int BrBodovanaKolokvijumu){
+    Student(int brIndeksa,int brBodovazaLabvezbe,int brBodovanaUsmenom,int brBodovanaPismenom){
         this->brIndeksa = brIndeksa;
         
          if(brBodovazaLabvezbe <= 20){
@@ -101,13 +101,16 @@ class Student{
         else{
             cout<<"Uneli ste pogresan br bodova"<<endl;
         }
-        if(BrBodovanaKolokvijumu <= 20){
-            this->BrBodovanaKolokvijumu = BrBodovanaKolokvijumu;
-        }
+       
+    }
+    int Kolokvijumi(int BrBodovanaKolokvijumu1,int BrBodovanaKolokvijumu2){
+        this->BrBodovanaKolokvijumu1 = BrBodovanaKolokvijumu1;
+        this->BrBodovanaKolokvijumu2 = BrBodovanaKolokvijumu2;
+        return BrBodovanaKolokvijumu1 + BrBodovanaKolokvijumu2;
     }
     int ukupanBrBodova(){
         int ukupanBrBodova = 0;
-        ukupanBrBodova = brBodovazaLabvezbe + brBodovanaPismenom + brBodovanaUsmenom + BrBodovanaKolokvijumu;
+        ukupanBrBodova = brBodovazaLabvezbe + brBodovanaPismenom + brBodovanaUsmenom + Kolokvijumi(BrBodovanaKolokvijumu1,BrBodovanaKolokvijumu2);
         return ukupanBrBodova;
     }
     bool daLiJePolozio(){
@@ -115,6 +118,7 @@ class Student{
         int procenat = 50;
         int brPoenaStudenta = brBodovanaPismenom + brBodovanaPismenom;
         float brPoenaZaProlaz;
+        //Polaganje preko pismenog i usmenog dela
         brPoenaZaProlaz = (float)maxBrBodova * procenat / 100;
         if(brPoenaStudenta >= brPoenaZaProlaz){
             cout<<"Student je polozio"<<endl;
@@ -124,6 +128,14 @@ class Student{
              cout<<"Student nije polozio"<<endl;
              return false;
         }
+        //POlaganje preko kolokvijuma
+        if(Kolokvijumi(BrBodovanaKolokvijumu1,BrBodovanaKolokvijumu2)){
+            if(Kolokvijumi(BrBodovanaKolokvijumu1,BrBodovanaKolokvijumu2) + brBodovanaUsmenom >= brPoenaZaProlaz){
+
+
+            }
+        }
+        
 
 
     }
