@@ -82,6 +82,7 @@ class Student{
     int brBodovanaPismenom;
     int BrBodovanaKolokvijumu1;
     int BrBodovanaKolokvijumu2;
+    int brStudenata;
     public:
     Student(int brIndeksa,int brBodovazaLabvezbe,int brBodovanaUsmenom,int brBodovanaPismenom){
         this->brIndeksa = brIndeksa;
@@ -101,6 +102,7 @@ class Student{
         else{
             cout<<"Uneli ste pogresan br bodova"<<endl;
         }
+        brStudenata = 0;
        
     }
     int Kolokvijumi(int BrBodovanaKolokvijumu1,int BrBodovanaKolokvijumu2){
@@ -141,7 +143,11 @@ class Student{
             }
         }
     }
-   Student dodajStudenta(Student &s1){
+   void  dodajStudenta(Student &s1,int brojIndexaZaUklanjanje){
+       if(brIndeksa == brojIndexaZaUklanjanje){
+           
+       }
+       
        
 
    }
