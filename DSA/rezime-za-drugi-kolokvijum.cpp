@@ -55,9 +55,8 @@ class Druga{
         }
         niz[trenutna_duzina_niza-1] = p1;                                // na kraju se ubacuje.
     }
-    
-    
     ~Druga(){
         delete []niz;                                                    //potrebno je brisati dinamičke nizove samo.
     }
 };
+
