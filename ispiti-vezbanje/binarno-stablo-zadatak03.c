@@ -53,7 +53,17 @@ void preorder(struct tree *tree){
         preorder(tree->right);    
     }
 }
-
+int brojElementa(struct tree *tree){
+    int br = 0;
+    if(tree){
+      br++;
+      br+=brojElementa(tree->left);
+      br+=brojElementa(tree->right);
+    }
+    return br;
+   
+   
+}
 int main(){
         root = createNode(1);
     addBTS(root,2);
@@ -65,5 +75,7 @@ int main(){
     addBTS(root,8);
     addBTS(root,9);
     inorder(root);
+    printf("\nBroj el u stablu je:\n");
+    printf("%d",brojElementa(root));
     return 0;
 }
