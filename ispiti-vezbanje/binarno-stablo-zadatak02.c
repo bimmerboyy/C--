@@ -65,16 +65,37 @@ struct tree *addForBTS(struct tree *root,int elem){
     }
     if(elem < root->data){
         root->left = addForBTS(root->left,elem);
-        return root->left;
+        
     }
     if(elem > root->data){
         root->right = addForBTS(root->right,elem);
-        return root->right;
+        
     }
     return root;
 }
 
+int zbirElemenata(struct tree *root){
+    int s = 0;
+    if(root){
+        s = root->data;
+        s+= zbirElemenata(root->left);
+        s += zbirElemenata(root->right);
+    }
+    return s;
+}
+
 int main(){
-    
+    root = createNode(1);
+    addForBTS(root,2);
+    addForBTS(root,3);
+    addForBTS(root,4);
+    addForBTS(root,5);
+    addForBTS(root,6);
+    addForBTS(root,7);
+    addForBTS(root,8);
+    addForBTS(root,9);
+    inorder(root);
+    printf("\nZbir elemnat u bts je:\n");
+    printf("%d",zbirElemenata(root));
     return 0;
 }
