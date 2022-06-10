@@ -1,6 +1,5 @@
 //Zadatak 4. Napisati rekurzivnu funkciju kojom se ispituje da li se element E nalazi u binarnom stablu.
 
-//Zadatak 3. Napisati rekurzivnu funkciju kojom se izračunava broj elemenata nepraznog binarnog stabla.
 
 
 #include<stdio.h>
