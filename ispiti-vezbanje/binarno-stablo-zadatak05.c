@@ -63,19 +63,17 @@ int maksimalnaDubina(struct tree *tree){
             dubina1++;
             dubina1+=maksimalnaDubina(tree->left);
         }
-          if(tree->right != NULL){
+        if(tree->right != NULL){
             dubina2++;
             dubina2+=maksimalnaDubina(tree->right);
         }
-    
+
             if(dubina1 > dubina2){
                 maks = dubina1; 
             }
             else{
                 maks = dubina2; 
             }
-        
-       
     }
     return maks;
    
