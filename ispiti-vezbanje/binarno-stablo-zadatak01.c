@@ -12,6 +12,7 @@ typedef struct tree{
 TREE *root = NULL,*temp;
 
 void createNode(int elem){
+    temp = (struct tree*)malloc(sizeof(struct tree));
     
 }
 
