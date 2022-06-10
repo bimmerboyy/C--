@@ -56,7 +56,20 @@ void preorder(struct tree *tree){
 }
 
 int zbirElemenataNaNtomNivou(struct tree *tree,int n){
-    
+    int s = 0;
+    if(tree){
+       if(n != 0){
+            zbirElemenataNaNtomNivou(tree->left,n-1);
+            zbirElemenataNaNtomNivou(tree->left,n-1);
+        }
+        else{
+            s +=1;
+        }
+    }
+    else{
+        return 0;
+    }
+    return s;
 } 
 
 
@@ -71,12 +84,7 @@ int main(){
     addBTS(root,7);
     addBTS(root,8);
     addBTS(root,9);
-  
-    
-    
-   
-    
-   
+    printf("Zbir elemenata u nivou:%d",zbirElemenataNaNtomNivou(root,2));
     return 0;
 }
 
