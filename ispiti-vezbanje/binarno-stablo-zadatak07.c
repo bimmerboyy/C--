@@ -96,8 +96,8 @@ int main(){
     addBTS(root,7);
     addBTS(root,8);
     addBTS(root,9);
-  
-    ispisElemenataNaNtomNivou(root,0);   
+    printf("Elementi na n nivou su:\n");
+  ispisElemenataNaNtomNivou(root,0);   
     
     
    
