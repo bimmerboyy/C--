@@ -72,23 +72,19 @@ int brojElemenataNaNtomNivou(struct tree *tree, int n){
 
 }
 
-int ispisElemenataNaNtomNivou(struct tree *tree,int n){
+void ispisElemenataNaNtomNivou(struct tree *tree,int n){
     if(tree){
         if(n != 0){
-            return ispisElemenataNaNtomNivou(tree->left,n-1) + ispisElemenataNaNtomNivou(tree->right,n-1);
+            ispisElemenataNaNtomNivou(tree->left,n-1);
+            ispisElemenataNaNtomNivou(tree->right,n-1);
         }
     
     else{
-        ispisElemenataNaNtomNivou(tree->left,n);
-        printf("%d",tree->data);
-        ispisElemenataNaNtomNivou(tree->right,n);
-        }
+       printf("%d",tree->data);
     }
-    return tree->data;
-   
 
+   }
 }
-
 
 int main(){
     root = createNode(1);
@@ -100,8 +96,8 @@ int main(){
     addBTS(root,7);
     addBTS(root,8);
     addBTS(root,9);
-    inorder(root);
-    ispisElemenataNaNtomNivou(root,2);   
+  
+    ispisElemenataNaNtomNivou(root,0);   
     
     
    

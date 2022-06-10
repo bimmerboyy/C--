@@ -58,7 +58,7 @@ void preorder(struct tree *tree){
 int brojElemenataNaNtomNivou(struct tree *tree, int n){
     if(tree){
         if(n != 0){
-            return brojElemenataNaNtomNivou(tree->left,n-1) + brojElemenataNaNtomNivou(tree->right,n-1);
+             brojElemenataNaNtomNivou(tree->left,n-1) + brojElemenataNaNtomNivou(tree->right,n-1);
         }
     
     else{
