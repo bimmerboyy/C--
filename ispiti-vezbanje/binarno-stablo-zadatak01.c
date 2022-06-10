@@ -11,10 +11,15 @@ typedef struct tree{
 
 TREE *root = NULL,*temp;
 
-void createNode(int elem){
+struct tree *createNode(int elem){
     temp = (struct tree*)malloc(sizeof(struct tree));
-    
+    temp->data = elem;
+    temp->left = NULL;
+    temp->right = NULL;
+    return temp;
+
 }
+
 
 int main(){
 
