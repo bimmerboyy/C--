@@ -18,6 +18,7 @@ struct tree* createNode(int elem){
     temp->right = NULL;
     return temp;
 }
+// Za obicno stablo
 struct tree* addTree(struct tree *tree,char side,int elem){
     if(tree == NULL){
         root = createNode(elem);
@@ -32,4 +33,48 @@ struct tree* addTree(struct tree *tree,char side,int elem){
         return tree->right;
     }
     return tree;
+}
+
+void inorder(struct tree *tree){
+    if(tree){
+        inorder(tree->left);
+        printf("%d",tree->data);
+        inorder(tree->right);    
+    }
+}
+void postorder(struct tree *tree){
+    if(tree){
+        postorder(tree->left);
+        postorder(tree->right); 
+        printf("%d",tree->data);   
+    }
+}
+void preorder(struct tree *tree){
+    if(tree){
+        printf("%d",tree->data);
+        preorder(tree->left);
+        preorder(tree->right);    
+    }
+}
+
+// Za bts
+
+struct tree *addForBTS(struct tree *root,int elem){
+    if(root == NULL){
+        root = createNode(elem);
+    }
+    if(elem < root->data){
+        root->left = addForBTS(root->left,elem);
+        return root->left;
+    }
+    if(elem > root->data){
+        root->right = addForBTS(root->right,elem);
+        return root->right;
+    }
+    return root;
+}
+
+int main(){
+    
+    return 0;
 }
