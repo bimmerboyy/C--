@@ -134,14 +134,14 @@ class Evidencija{
         return *this;
     }
     //make print function
-    void print(){
-        for(int i=0; i<broj_studenata; i++){
-            //print student atributes
-            cout<<"Broj indexa: "<<studenti[i].get_broj_indeksa()<<endl;
-            cout<<"Bodovi laboratorijske: "<<studenti[i].bodovi_laboratorijske<<endl;
-            cout<<"Bodovi usmenog: "<<studenti[i].bodovi_usmenog<<endl;
-        }
-    }
+    // void print(){
+    //     for(int i=0; i<broj_studenata; i++){
+    //         //print student atributes
+    //         cout<<"Broj indexa: "<<studenti[i].get_broj_indeksa()<<endl;
+    //         cout<<"Bodovi laboratorijske: "<<studenti[i].bodovi_laboratorijske<<endl;
+    //         cout<<"Bodovi usmenog: "<<studenti[i].bodovi_usmenog<<endl;
+    //     }
+    // }
 };
 //make main funciton and add some stundets in evidencija
 int main(){
