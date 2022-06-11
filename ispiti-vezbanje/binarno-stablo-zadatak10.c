@@ -19,3 +19,37 @@ struct tree* createNode(int elem){
     return temp;
 }
 
+struct tree  *addBTS(struct tree *tree, int elem){
+    if(tree == NULL){
+        tree = createNode(elem);
+    }
+    if(elem < tree->data){
+        tree->left = addBTS(tree->left, elem);
+    }
+    if(elem > tree->data){
+        tree->right = addBTS(tree->right, elem);
+    }
+}
+
+void inorder(struct tree *tree){
+    if(tree){
+        inorder(tree->left);
+        printf("%d",tree->data);
+        inorder(tree->right);    
+    }
+}
+void postorder(struct tree *tree){
+    if(tree){
+        postorder(tree->left);
+        postorder(tree->right); 
+        printf("%d",tree->data);   
+    }
+}
+void preorder(struct tree *tree){
+    if(tree){
+        printf("%d",tree->data);
+        preorder(tree->left);
+        preorder(tree->right);    
+    }
+}
+
