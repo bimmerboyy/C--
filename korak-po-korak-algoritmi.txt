@@ -1,0 +1,13 @@
+Primov algoritam:
+
+1. uzmeš nasumičan čvor.
+2. od tog čvora povezuješ čvor sa najmanjom granom.
+3. za sledeći uzimaš isto čvor sa najmanjm granom tako da nema petlji
+4. tako do kraja.
+5. ako neki nema,  nastavlja se od prethodnog.
+
+Kruskalov:
+
+1. Izabere se najmanja grana, 
+2. pa sledeća najmanja i tako redom se ubacuju.
+
