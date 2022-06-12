@@ -76,8 +76,6 @@ int maksimalnaDubina(struct tree *tree){
             }
     }
     return maks;
-   
-   
 }
 
 int main(){
