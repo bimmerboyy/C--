@@ -44,7 +44,7 @@ void print_postorder(struct node * root){
     }
 }
 
-bool pretraga(struct node * tree, int elem, int n = 0 ){
+bool pretraga(struct node * tree, int elem, int n = 0){
     if(tree){
         if(tree -> key == elem){
             printf("element se nalazi u stablu na %d nivou \n", n);
