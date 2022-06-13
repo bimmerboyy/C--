@@ -22,8 +22,6 @@ sa glavnog ulaza)
 #include<cmath>
 using namespace std;
 
-
-
 enum Kvadrant { I, II, III, IV};
 
 class Tacka{
