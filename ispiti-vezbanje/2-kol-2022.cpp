@@ -1,7 +1,3 @@
-#include<iostream>
-#include<cmath>
-using namespace std;
-
 /*1.Tacka u ravni zadaje se kvadratnom (1 kvadrant,2 kvadrant,3 kvadrant ili 4 kvadrant), i realnim koordinatama x i y 
 podrazumevano(0,0) koje mogu da se dohvate.Kvadranti sluze da bi se izvrsila provera da li koordinate tacke ispravno unete.
 Tacka moze da se upise u izlazini tok (cout<<tacka) u obliku (x,y)
@@ -21,8 +17,12 @@ izalzni tok je oblika k(pmin,pmin,DELTAp) gde je k rezultat upisivanje sadrzajne
 5.Napisati na jeziku C++ program koji napravi jednu spiralu,napravi jedan prikazivac koji prikazuje tu spiralu ispise prikazivac
 na glavnom izlazu i ispise tabeliranu sadrzanu krivu na glavnom izlazu.Koristi fiksne parametre (nije potrebno ucitavati podatke
 sa glavnog ulaza)
-
 */
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+
 
 enum Kvadrant { I, II, III, IV};
 
@@ -56,7 +56,6 @@ class Tacka{
     void set_y(float y){
         this->y=y;
     }
-    //make getters function
     float get_x(){
         return x;
     }
@@ -99,7 +98,6 @@ class Spirala : public Kriva{
     }
 };
 
-//create class prikazivac
 class Prikazivac{
     protected:
     Kriva k;
@@ -123,11 +121,9 @@ class Prikazivac{
         }
         return out;
     }
-    //add function for K
     void set_k(Kriva k){
         this->k=k;
     }
-    //set all by once
     void set_others(int pMin, int pMax, int DELTAp){
         this->pMin=pMin;
         this->pMax=pMax;
@@ -141,7 +137,6 @@ class Prikazivac{
 
 };
 
-
 int main(){
     Tacka t1(1,1,I);
     Spirala s1(2, 3, 4);
@@ -149,20 +144,3 @@ int main(){
     cout << t1;
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
