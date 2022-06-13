@@ -56,6 +56,13 @@ class Tacka{
     void set_y(float y){
         this->y=y;
     }
+    //make getters function
+    float get_x(){
+        return x;
+    }
+    float get_y(){
+        return y;
+    }
 };
 
 class Kriva{
@@ -63,12 +70,17 @@ class Kriva{
     Tacka t1;
     float p;
     public:
+    Kriva(){
+    }
     Kriva(float p){
         this->p=p;
     }
     Kriva(const Kriva& k){
         this->t1=k.t1;
         this->p=k.p;
+    }
+    Tacka get_t(){
+        return t1;
     }
 };
 
@@ -87,6 +99,47 @@ class Spirala : public Kriva{
     }
 };
 
+//create class prikazivac
+class Prikazivac{
+    protected:
+    Kriva k;
+    float pMin,pMax,DELTAp;
+    public:
+    Prikazivac(float pMin, float pMax, float DELTAp){
+        this->pMin=pMin;
+        this->pMax=pMax;
+        this->DELTAp=DELTAp;
+    }
+    Prikazivac(const Prikazivac& p){
+        this->k=p.k;
+        this->pMin=p.pMin;
+        this->pMax=p.pMax;
+        this->DELTAp=p.DELTAp;
+    }
+    friend ostream& operator<<(ostream& out, Prikazivac p1){
+        out<<"k("<<p1.pMin<<","<<p1.pMax<<","<<p1.DELTAp<<")"<<endl;
+        for(float p=p1.pMin;p<=p1.pMax;p+=p1.DELTAp){
+            out<<"("<<p<<","<<p1.k.get_t().get_x()<<","<<p1.k.get_t().get_y()<<")"<<endl;
+        }
+        return out;
+    }
+    //add function for K
+    void set_k(Kriva k){
+        this->k=k;
+    }
+    //set all by once
+    void set_others(int pMin, int pMax, int DELTAp){
+        this->pMin=pMin;
+        this->pMax=pMax;
+        this->DELTAp=DELTAp;
+    }
+    void table(){
+        for(float p=pMin;p<=pMax;p+=DELTAp){
+            cout<<"("<<p<<","<<k.get_t().get_x()<<","<<k.get_t().get_y()<<endl;
+        }
+    }
+
+};
 
 
 int main(){
