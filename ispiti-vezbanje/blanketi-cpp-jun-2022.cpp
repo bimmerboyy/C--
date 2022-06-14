@@ -123,7 +123,7 @@ class Glumac : public Ucesnik{
     }
     void ispis(){
         for(int i = 0;i < trenutni_broj_glumaca;i++){
-            cout<<"Glumac je"<<ucesnik[i].get_ime_i_prezime()<<endl;
+            cout<<"Glumac je "<<ucesnik[i].get_ime_i_prezime()<<endl;
         }
     }
 
