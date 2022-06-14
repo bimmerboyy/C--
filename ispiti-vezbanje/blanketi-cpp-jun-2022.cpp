@@ -69,6 +69,7 @@ class Ucesnik{
 
     }
     int getUkupanBrPoena(){
+        ukupanBrPoena = poeniPublike;
         return ukupanBrPoena;
     }
     
@@ -162,9 +163,9 @@ class Glumac : public Ucesnik{
             for(int j=0; j<trenutni_broj_glumaca-i-1; j++){
                 if(ucesnik[j].getUkupanBrPoena() > ucesnik[j+1].getUkupanBrPoena()){
                     // // swap ucenik[j] and ucenik[j+1]  using xor
-                    // Ucesnik temp = ucesnik[j];
-                    // ucesnik[j] = ucesnik[j+1];
-                    // ucesnik[j+1] = temp;
+                    Ucesnik temp = ucesnik[j];
+                    ucesnik[j] = ucesnik[j+1];
+                    ucesnik[j+1] = temp;
                 }
             }
         }
