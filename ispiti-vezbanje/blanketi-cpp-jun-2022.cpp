@@ -147,17 +147,6 @@ class Glumac : public Ucesnik{
         return *this;
 
     }
-    template<typename T>
-
-    void zameni(T *a, T *b){
-        *a =  *a ^ *b;
-        *b =  *a ^ *b;
-        *a =  *a ^ *b;
-        
-   }
-   
-   
-
     int srednjaVrednost(){
         int maks = 0;
         int s = 0;
@@ -172,7 +161,10 @@ class Glumac : public Ucesnik{
         for(int i=0; i<trenutni_broj_glumaca-1;i++){
             for(int j=0; j<trenutni_broj_glumaca-i-1; j++){
                 if(ucesnik[j].getUkupanBrPoena() > ucesnik[j+1].getUkupanBrPoena()){
-                   Glumac::zameni(&ucesnik[j], &ucesnik[j+1]);
+                    // // swap ucenik[j] and ucenik[j+1]  using xor
+                    // Ucesnik temp = ucesnik[j];
+                    // ucesnik[j] = ucesnik[j+1];
+                    // ucesnik[j+1] = temp;
                 }
             }
         }
@@ -271,8 +263,10 @@ int main(){
     Glumac g1;                       //trenutni broj glumaca = 0
     Ucesnik u1(2,"Vin Diesel",50);
     Ucesnik u2(3,"Dzeki Cen",70);   //#2   ime i prezime = Vin Diesel , poeni publike = 40
+    Ucesnik u3(2,"Kit Harington",60);
     g1+=u1;
     g1+=u2;
+    g1+=u3;
     g1.sortiraniUcesnici();
     cout<<g1;
 
