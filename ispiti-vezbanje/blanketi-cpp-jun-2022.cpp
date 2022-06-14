@@ -31,6 +31,7 @@ class Ucesnik{
     int ukupanBrPoena;
    
     public:
+    Ucesnik (){}
     Ucesnik(int redniBroj, string imeIPrezime, int poeniPublike){
         this->redniBroj = redniBroj;
         this->imeIPrezime = imeIPrezime;
@@ -93,10 +94,9 @@ class Glumac : public Ucesnik{
       
        
     }
-    // Glumac operator+=(Ucesnik &u1){
-    //     Ucesnik *pomocni = new Ucesnik[trenutni_broj_glumaca];
-    // }
-  
+    Glumac operator+=(Ucesnik &u1){
+        Ucesnik *pomocni = new Ucesnik[trenutni_broj_glumaca];
+    }
     bool daLiJeProsao(){
         int procenat = 50;
         int brojPoenaZirija = brojPoenaZirijaZaIdeju + brojPoenaZirijaZaIzvodjenje;
