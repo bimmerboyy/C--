@@ -16,9 +16,12 @@
 
 */
 
+#include <cstdio>
+#include <cxxabi.h>
 #include <exception>
 #include<iostream>
 #include <iterator>
+#include <list>
 #include<string>
 #include <type_traits>
 #include<stdlib.h>
@@ -109,6 +112,30 @@ class Glumac : public Ucesnik{
         return *this;
     }
 
+    //Za izbacivanje ucesnika
+
+    //Kreira se pomocni niz za -1 gde ako smo dodali 3 objekta u pomocni staju 2
+    //Stavimo brojac za pomocni na 0
+    //Prekopiramo jedan po jedan element u pomocni br++ gde ce se prekopirati 2 obj
+    //Zatim u taj niz stvaimo ta 2 obj iz pomocnog
+    //Smanjimo duzinu niza -- ako je bila 3 sada je 2 da bi u sledecoj interaciji moli da smanjimo vise objekata
+
+
+    Glumac operator-=(int rednibr){
+        Ucesnik *pomocni = new Ucesnik[trenutni_broj_glumaca-1];
+        int brojac = 0;
+        for(int i=0; i<trenutni_broj_glumaca; i++){
+            pomocni[brojac] = ucesnik[i];
+            brojac++;
+        }
+        ucesnik = pomocni;
+        trenutni_broj_glumaca--;
+        return *this;
+
+    }
+
+
+
     bool daLiJeProsao(){
         int procenat = 50;
         int brojPoenaZirija = brojPoenaZirijaZaIdeju + brojPoenaZirijaZaIzvodjenje;
@@ -121,11 +148,14 @@ class Glumac : public Ucesnik{
         cout<<"Glumac nije prosao"<<endl;
         return false;
     }
-    void ispis(){
-        for(int i = 0;i < trenutni_broj_glumaca;i++){
-            cout<<"Glumac je "<<ucesnik[i].get_ime_i_prezime()<<endl;
-        }
+   friend ostream& operator<<(ostream& out,Glumac &g1){
+    for(int i=0;i<g1.trenutni_broj_glumaca; i++){
+        out<<"Glumac je :"<<g1.ucesnik[i].get_ime_i_prezime()<<endl;
     }
+    return out;
+
+    
+   }
 
 };
 // Омогућити додавање новог и брисаnje постојећег учесника на основу учесниковог редног броја Могуће је одредити средњу вредност
@@ -196,6 +226,6 @@ int main(){
     Glumac g1;                       //trenutni broj glumaca = 0
     Ucesnik u1(2,"Vin Diesel",40);   //#2   ime i prezime = Vin Diesel , poeni publike = 40
     g1+=u1;                          
-    g1.ispis();
+    cout<<g1;
     return 0;
 }
