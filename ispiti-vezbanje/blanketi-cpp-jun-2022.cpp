@@ -104,16 +104,15 @@ class Glumac : public Ucesnik{
         for(int i = 0;i < trenutni_broj_glumaca;i++){
             pomocni[i] = ucesnik[i];
         }
-       
         trenutni_broj_glumaca++;
         Ucesnik *ucesnik = new Ucesnik[trenutni_broj_glumaca];
         for(int i = 0;i < trenutni_broj_glumaca-1;i++){
             ucesnik[i] = pomocni[i];
         }
-       
-        ucesnik[trenutni_broj_glumaca-1] = u1;
+       ucesnik[trenutni_broj_glumaca-1] = u1;
         return *this;
     }
+
     bool daLiJeProsao(){
         int procenat = 50;
         int brojPoenaZirija = brojPoenaZirijaZaIdeju + brojPoenaZirijaZaIzvodjenje;
@@ -147,6 +146,8 @@ class Pevac : public Ucesnik{
     int brojInstrumenata;
     int brojVokala;
     int brojPoenaMuzickogZirija;
+    int trenutni_broj_pevaca;
+    Ucesnik *ucesnik;
     
     public:
     Pevac(int redniBroj, string imeIPrezime, int poeniPublike,string Pesma, int brojInstrumenata, int brojVokala,int brojPoenaMuzickogZirija):Ucesnik( redniBroj,imeIPrezime,poeniPublike){
@@ -165,8 +166,23 @@ class Pevac : public Ucesnik{
         else{
             cout<<"Uneli ste pogresan br poena publike"<<endl;
         }
+        trenutni_broj_pevaca = 0;
 
     }
+    Pevac operator+=(Ucesnik &u1){
+        Ucesnik *pomocni = new Ucesnik[trenutni_broj_pevaca];
+        for(int i = 0;i < trenutni_broj_pevaca;i++){
+            pomocni[i] = ucesnik[i];
+        }
+        trenutni_broj_pevaca++;
+        Ucesnik *ucesnik = new Ucesnik[trenutni_broj_pevaca];
+        for(int i = 0;i < trenutni_broj_pevaca-1;i++){
+            ucesnik[i] = pomocni[i];
+        }
+       ucesnik[trenutni_broj_pevaca-1] = u1;
+        return *this;
+    }
+    
     bool daLiJeProsao(){
         int procenat = 50;
         int brojPoenaZirija = brojPoenaMuzickogZirija;
