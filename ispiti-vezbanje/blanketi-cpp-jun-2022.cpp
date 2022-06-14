@@ -46,10 +46,10 @@ class Ucesnik{
             cout<<"Uneli ste pogresan br poena publike"<<endl;
         }
     }
-  
-   
-    
-  virtual bool daLiJeProsao(){
+    string get_ime_i_prezime(){
+        return imeIPrezime;
+    }
+    virtual bool daLiJeProsao(){
         ukupanBrPoena = poeniPublike;
         if(ukupanBrPoena > 100){
             cout<<"Ucesnik je polozio"<<endl;
@@ -69,35 +69,31 @@ class Glumac : public Ucesnik{
     int brojPoenaZirijaZaIzvodjenje;
     int trenutni_broj_glumaca;
     Ucesnik *ucesnik;
-   
-    
     public:
-    Glumac(){}
+    Glumac(){
+        trenutni_broj_glumaca = 0;
+    }
     Glumac(int redniBroj, string imeIPrezime, int poeniPublike,int brojPotrebnihRekvizita, int brojPoenaZirijaZaIzvodjenje,int brojPoenaZirijaZaIdeju): Ucesnik(redniBroj,imeIPrezime,poeniPublike){
-       this->brojPotrebnihRekvizita =  brojPotrebnihRekvizita;
-       if(brojPoenaZirijaZaIdeju >= 0 && brojPoenaZirijaZaIdeju <= 50){
-            this->brojPoenaZirijaZaIdeju = brojPoenaZirijaZaIdeju;
+        this->brojPotrebnihRekvizita =  brojPotrebnihRekvizita;
+        if(brojPoenaZirijaZaIdeju >= 0 && brojPoenaZirijaZaIdeju <= 50){
+                this->brojPoenaZirijaZaIdeju = brojPoenaZirijaZaIdeju;
+            }
+        else if(brojPoenaZirijaZaIdeju > 50){
+            cout<<"Uneli ste pogresan br poena za zirija za ideju "<<endl;
         }
-       else if(brojPoenaZirijaZaIdeju > 50){
-        cout<<"Uneli ste pogresan br poena za zirija za ideju "<<endl;
-       }
-         if(brojPoenaZirijaZaIzvodjenje >= 0 && brojPoenaZirijaZaIzvodjenje <= 50){
+        if(brojPoenaZirijaZaIzvodjenje >= 0 && brojPoenaZirijaZaIzvodjenje <= 50){
             this->brojPoenaZirijaZaIzvodjenje = brojPoenaZirijaZaIzvodjenje;
-
-       }
-       else if(brojPoenaZirijaZaIzvodjenje > 50){
-        cout<<"Uneli ste pogresan br poena za zirija za izvodjenje "<<endl;
-       }
-    if(poeniPublike >= 0 && poeniPublike <= 100){
+    }
+        else if(brojPoenaZirijaZaIzvodjenje > 50){
+            cout<<"Uneli ste pogresan br poena za zirija za izvodjenje "<<endl;
+        }
+        if(poeniPublike >= 0 && poeniPublike <= 100){
             this->poeniPublike = poeniPublike;
         }
         else{ 
             cout<<"Uneli ste pogresan br poena publike"<<endl;
         }
-        
         trenutni_broj_glumaca = 0;
-      
-       
     }
     Glumac operator+=(Ucesnik &u1){
         Ucesnik *pomocni = new Ucesnik[trenutni_broj_glumaca];
@@ -105,11 +101,11 @@ class Glumac : public Ucesnik{
             pomocni[i] = ucesnik[i];
         }
         trenutni_broj_glumaca++;
-        Ucesnik *ucesnik = new Ucesnik[trenutni_broj_glumaca];
+        ucesnik = new Ucesnik[trenutni_broj_glumaca];
         for(int i = 0;i < trenutni_broj_glumaca-1;i++){
             ucesnik[i] = pomocni[i];
         }
-       ucesnik[trenutni_broj_glumaca-1] = u1;
+        ucesnik[trenutni_broj_glumaca-1] = u1;
         return *this;
     }
 
@@ -127,7 +123,7 @@ class Glumac : public Ucesnik{
     }
     void ispis(){
         for(int i = 0;i < trenutni_broj_glumaca;i++){
-            cout<<"Glumac je"<<imeIPrezime[i]<<endl;
+            cout<<"Glumac je"<<ucesnik[i].get_ime_i_prezime()<<endl;
         }
     }
 
@@ -148,7 +144,6 @@ class Pevac : public Ucesnik{
     int brojPoenaMuzickogZirija;
     int trenutni_broj_pevaca;
     Ucesnik *ucesnik;
-    
     public:
     Pevac(int redniBroj, string imeIPrezime, int poeniPublike,string Pesma, int brojInstrumenata, int brojVokala,int brojPoenaMuzickogZirija):Ucesnik( redniBroj,imeIPrezime,poeniPublike){
         this->Pesma = Pesma;    
@@ -182,7 +177,6 @@ class Pevac : public Ucesnik{
        ucesnik[trenutni_broj_pevaca-1] = u1;
         return *this;
     }
-    
     bool daLiJeProsao(){
         int procenat = 50;
         int brojPoenaZirija = brojPoenaMuzickogZirija;
@@ -199,11 +193,9 @@ class Pevac : public Ucesnik{
 };
 
 int main(){
-    Glumac g1;
-    Ucesnik u1(2,"Vin Diesel",40);
-    g1+=u1;
+    Glumac g1;                       //trenutni broj glumaca = 0
+    Ucesnik u1(2,"Vin Diesel",40);   //#2   ime i prezime = Vin Diesel , poeni publike = 40
+    g1+=u1;                          
     g1.ispis();
-   
-
     return 0;
 }
