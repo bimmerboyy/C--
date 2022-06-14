@@ -8,7 +8,7 @@
 број поена за певаче рачуна као збир гласова публике и поена музичког жирија: спречити креирање такмичара да невалидним бројем poena
 
 
-Омогућити додавање новог и бриса постојећег учесника на основу учесниковог редног броја Могуће је одредити средњу вредност
+Омогућити додавање новог и брисаnje постојећег учесника на основу учесниковог редног броја Могуће је одредити средњу вредност
 укупног броја поена учесника који су се пласирали у следећи круг и учесника који је освоји највећи број поена жирија. 
 Могуће је приказати евиденцију учесника уписом свих података у фајл Омогућити сортираье учесника у опадајући редослед по броју
 помоћног особља за извођење наступа. Број помоћног особља за глумца се рачуна као 1% броја реквизита, док се број помоћног 
@@ -19,6 +19,7 @@
 #include<iostream>
 #include<string>
 #include <type_traits>
+#include<stdlib.h>
 
 using namespace std;
 
@@ -28,6 +29,7 @@ class Ucesnik{
     string imeIPrezime;
     int poeniPublike;
     int ukupanBrPoena;
+   
     public:
     Ucesnik(int redniBroj, string imeIPrezime, int poeniPublike){
         this->redniBroj = redniBroj;
@@ -40,6 +42,9 @@ class Ucesnik{
             cout<<"Uneli ste pogresan br poena publike"<<endl;
         }
     }
+  
+   
+    
   virtual bool daLiJeProsao(){
         ukupanBrPoena = poeniPublike;
         if(ukupanBrPoena > 100){
@@ -58,6 +63,9 @@ class Glumac : public Ucesnik{
     int brojPotrebnihRekvizita;
     int brojPoenaZirijaZaIdeju;
     int brojPoenaZirijaZaIzvodjenje;
+    int trenutni_broj_glumaca;
+    Ucesnik *ucesnik;
+   
     
     public:
     Glumac(int redniBroj, string imeIPrezime, int poeniPublike,int brojPotrebnihRekvizita, int brojPoenaZirijaZaIzvodjenje,int brojPoenaZirijaZaIdeju): Ucesnik(redniBroj,imeIPrezime,poeniPublike){
@@ -81,9 +89,14 @@ class Glumac : public Ucesnik{
         else{
             cout<<"Uneli ste pogresan br poena publike"<<endl;
         }
+        trenutni_broj_glumaca = 0;
       
        
     }
+    // Glumac operator+=(Ucesnik &u1){
+    //     Ucesnik *pomocni = new Ucesnik[trenutni_broj_glumaca];
+    // }
+  
     bool daLiJeProsao(){
         int procenat = 50;
         int brojPoenaZirija = brojPoenaZirijaZaIdeju + brojPoenaZirijaZaIzvodjenje;
