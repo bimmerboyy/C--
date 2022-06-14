@@ -17,6 +17,7 @@
 */
 
 #include<iostream>
+#include <iterator>
 #include<string>
 #include <type_traits>
 #include<stdlib.h>
@@ -96,7 +97,14 @@ class Glumac : public Ucesnik{
     }
     Glumac operator+=(Ucesnik &u1){
         Ucesnik *pomocni = new Ucesnik[trenutni_broj_glumaca];
-    }
+        for(int i = 0;i < trenutni_broj_glumaca;i++){
+            pomocni[i] = ucesnik[i];
+        }
+        Ucesnik *ucesnik = new Ucesnik[trenutni_broj_glumaca];
+        trenutni_broj_glumaca++;
+        for(int i = 0;i < trenutni_broj_glumaca-1;i++){
+            
+        }
     bool daLiJeProsao(){
         int procenat = 50;
         int brojPoenaZirija = brojPoenaZirijaZaIdeju + brojPoenaZirijaZaIzvodjenje;
