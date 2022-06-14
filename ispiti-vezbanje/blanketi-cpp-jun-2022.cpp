@@ -104,11 +104,13 @@ class Glumac : public Ucesnik{
         for(int i = 0;i < trenutni_broj_glumaca;i++){
             pomocni[i] = ucesnik[i];
         }
+       
         trenutni_broj_glumaca++;
         Ucesnik *ucesnik = new Ucesnik[trenutni_broj_glumaca];
         for(int i = 0;i < trenutni_broj_glumaca-1;i++){
             ucesnik[i] = pomocni[i];
         }
+       
         ucesnik[trenutni_broj_glumaca-1] = u1;
         return *this;
     }
