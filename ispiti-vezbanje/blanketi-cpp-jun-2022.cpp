@@ -22,6 +22,7 @@
 #include<string>
 #include <type_traits>
 #include<stdlib.h>
+#include <utility>
 
 using namespace std;
 
@@ -80,19 +81,20 @@ class Glumac : public Ucesnik{
        else if(brojPoenaZirijaZaIdeju > 50){
         cout<<"Uneli ste pogresan br poena za zirija za ideju "<<endl;
        }
-        if(brojPoenaZirijaZaIzvodjenje >= 0 && brojPoenaZirijaZaIzvodjenje <= 50){
+         if(brojPoenaZirijaZaIzvodjenje >= 0 && brojPoenaZirijaZaIzvodjenje <= 50){
             this->brojPoenaZirijaZaIzvodjenje = brojPoenaZirijaZaIzvodjenje;
 
        }
-       else{
+       else if(brojPoenaZirijaZaIzvodjenje > 50){
         cout<<"Uneli ste pogresan br poena za zirija za izvodjenje "<<endl;
        }
-       if(poeniPublike >= 0 && poeniPublike <= 100){
+    if(poeniPublike >= 0 && poeniPublike <= 100){
             this->poeniPublike = poeniPublike;
         }
-        else{
+        else{ 
             cout<<"Uneli ste pogresan br poena publike"<<endl;
         }
+        
         trenutni_broj_glumaca = 0;
       
        
@@ -123,7 +125,9 @@ class Glumac : public Ucesnik{
         return false;
     }
     void ispis(){
-        cout<<"Glumac je"<<imeIPrezime<<"pod rednim brojem"<<redniBroj<<endl;
+        for(int i = 0;i < trenutni_broj_glumaca;i++){
+            cout<<"Glumac je"<<imeIPrezime[i]<<endl;
+        }
     }
 
 };

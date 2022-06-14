@@ -133,6 +133,7 @@ class Evidencija{
         broj_studenata--;
         return *this;
     }
+    
     //make print function
     // void print(){
     //     for(int i=0; i<broj_studenata; i++){
