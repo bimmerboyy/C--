@@ -16,6 +16,7 @@
 
 */
 
+#include <exception>
 #include<iostream>
 #include <iterator>
 #include<string>
@@ -100,11 +101,14 @@ class Glumac : public Ucesnik{
         for(int i = 0;i < trenutni_broj_glumaca;i++){
             pomocni[i] = ucesnik[i];
         }
-        Ucesnik *ucesnik = new Ucesnik[trenutni_broj_glumaca];
         trenutni_broj_glumaca++;
+        Ucesnik *ucesnik = new Ucesnik[trenutni_broj_glumaca];
         for(int i = 0;i < trenutni_broj_glumaca-1;i++){
-            
+            ucesnik[i] = pomocni[i];
         }
+        ucesnik[trenutni_broj_glumaca-1] = u1;
+        return *this;
+    }
     bool daLiJeProsao(){
         int procenat = 50;
         int brojPoenaZirija = brojPoenaZirijaZaIdeju + brojPoenaZirijaZaIzvodjenje;
@@ -116,6 +120,9 @@ class Glumac : public Ucesnik{
         }
         cout<<"Glumac nije prosao"<<endl;
         return false;
+    }
+    void ispis(){
+        cout<<"Glumac je"<<imeIPrezime<<"pod rednim brojem"<<redniBroj<<endl;
     }
 
 };
@@ -170,6 +177,9 @@ class Pevac : public Ucesnik{
 
 int main(){
     Glumac g1(1,"Silvester Stalone",30,2,40,40);
+    Ucesnik u1(2,"Vin Diesel",40);
+    g1+=u1;
+    g1.ispis();
    
 
     return 0;
