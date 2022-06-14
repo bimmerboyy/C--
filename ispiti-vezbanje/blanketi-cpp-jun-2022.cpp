@@ -16,12 +16,14 @@
 
 */
 
+#include <cmath>
 #include <cstdio>
 #include <cxxabi.h>
 #include <exception>
 #include<iostream>
 #include <iterator>
 #include <list>
+#include <stdexcept>
 #include<string>
 #include <type_traits>
 #include<stdlib.h>
@@ -52,6 +54,9 @@ class Ucesnik{
     string get_ime_i_prezime(){
         return imeIPrezime;
     }
+    int getRedniBr(){
+        return redniBroj;
+    }
     virtual bool daLiJeProsao(){
         ukupanBrPoena = poeniPublike;
         if(ukupanBrPoena > 100){
@@ -61,6 +66,9 @@ class Ucesnik{
         return false;
          cout<<"Ucesnik nije polozio"<<endl;
 
+    }
+    int getUkupanBrPoena(){
+        return ukupanBrPoena;
     }
 
 };
@@ -125,14 +133,29 @@ class Glumac : public Ucesnik{
         Ucesnik *pomocni = new Ucesnik[trenutni_broj_glumaca-1];
         int brojac = 0;
         for(int i=0; i<trenutni_broj_glumaca; i++){
-            pomocni[brojac] = ucesnik[i];
-            brojac++;
+            if(rednibr != ucesnik[i].getRedniBr()){
+                pomocni[brojac] = ucesnik[i];
+                brojac++;
+            }
+            
         }
         ucesnik = pomocni;
         trenutni_broj_glumaca--;
         return *this;
 
     }
+
+    int srednjaVrednost(){
+        int maks = 0;
+        int s = 0;
+        for(int i=0; i<trenutni_broj_glumaca; i++){
+            if(ucesnik[i].daLiJeProsao()){
+                s += ucesnik[i].getUkupanBrPoena();
+            }
+        }
+        return s / trenutni_broj_glumaca;
+    }
+
 
 
 
@@ -224,8 +247,12 @@ class Pevac : public Ucesnik{
 
 int main(){
     Glumac g1;                       //trenutni broj glumaca = 0
-    Ucesnik u1(2,"Vin Diesel",40);   //#2   ime i prezime = Vin Diesel , poeni publike = 40
-    g1+=u1;                          
-    cout<<g1;
+    Ucesnik u1(2,"Vin Diesel",150);
+    Ucesnik u2(3,"Dzeki Cen",130);   //#2   ime i prezime = Vin Diesel , poeni publike = 40
+    g1+=u1;
+    g1+=u2;
+                          
+   // cout<<g1;
+   g1.srednjaVrednost();
     return 0;
 }
