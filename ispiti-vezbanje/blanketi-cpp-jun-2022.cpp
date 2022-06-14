@@ -71,6 +71,7 @@ class Glumac : public Ucesnik{
    
     
     public:
+    Glumac(){}
     Glumac(int redniBroj, string imeIPrezime, int poeniPublike,int brojPotrebnihRekvizita, int brojPoenaZirijaZaIzvodjenje,int brojPoenaZirijaZaIdeju): Ucesnik(redniBroj,imeIPrezime,poeniPublike){
        this->brojPotrebnihRekvizita =  brojPotrebnihRekvizita;
        if(brojPoenaZirijaZaIdeju >= 0 && brojPoenaZirijaZaIdeju <= 50){
@@ -176,7 +177,7 @@ class Pevac : public Ucesnik{
 };
 
 int main(){
-    Glumac g1(1,"Silvester Stalone",30,2,40,40);
+    Glumac g1;
     Ucesnik u1(2,"Vin Diesel",40);
     g1+=u1;
     g1.ispis();
