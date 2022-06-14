@@ -93,9 +93,9 @@ class Glumac : public Ucesnik{
       
        
     }
-    Glumac operator+=(Ucesnik &u1){
-        Ucesnik *pomocni = new Ucesnik[trenutni_broj_glumaca];
-    }
+    // Glumac operator+=(Ucesnik &u1){
+    //     Ucesnik *pomocni = new Ucesnik[trenutni_broj_glumaca];
+    // }
   
     bool daLiJeProsao(){
         int procenat = 50;
