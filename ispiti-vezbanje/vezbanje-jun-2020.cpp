@@ -127,6 +127,7 @@ class Pitanje{
         this->tekst = tekst;
         this->brojPonudjenihOdgovora = brojPonudjenihOdgovora;
         this->brojPoena = brojPoena;
+        trenutni_broj_odgovora = 0;
     }
     Pitanje(){
         brojPonudjenihOdgovora = 5;
@@ -134,21 +135,19 @@ class Pitanje{
     }
     int getBrojPoena(){
         return brojPoena;
-    }
-      
-    
+    }    
     Pitanje operator+=(PonudjeniOdgovor &p1){
         if(trenutni_broj_odgovora < brojPonudjenihOdgovora){
-        PonudjeniOdgovor *temp = new PonudjeniOdgovor[trenutni_broj_odgovora];
-        for(int i=0; i<trenutni_broj_odgovora; i++){
-           temp[i] = ponudjeniOdgovori[i];
-        }
-        trenutni_broj_odgovora++;
-        ponudjeniOdgovori = new PonudjeniOdgovor[trenutni_broj_odgovora];
-        for(int i = 0; i < trenutni_broj_odgovora - 1; i++){
-            ponudjeniOdgovori[i] = temp[i];
-        }
-        ponudjeniOdgovori[trenutni_broj_odgovora - 1] = p1;
+            PonudjeniOdgovor *temp = new PonudjeniOdgovor[trenutni_broj_odgovora];
+            for(int i=0; i<trenutni_broj_odgovora; i++){
+                temp[i] = ponudjeniOdgovori[i];
+            }
+            trenutni_broj_odgovora++;
+            ponudjeniOdgovori = new PonudjeniOdgovor[trenutni_broj_odgovora];
+            for(int i = 0; i < trenutni_broj_odgovora - 1; i++){
+                ponudjeniOdgovori[i] = temp[i];
+            }
+            ponudjeniOdgovori[trenutni_broj_odgovora - 1] = p1;
         }
         return *this;
     }
@@ -166,10 +165,9 @@ class Pitanje{
 
     }
     friend ostream& operator<<(ostream& out, Pitanje &p1){
-        out<<p1.tekst<<"  -poeni:"<<p1.brojPoena<<endl;
-        for(int i=0; i<p1.brojPonudjenihOdgovora; i++){
-            out<<i<<"."<<p1.ponudjeniOdgovori[i]<<endl;
-
+        out<<p1.tekst<<"-poeni:"<<p1.brojPoena<<endl;
+        for(int i=0; i < p1.brojPonudjenihOdgovora; i++){
+            out << p1.ponudjeniOdgovori[i]; 
         }
         return out;
 
@@ -228,7 +226,6 @@ class Student : public Pitanje{
     
 
 };
-
 int main(){
     Pitanje p1("Šta je html ?", 4, 10 ); 
     PonudjeniOdgovor o1("Hyper text markup language", 100,true );
@@ -239,10 +236,9 @@ int main(){
     p1+=o2;
     p1+=o3;
     p1+=o4;
-    // int niz[2] = {3,2};
-    // cout << p1.odgovori(niz, 2);
-     cout << p1;
-
+    int niz[2] = {3,2};
+    cout << p1.odgovori(niz, 2);
+    cout << p1;
     return 0;
 }
 
