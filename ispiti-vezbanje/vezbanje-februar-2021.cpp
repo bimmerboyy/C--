@@ -22,6 +22,7 @@
 
 
 #include<iostream>
+#include <ostream>
 
 using namespace std;
 
@@ -30,8 +31,29 @@ class Artikal{
     string naziv;
     float cena;
     int popust;
+    public:
+    Artikal(string naziv, float cena, int popust){
+        this->naziv = naziv;
+        this->cena = cena;
+        this->popust = popust;
+    }
+    Artikal(){
+        popust = 0;
+    }
+    float cenaSaPopustom(){
+        float cenaSaPopustom;
+        cenaSaPopustom = cena * (float)popust/ 100;
+        return cenaSaPopustom;
+
+    }
+    friend ostream& operator<<(ostream& out, Artikal &a1){
+        out<<a1.naziv<<"("<<a1.cenaSaPopustom()<<")"<<", popust:"<<a1.popust<<endl;
+        return out;
+    }
+
 };
 
 int main(){
-
+    Artikal a1;
+return 0;
 }
