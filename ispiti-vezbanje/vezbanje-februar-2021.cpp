@@ -22,7 +22,7 @@
 
 
 #include<iostream>
-#include <ostream>
+
 
 using namespace std;
 
@@ -42,9 +42,12 @@ class Artikal{
     }
     float cenaSaPopustom(){
         float cenaSaPopustom;
-        cenaSaPopustom = cena * (float)popust/ 100;
+        cenaSaPopustom = cena-(cena * (float)popust/ 100);
         return cenaSaPopustom;
 
+    }
+    int getCena(){
+        return cena;
     }
     friend ostream& operator<<(ostream& out, Artikal &a1){
         out<<a1.naziv<<"("<<a1.cenaSaPopustom()<<")"<<", popust:"<<a1.popust<<endl;
@@ -53,7 +56,46 @@ class Artikal{
 
 };
 
-int main(){
+// Klasa Stavka računa se kreira za zadati artikal i zadatu celobrojnu količinu.
+//    Stavki računa se dodeljuje redni broj na računu prilikom dodavanja stavke na račun. 
+//    Može da se izračuna iznos stavke računa kao proizvod količine i cene artikla. 
+//    Omogućiti kopiranje vrednosti pomoću kopi konstruktora.
+//    Može se ispisati artikal stavke. Na glavnom izlazu se ispisuje u obliku:
+//    S redni_broj_na_računu(artikal):količina|iznos.
+//    U main funkciji kreirati 2 objekta klase Stavka i testirati sve metode.
+//    Kreirati i treći objekat kao kopiju prvog.
+
+
+class Stavka{
+    private:
     Artikal a1;
+    int kolicina;
+    int redniBroj;
+    public:
+    Stavka(int kolicina, int redniBroj){
+        this->kolicina = kolicina;
+        this->redniBroj = redniBroj;   
+    }
+    Stavka(){}
+    int iznosStavke(){
+        int iznos;
+        iznos = kolicina * a1.getCena();
+        return iznos;
+    }
+    Stavka(const Stavka &s1){
+        kolicina = s1.kolicina;
+        redniBroj = s1.redniBroj;
+    }
+    friend ostream& operator<<(ostream& out,Artikal &a1){
+        
+    }
+
+
+};
+
+int main(){
+    Artikal a1("Balan stangla",100,10);
+    cout<<a1;
 return 0;
 }
+
