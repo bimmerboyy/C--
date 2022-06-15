@@ -141,10 +141,15 @@ class Pitanje{
         brojPonudjenihOdgovora = 5;
         trenutni_broj_odgovora = 0;
     }
+      
+    
     Pitanje operator+=(PonudjeniOdgovor &p1){
         PonudjeniOdgovor *temp = new PonudjeniOdgovor[trenutni_broj_odgovora];
         for(int i=0; i<trenutni_broj_odgovora; i++){
-            temp[i] = ponudjeniOdgovori[i];
+            if(ponudjeniOdgovori[i].getDaLiJeTacan() == true && ponudjeniOdgovori[i].getProcentualniUdeo() == ponudjeniOdgovori[i+1].getProcentualniUdeo()){
+                temp[i] = ponudjeniOdgovori[i];
+            }
+            
         }
         trenutni_broj_odgovora++;
         ponudjeniOdgovori = new PonudjeniOdgovor[trenutni_broj_odgovora];
@@ -153,6 +158,7 @@ class Pitanje{
         }
         ponudjeniOdgovori[trenutni_broj_odgovora - 1] = p1;
     }
+
 
 };
 
