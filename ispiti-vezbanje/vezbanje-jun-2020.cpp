@@ -168,7 +168,7 @@ class Pitanje{
     friend ostream& operator<<(ostream& out, Pitanje &p1){
         out<<p1.tekst<<"  -poeni:"<<p1.brojPoena<<endl;
         for(int i=0; i<p1.brojPonudjenihOdgovora; i++){
-            out<<p1.ponudjeniOdgovori[i]<<endl;
+            out<<i<<"."<<p1.ponudjeniOdgovori[i]<<endl;
 
         }
         return out;
@@ -212,19 +212,36 @@ class Student : public Pitanje{
             }
         
         }
-        brojOsvojenihPoena = (float)getBrojPoena()*s/100;
+        brojOsvojenihPoena = (float)brojPoena*s/100;
         return brojOsvojenihPoena;
 
     }
+    friend ostream& operator<<(ostream& out,Student &s1){
+        out<<"Ime:"<<s1.imeStudenta <<" Broj indeksa:"<<s1.brojIndeksa<<" broj osvojenih poena:"<<s1.brojOsvojenihPoena<<endl;
+       out<<"Tekst:"<<s1.tekst<<"   -poeni:"<<s1.brojPoena << endl;
+        for(int i=0; i<s1.brojPonudjenihOdgovora; i++){
+            out<<i<<"."<<s1.ponudjeniOdgovori[i]<<endl;
+
+        }
+        return out;
+    } 
     
 
 };
 
-
-
-
-
 int main(){
+    Pitanje p1("Šta je html ?", 4, 10 ); 
+    PonudjeniOdgovor o1("Hyper text markup language", 100,true );
+    PonudjeniOdgovor o2("Best way to  hack nasa", 99,true);
+    PonudjeniOdgovor o3("I do not know", -10,false);
+    PonudjeniOdgovor o4("Pitaću suada", -100,false);
+    p1+=o1;
+    p1+=o2;
+    p1+=o3;
+    p1+=o4;
+    // int niz[2] = {3,2};
+    // cout << p1.odgovori(niz, 2);
+     cout << p1;
 
     return 0;
 }
