@@ -46,6 +46,9 @@ class Artikal{
         return cenaSaPopustom;
 
     }
+    string getNaziv(){
+        return naziv;
+    }
     int getCena(){
         return cena;
     }
@@ -79,15 +82,16 @@ class Stavka{
     Stavka(){}
     int iznosStavke(){
         int iznos;
-        iznos = kolicina * a1.getCena();
+        iznos = kolicina * a1.cenaSaPopustom();
         return iznos;
     }
     Stavka(const Stavka &s1){
         kolicina = s1.kolicina;
         redniBroj = s1.redniBroj;
     }
-    friend ostream& operator<<(ostream& out,Artikal &a1){
-        
+    friend ostream& operator<<(ostream& out,Stavka &s1){
+        out<<s1.redniBroj<<"("<< s1.a1.getNaziv()<<")"<<"kolicina:"<<s1.kolicina<<" | "<<s1.iznosStavke()<<endl;
+        return out;
     }
 
 
@@ -95,6 +99,10 @@ class Stavka{
 
 int main(){
     Artikal a1("Balan stangla",100,10);
+    Stavka s1(2,4);
+    Stavka s2;
+    s2 = s1;
+    cout<<s2;
     cout<<a1;
 return 0;
 }
