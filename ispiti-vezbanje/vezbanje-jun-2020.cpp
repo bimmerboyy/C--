@@ -152,10 +152,11 @@ class Pitanje{
             ponudjeniOdgovori[i] = temp[i];
         }
         ponudjeniOdgovori[trenutni_broj_odgovora - 1] = p1;
-
     }
 
 };
+
+
 
 
 
