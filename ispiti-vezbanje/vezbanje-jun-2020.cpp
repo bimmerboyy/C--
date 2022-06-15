@@ -48,14 +48,6 @@
 
 using namespace std;
 
-// (30 poena) Klasa Ponuđeni odgovor se sastoji od teksta odgovora(string), 
-//     koji se zadaje pri stvaranju (podrazumevano ""), informacije da li je tačan i procentualnog
-//     udela poena koji taj odgovor nosi (u opsegu od -100 do 100).
-//     Svi podaci su privatni. Svi podaci se mogu dohvatiti, a informacija o tačnosti i procentualni udeo se 
-//     mogu postavljati(prilikom postavljanja proveriti da li su uneti ispravni procenti).
-//     Odgovor može da se ispiše na glavnom izlazu (out<<odgovor) u obliku tekst: udeo%.
-
-
 class PonudjeniOdgovor{
     private:
     string odgovor;
@@ -68,7 +60,11 @@ class PonudjeniOdgovor{
             this->procentualniUdeo = procentualniUdeo;
         }
         else{
-            cout<<"Uneli ste netacan odgovor: "<<endl;
+            cout<<"Uneli ste netacan procentualni udeo: "<<endl;
+            cout<<"Unesite ponovo"<<endl;
+            int temp;
+            cin>>temp;
+            setProcentualniUdeo(temp);
         }
         this->daLiJeTacan = daLiJeTacan;    
     }
@@ -85,7 +81,11 @@ class PonudjeniOdgovor{
             this->procentualniUdeo = procentualniUdeo;
          }
         else{
-            cout<<"Uneli ste netacan odgovor: "<<endl;
+            cout<<"Uneli ste netacan procentualni udeo: "<<endl;
+            cout<<"Unesite ponovo"<<endl;
+            int temp;
+            cin>>temp;
+            setProcentualniUdeo(temp);
         }
     }
       bool getDaLiJeTacan(){
@@ -99,8 +99,9 @@ class PonudjeniOdgovor{
         return odgovor;
     }
    friend ostream& operator<<(ostream& out,PonudjeniOdgovor &p1){
-        out<<"Odgovor:"<<p1.odgovor<<endl;
-        out<<"Procentualni udeo:"<<p1.procentualniUdeo<<endl;
+        // out<<"Odgovor:"<<p1.odgovor<<endl;
+        // out<<"Procentualni udeo:"<<p1.procentualniUdeo<<endl;
+        out<<"Tekst:"<<p1.odgovor<<"udeo:"<<p1.procentualniUdeo<<"%"<<endl;
         if(p1.daLiJeTacan){
             out<<"Odgovor je tacan"<<endl;
         }
@@ -109,6 +110,54 @@ class PonudjeniOdgovor{
         }
     } 
 };
+//Klasa Pitanje sadrži zadate podatke koji su zaštićeni: 
+//     tekst, broj poena koji nosi, broj ponuđenih odgovora (podrazumevano 5),
+//     kao i ponuđene odgovore(dinamičko alocirani niz odgovora). 
+//     Stvara se bez ponuđenih odgovora, nakon čega se oni dodaju pojedinačno (pitanje+=odgovor).
+//     Prilikom dodavanja ponuđenog odgovora računaju se jednaki procentualni udeli svih tačnih odgovora dodatih 
+//     u dato pitanje(u zbiru daju 100%), dok svaki netačan odgovor nosi -100%.
+//     Pomoću polimorfne metode može da se odgovori na pitanje, tada se zadaje niz koji 
+//     sadrži redne brojeve ponuđenih odgovora koje ispitanik smatra tačnim i dužina tog 
+//     niza(odgovori(int niz[],int br);). 
+//     Tada se računa koliko je procentualno tačno odgovoreno na to pitanje. 
+//     Na glavnom izlazu se ispisuje (out<<pitanje) tako što se u prvom redu ispiše tekst: poeni(maksimalni koje pitanje nosi), 
+//     a potom se u zasebnim redovima ispišu sadržani ponuđeni odgovori.
+
+
+class Pitanje{
+    protected:
+    string tekst;
+    int brojPoena;
+    int brojPonudjenihOdgovora;
+    int trenutni_broj_odgovora;
+    PonudjeniOdgovor *ponudjeniOdgovori;
+    public:
+    Pitanje(string tekst, int brojPonudjenihOdgovora, int brojPoena){
+        this->tekst = tekst;
+        this->brojPonudjenihOdgovora = brojPonudjenihOdgovora;
+        this->brojPoena = brojPoena;
+    }
+    Pitanje(){
+        brojPonudjenihOdgovora = 5;
+        trenutni_broj_odgovora = 0;
+    }
+    Pitanje operator+=(PonudjeniOdgovor &p1){
+        PonudjeniOdgovor *temp = new PonudjeniOdgovor[trenutni_broj_odgovora];
+        for(int i=0; i<trenutni_broj_odgovora; i++){
+            temp[i] = ponudjeniOdgovori[i];
+        }
+        trenutni_broj_odgovora++;
+        ponudjeniOdgovori = new PonudjeniOdgovor[trenutni_broj_odgovora];
+        for(int i = 0; i < trenutni_broj_odgovora - 1; i++){
+            ponudjeniOdgovori[i] = temp[i];
+        }
+        ponudjeniOdgovori[trenutni_broj_odgovora - 1] = p1;
+
+    }
+
+};
+
+
 
 int main(){
 
