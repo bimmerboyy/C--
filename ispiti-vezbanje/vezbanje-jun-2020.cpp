@@ -43,6 +43,7 @@
 
 
 #include<iostream>
+#include <iterator>
 #include <ostream>
 #include <string>
 
@@ -108,20 +109,10 @@ class PonudjeniOdgovor{
         else{
             out<<"Odgovor nije tacan"<<endl;
         }
+        return out;
     } 
 };
-//Klasa Pitanje sadrži zadate podatke koji su zaštićeni: 
-//     tekst, broj poena koji nosi, broj ponuđenih odgovora (podrazumevano 5),
-//     kao i ponuđene odgovore(dinamičko alocirani niz odgovora). 
-//     Stvara se bez ponuđenih odgovora, nakon čega se oni dodaju pojedinačno (pitanje+=odgovor).
-//     Prilikom dodavanja ponuđenog odgovora računaju se jednaki procentualni udeli svih tačnih odgovora dodatih 
-//     u dato pitanje(u zbiru daju 100%), dok svaki netačan odgovor nosi -100%.
-//     Pomoću polimorfne metode može da se odgovori na pitanje, tada se zadaje niz koji 
-//     sadrži redne brojeve ponuđenih odgovora koje ispitanik smatra tačnim i dužina tog 
-//     niza(odgovori(int niz[],int br);). 
-//     Tada se računa koliko je procentualno tačno odgovoreno na to pitanje. 
-//     Na glavnom izlazu se ispisuje (out<<pitanje) tako što se u prvom redu ispiše tekst: poeni(maksimalni koje pitanje nosi), 
-//     a potom se u zasebnim redovima ispišu sadržani ponuđeni odgovori.
+
 
 
 class Pitanje{
@@ -141,15 +132,16 @@ class Pitanje{
         brojPonudjenihOdgovora = 5;
         trenutni_broj_odgovora = 0;
     }
+    int getBrojPoena(){
+        return brojPoena;
+    }
       
     
     Pitanje operator+=(PonudjeniOdgovor &p1){
+        if(trenutni_broj_odgovora < brojPonudjenihOdgovora){
         PonudjeniOdgovor *temp = new PonudjeniOdgovor[trenutni_broj_odgovora];
         for(int i=0; i<trenutni_broj_odgovora; i++){
-            if(ponudjeniOdgovori[i].getDaLiJeTacan() == true && ponudjeniOdgovori[i].getProcentualniUdeo() == ponudjeniOdgovori[i+1].getProcentualniUdeo()){
-                temp[i] = ponudjeniOdgovori[i];
-            }
-            
+           temp[i] = ponudjeniOdgovori[i];
         }
         trenutni_broj_odgovora++;
         ponudjeniOdgovori = new PonudjeniOdgovor[trenutni_broj_odgovora];
@@ -157,8 +149,74 @@ class Pitanje{
             ponudjeniOdgovori[i] = temp[i];
         }
         ponudjeniOdgovori[trenutni_broj_odgovora - 1] = p1;
+        }
+        return *this;
     }
+    virtual int odgovori(int niz[],int br){
+        int s = 0;
+        for(int i = 0; i < br; i++){
+            if(ponudjeniOdgovori[niz[i] - 1].getDaLiJeTacan() == true){
+               s+= ponudjeniOdgovori[niz[i] - 1].getProcentualniUdeo();
+            }
+            else{
+                return  s -=100;
+            }
+        }
+        return s;
 
+    }
+    friend ostream& operator<<(ostream& out, Pitanje &p1){
+        out<<p1.tekst<<"  -poeni:"<<p1.brojPoena<<endl;
+        for(int i=0; i<p1.brojPonudjenihOdgovora; i++){
+            out<<p1.ponudjeniOdgovori[i]<<endl;
+
+        }
+        return out;
+
+    }
+};
+
+//(30 poena) Klasa Student nasleđuje klasu Pitanje i dodaje privatne podatke: broj indeksa(int), 
+//     ime studenta (string) i broj osvojenih poena (double).
+//     Mogu da se dohvate svi podaci. Preklopiti metodu odgovori(int niz[].int br) 
+//     tako da nakon što izračuna procenat tačnosti na odgovoreno pitanje izračuna broj osvojenih poena na tom pitanju i 
+//     taj broj doda na broj osvojenih poena. Na glavnom izlazu se ispisuje (out<<student) tako što se u prvom redu ispiše broj indeksa,
+//     ime i broj osvojenih poena studenta,
+//     u drugom redu se ispiše tekst: poeni(maksimalni koje pitanje nosi),
+//     a potom se u zasebnim redovima ispišu sadržani ponuđeni odgovori.
+
+class Student : public Pitanje{
+    private:
+    int brojIndeksa;
+    string imeStudenta;
+    float brojOsvojenihPoena;
+    public:
+    Student(int brojIndeksa, string imeStudenta, float brojOsvojenihPoena,string tekst, int brojPonudjenihOdgovora, int brojPoena) : 
+    Pitanje(tekst, brojPonudjenihOdgovora,brojPoena){
+        this->brojIndeksa = brojIndeksa;
+        this->imeStudenta = imeStudenta;
+        this->brojOsvojenihPoena = brojOsvojenihPoena;
+    }
+   int getBrojIndeksa() { return brojIndeksa;}
+   string getImeStudenta() { return imeStudenta;}
+    float getBrojOsvojenihPoena() { return brojOsvojenihPoena; }
+    virtual int odgovori(int niz[],int br){
+        int s = 0;
+        for(int i = 0; i < br; i++){
+            if(ponudjeniOdgovori[niz[i] - 1].getDaLiJeTacan() == true){
+               s+= ponudjeniOdgovori[niz[i] - 1].getProcentualniUdeo();
+               
+            }
+            else{
+                return  s -=100;
+            }
+        
+        }
+        brojOsvojenihPoena = (float)getBrojPoena()*s/100;
+        return brojOsvojenihPoena;
+
+    }
+    
 
 };
 
