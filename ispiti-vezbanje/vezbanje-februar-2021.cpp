@@ -22,7 +22,7 @@
 
 
 #include<iostream>
-
+#include<string>
 
 using namespace std;
 
@@ -44,7 +44,6 @@ class Artikal{
         float cenaSaPopustom = 0;
         cenaSaPopustom = cena-(cena * (float)popust/ 100);
         return cenaSaPopustom;
-
     }
     string getNaziv(){
         return naziv;
@@ -68,7 +67,8 @@ class Stavka{
     int kolicina;
     int redniBroj;
     public:
-    Stavka(int kolicina, int redniBroj){
+    Stavka(Artikal a1, int kolicina, int redniBroj){
+        this->a1 = a1;
         this->kolicina = kolicina;
         this->redniBroj = redniBroj;   
     }
@@ -129,7 +129,7 @@ class Racun{
     }
    int iznosRacuna(){
     int s = 0;
-    int cenaSaDodatnimPopustom;
+    int cenaSaDodatnimPopustom = 0;
     for(int i = 0; i < trenutni_broj_stavki; i++){
         if(stavke[i].getArtikal().cenaSaPopustom() < stavke[i].getArtikal().getCena()){
             return s+=stavke[i].getArtikal().cenaSaPopustom();
@@ -156,9 +156,10 @@ class Racun{
 int main(){
     Artikal a1("Balan stangla",100,10);
     Artikal a2("Svecice",70,5);
-    Stavka s1(2,4);
-    Stavka s2(7,3);
+    Stavka s1(a1, 2,4);
+    Stavka s2(a2, 7,3);
     Racun r1;
+    r1.setDodatniPopust(10);
     r1+=s1;
     r1+=s2;
     cout<<r1;
