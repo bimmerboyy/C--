@@ -179,30 +179,17 @@ class Predjelo : public Jelo{
         int s = 0;
         int cenaSaPopustom = 0;
      
-            for(int i = 0; i < trenutni_broj_sastojaka; i++){
-                if(sat > 9 || sat < 12){
+        for(int i = 0; i < trenutni_broj_sastojaka; i++){
+            if(sat > 9 || sat < 12){
             cenaSaPopustom = sastojci[i].cenaUGramima(kolicinaUGramima[i]) - (sastojci[i].cenaUGramima(kolicinaUGramima[i])*procenat/100);
             s+= cenaSaPopustom;
-                }
-                else{
-                    
-                    
-                }
             }
-
-
-        
-            
-        
-            
-            
-                
-
-        
-    
-       
+                else{
+                    s+=sastojci[i].cenaUGramima(kolicinaUGramima[i]);
+                    
+                }
+        }
         return s;
-
     }
 
 
@@ -211,12 +198,53 @@ class Predjelo : public Jelo{
 };
 
 class GlavnoJelo : public Jelo{
-    GlavnoJelo(string ime) : Jelo(ime) {}
+    protected:
+    char vrstaSastojka;
+    GlavnoJelo(string ime) : Jelo(ime) {
+        vrstaSastojka = 'G';
+
+    }
+    void dodajSastojak(Sastojak &s1,int kolicina){
+        if(s1.getVrsta() == SLAN || s1.getVrsta() == NEUTRALAN){
+            Jelo::dodajSastojak(s1, kolicina);
+        }
+        else{
+            cout<<"Ovaj sastojak ("<<s1.getIme()<<")se ne moze dodati u predjelo zato sto nije odgovarajuc"<<endl;
+        }
+    }
+    int cenaJela(){
+        int s = 0;
+        int cenaSaPopustom = 0;
+     
+        for(int i = 0; i < trenutni_broj_sastojaka; i++){
+            if(sat > 20 || sat < 23){
+            cenaSaPopustom = sastojci[i].cenaUGramima(kolicinaUGramima[i]) - (sastojci[i].cenaUGramima(kolicinaUGramima[i])*procenat/100);
+            s+= cenaSaPopustom;
+            }
+                else{
+                    s+=sastojci[i].cenaUGramima(kolicinaUGramima[i]);
+                    
+                }
+        }
+        return s;
+    }
 
 };
 
 class Dezert : public Jelo{
     Dezert(string ime) : Jelo(ime) {}
+
+    void dodajSastojak(Sastojak &s1,int kolicina){
+        if(s1.getVrsta() == SLADAK){
+            Jelo::dodajSastojak(s1, kolicina);
+        }
+        else{
+            cout<<"Ovaj sastojak ("<<s1.getIme()<<")se ne moze dodati u predjelo zato sto nije odgovarajuc"<<endl;
+        }
+    }
+    int cenaJela(){
+        Jelo::cenaJela();
+    }
 
 };
 
