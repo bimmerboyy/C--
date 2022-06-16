@@ -79,10 +79,8 @@ class Sastojak{
         return ime;
     }
     float cenaUGramima(int kolicinaUGramima){
-       
-        int kolicinaPoKilogarmu = (float)kolicinaUGramima /1000;
+       int kolicinaPoKilogarmu = (float)kolicinaUGramima /1000;
         return cenaPoKilogramu * kolicinaPoKilogarmu;
-       
     }
     friend ostream& operator<<(ostream& out,Sastojak &s1){
         out<<s1.ime<<"-"<<s1.cenaPoKilogramu<<"/kg";
