@@ -36,7 +36,7 @@
 
 
 #include<iostream>
-#include <type_traits>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -92,12 +92,28 @@ class Sastojak{
 
 class Jelo{
     private:
+    string ime;
     Sastojak *sastojci;
-    int kolicinaUGramima;
+    int *kolicinaUGramima;
     int sat;
     int procenat;
+    int trenutni_broj_sastojaka;
     public:
-    
+    Jelo(string ime = "Burger"){
+        this->ime = ime;
+        trenutni_broj_sastojaka = 0;
+        procenat = 0;
+        sat = 25;
+
+       
+    }
+    Jelo(){
+        trenutni_broj_sastojaka = 0;
+    }
+    void dodajSastojak(Sastojak &s1,int kolicina){
+        Sastojak *temp = new Sastojak[trenutni_broj_sastojaka];
+
+    }
 };
 
 
