@@ -110,6 +110,9 @@ class Jelo{
     Jelo(){
         trenutni_broj_sastojaka = 0;
     }
+    string getImeJela(){
+        return ime;
+    }
    virtual void dodajSastojak(Sastojak &s1,int kolicina){
         Sastojak *temp = new Sastojak[trenutni_broj_sastojaka];
         int *temp2 = new int[trenutni_broj_sastojaka];
@@ -161,6 +164,7 @@ class Jelo{
 
 
 class Predjelo : public Jelo{
+    protected:
     char vrstaJela;
     public:
     Predjelo(string ime) : Jelo(ime) {
@@ -178,28 +182,31 @@ class Predjelo : public Jelo{
     int cenaJela(){
         int s = 0;
         int cenaSaPopustom = 0;
-     
         for(int i = 0; i < trenutni_broj_sastojaka; i++){
-            if(sat > 9 || sat < 12){
+            if(sat >= 9 || sat <= 12){
             cenaSaPopustom = sastojci[i].cenaUGramima(kolicinaUGramima[i]) - (sastojci[i].cenaUGramima(kolicinaUGramima[i])*procenat/100);
             s+= cenaSaPopustom;
             }
-                else{
-                    s+=sastojci[i].cenaUGramima(kolicinaUGramima[i]);
-                    
-                }
+            else{
+                s+=sastojci[i].cenaUGramima(kolicinaUGramima[i]);
+            }
         }
         return s;
     }
+     friend ostream& operator<<(ostream& out,Predjelo &p1){
+        out<<p1.getImeJela()<<":"<<p1.cenaJela()<<"din"<<endl;
+        for(int i = 0; i < p1.trenutni_broj_sastojaka; i++){
+            out<<p1.sastojci[i]<<" : "<<p1.kolicinaUGramima[i]<<" g"<<endl;
+        }
+        return out;
 
-
-
-
+   }
 };
 
 class GlavnoJelo : public Jelo{
     protected:
     char vrstaSastojka;
+    public:
     GlavnoJelo(string ime) : Jelo(ime) {
         vrstaSastojka = 'G';
 
@@ -215,23 +222,30 @@ class GlavnoJelo : public Jelo{
     int cenaJela(){
         int s = 0;
         int cenaSaPopustom = 0;
-     
         for(int i = 0; i < trenutni_broj_sastojaka; i++){
-            if(sat > 20 || sat < 23){
+            if(sat >= 20 || sat <= 23){
             cenaSaPopustom = sastojci[i].cenaUGramima(kolicinaUGramima[i]) - (sastojci[i].cenaUGramima(kolicinaUGramima[i])*procenat/100);
             s+= cenaSaPopustom;
             }
-                else{
-                    s+=sastojci[i].cenaUGramima(kolicinaUGramima[i]);
-                    
-                }
+            else{
+                s+=sastojci[i].cenaUGramima(kolicinaUGramima[i]);
+            }
         }
         return s;
     }
+    friend ostream& operator<<(ostream& out,GlavnoJelo &g1){
+        out<<g1.getImeJela()<<":"<<g1.cenaJela()<<"din"<<endl;
+        for(int i = 0; i < g1.trenutni_broj_sastojaka; i++){
+            out<<g1.sastojci[i]<<" : "<<g1.kolicinaUGramima[i]<<" g"<<endl;
+        }
+        return out;
+
+   }
 
 };
 
 class Dezert : public Jelo{
+    public:
     Dezert(string ime) : Jelo(ime) {}
 
     void dodajSastojak(Sastojak &s1,int kolicina){
@@ -243,7 +257,14 @@ class Dezert : public Jelo{
         }
     }
     int cenaJela(){
-        Jelo::cenaJela();
+        return Jelo::cenaJela();
+    }
+    friend ostream& operator<<(ostream& out,Dezert &d1){
+        out<<d1.getImeJela()<<":"<<d1.cenaJela()<<"din"<<endl;
+        for(int i = 0; i < d1.trenutni_broj_sastojaka; i++){
+            out<<d1.sastojci[i]<<" : "<<d1.kolicinaUGramima[i]<<" g"<<endl;
+        }
+        return out;
     }
 
 };
@@ -254,12 +275,14 @@ int main(){
     Sastojak s2("Salata",100,NEUTRALAN);
     Sastojak s3("Kecap",150,SLAN);
     Sastojak s4("Paradajzs",70,NEUTRALAN);
-    Jelo j1("Doner");
-    j1.dodajSastojak(s1,300);
-    j1.dodajSastojak(s2,100);
-    j1.dodajSastojak(s3,50);
-    j1.dodajSastojak(s4,30);
-    cout<<j1;
+    GlavnoJelo g1("Doner");
+    g1.dodajSastojak(s1,300);
+    g1.dodajSastojak(s2,100);
+    g1.dodajSastojak(s3,50);
+    g1.dodajSastojak(s4,30);
+    g1.setProcenat(10);
+    g1.setSat(21);
+    cout<<g1;
 
    
     //cout<<s1;
