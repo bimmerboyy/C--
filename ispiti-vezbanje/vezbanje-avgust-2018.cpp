@@ -47,6 +47,9 @@ class Nalepnica{
         id = brojac;
         brojac++;
     }
+    Nalepnica(){
+
+    }
     Nalepnica(Nalepnica &n1){
         naziv = n1.naziv;
         id = brojac;
@@ -78,17 +81,20 @@ enum Vrsta {BEZALKOHOLNO,ALKOHOLNO};
 
 class Flasa{
     protected:
-    Nalepnica *nalepnica;
+    Nalepnica nalepnica;
     int cenaBezKaucije;
     float zapremina;
     int kaucija;
     Vrsta vrsta;
     public:
-    Flasa(Nalepnica *n1,int cenaBezKaucije,float zapremina = 0.33,Vrsta vrsta = BEZALKOHOLNO){
+    Flasa(Nalepnica n1,int cenaBezKaucije,float zapremina = 0.33,Vrsta vrsta = BEZALKOHOLNO){
         nalepnica=n1;
         this->cenaBezKaucije=cenaBezKaucije;
         this->zapremina=zapremina;
         this->vrsta=vrsta;
+    }
+    Flasa(){
+
     }
   void setCenaBezKaucije(int cenaBezKaucije) {
     this->cenaBezKaucije=cenaBezKaucije;
@@ -108,17 +114,22 @@ class Flasa{
   }
  
   friend bool provera(Flasa &f1, Flasa &f2){
-    if(f1.nalepnica.getNaziv() == f2.nalepnica.getNaziv()){
-
+    if(f1.nalepnica.getNaziv() == f2.nalepnica.getNaziv() && f1.cenaSaKaucijom() == f2.cenaSaKaucijom() && f1.vrsta == f2.vrsta){
+        cout<<"Flase su iste"<<endl;
+        return true;
     }
-
-  }
+    else{
+        cout<<"Flase nisu iste"<<endl;
+        return false;
+    }
+        return false;
+    }
+    friend ostream& operator<<(ostream& out,Flasa &f1){
+        out<<f1.nalepnica.getIdentifikator()<<". "<<f1.nalepnica.getNaziv()<<endl;
+        
+    }
   
-  void ispisFlase(){
-    cout<<nalepnica<<endl;
-    cout<<"Cena:"<<cenaBezKaucije<<endl;
-    cout<<"Vrsta:"<<getVrsta();
-  }
+ 
 };
 
 int main(){
