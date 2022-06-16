@@ -36,6 +36,7 @@
 
 
 #include<iostream>
+#include <type_traits>
 
 using namespace std;
 
@@ -45,14 +46,35 @@ using namespace std;
 //      Upisuje se u izlazni tok (cout<<s)  u obliku ime-cena/kg.
 //      Vrste slanog, slatkog i neutralnog sastojka su SLAN, SLADiNEUT, respektivno. (Odraditi pomoću enumeracije)
 
+
+enum Vrsta {SLAN,SLADAK,NEUTRALAN};
+
 class Sastojak{
     protected:
+    Vrsta vrsta;
     string ime;
     int cenaPoKilogramu;
     public:
-    Sastojak(string ime,int cenaPoKilogramu){
+    Sastojak(string ime,int cenaPoKilogramu,Vrsta vrsta){
         this->ime = ime;
         this->cenaPoKilogramu = cenaPoKilogramu;
+        this->vrsta = vrsta;
+    }
+    string getVrsta(){
+        switch(vrsta){
+            case SLAN:
+            return "Slan";
+            case SLADAK:
+            return "Sladak";
+            case NEUTRALAN:
+            return "Neutralan";
+            default: return "Greška";
+        }
+    }
+    float cenaUGramima(int kolicinaUGramima){
+        int kolicinaPoKilogarmu = (float)kolicinaUGramima / 1000;
+        return cenaPoKilogramu * kolicinaPoKilogarmu;
+
     }
 };
 
