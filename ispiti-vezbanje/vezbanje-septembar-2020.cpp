@@ -114,6 +114,20 @@ class Jelo{
     }
    virtual void dodajSastojak(Sastojak &s1,int kolicina){
         Sastojak *temp = new Sastojak[trenutni_broj_sastojaka];
+        int *temp2 = new int[trenutni_broj_sastojaka];
+        for(int i = 0;i < trenutni_broj_sastojaka;i++){
+            temp[i] = sastojci[i];
+            temp2[i] = kolicinaUGramima[i];
+        }
+        trenutni_broj_sastojaka++;
+        sastojci = new Sastojak[trenutni_broj_sastojaka];
+        kolicinaUGramima = new int[trenutni_broj_sastojaka];
+        for(int i = 0;i < trenutni_broj_sastojaka - 1;i++){
+            sastojci[i] = temp[i];
+            kolicinaUGramima[i] = temp2[i];
+        }
+        sastojci[trenutni_broj_sastojaka - 1] = s1;
+        kolicinaUGramima[trenutni_broj_sastojaka - 1] = kolicina;
 
     }
    
@@ -126,7 +140,10 @@ int main(){
     Sastojak s2("Salata",100,NEUTRALAN);
     Sastojak s3("Kecap",150,SLAN);
     Sastojak s4("Paradajzs",70,NEUTRALAN);
-    s1.cenaUGramima(200);
+    Jelo j1("Doner");
+    //j1.dodajSastojak(s1,300);
+
+   
     cout<<s1;
 
     return 0;
