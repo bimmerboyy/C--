@@ -55,10 +55,13 @@ class Sastojak{
         this->cenaPoKilogramu = cenaPoKilogramu;
         this->vrsta = vrsta;
     }
-    Sastojak(){
-        
+    int getCenaPoKilogramu(){
+        return cenaPoKilogramu;
     }
-    string getVrsta(){
+    Sastojak(){
+        cenaPoKilogramu = 0;
+    }
+    string getVrstaString(){
         switch(vrsta){
             case SLAN:
             return "Slan";
@@ -69,30 +72,25 @@ class Sastojak{
             default: return "Greška";
         }
     }
+    Vrsta getVrsta(){
+        return vrsta;
+    }
+    string getIme(){
+        return ime;
+    }
     float cenaUGramima(int kolicinaUGramima){
-        kolicinaUGramima = 100;
+       
         int kolicinaPoKilogarmu = (float)kolicinaUGramima /1000;
         return cenaPoKilogramu * kolicinaPoKilogarmu;
        
     }
     friend ostream& operator<<(ostream& out,Sastojak &s1){
-        out<<s1.ime<<"-"<<s1.cenaPoKilogramu<<"/kg"<<endl;
+        out<<s1.ime<<"-"<<s1.cenaPoKilogramu<<"/kg";
         return out;
     }
 };
 
- //Klasa Jelo ima ime i sadrži listu sastojaka, 
-//      kao i celobrojnu vrednost koja predstavlja količinu sastojka za pripremu jela izraženu u gramima.
-//      Cena jela je određena zbirom cene sastojaka,
-//      uz eventualno procentualno povećanje ili smanjenje osnovne cene,
-//      koje zavisi od sata formiranja cene jela. 
-//      Može da se postavi podatak o procentualnoj promeni cene jela i podatak o satu formiranja cene.
-//      Može da se doda sastojak određene količine u jelo, 
-//      pri čemu se pre dodavanja proverava da li je sastojak adekvatan(greška je ako nije),
-//      da se dohvati jednoslovna vrsta jela i da se izračuna njegova cena.
-//      Upisuje se u izlazni tok(cout<<j) tako što se u prvom redu upiše 
-//      ime:cena, a u narednim redovima se upisuje jedan sastojak poredu u obliku sastojak:količina. 
-//      Pri uništavanju jela, uništavaju se i svi sadržani sastojci.
+ 
 
 class Jelo{
     protected:
@@ -130,7 +128,95 @@ class Jelo{
         kolicinaUGramima[trenutni_broj_sastojaka - 1] = kolicina;
 
     }
+    virtual int cenaJela(){
+        int s = 0;
+        for(int i = 0; i < trenutni_broj_sastojaka; i++){
+            s += sastojci[i].cenaUGramima(kolicinaUGramima[i]);
+        }
+        return s;
+    }
+   void setProcenat(int procenat){
+    this->procenat = procenat;
+   }
+   void setSat(int sat){
+    this->sat = sat;
+
+   }
+   friend ostream& operator<<(ostream& out,Jelo &j1){
+        out<<j1.ime<<":"<<j1.cenaJela()<<"din"<<endl;
+        for(int i = 0; i < j1.trenutni_broj_sastojaka; i++){
+            out<<j1.sastojci[i]<<" : "<<j1.kolicinaUGramima[i]<<" g"<<endl;
+        }
+        return out;
+
+   }
    
+
+};
+//Predjelo i glavno jelo su jela koja mogu da sadrže samo slane i neutralne sastojke i njihove vrste su P i G,
+//      respektivno. Predjelo se nalazi na akciji u periodu 9-12 časova (kada se cena umanjuje za određeni procenat).
+//      Cena glavnog jela se uvećava za određeni procenat u periodu 20-23 časa.
+//      Dezert je jelo koje može da sadrži samo slatke i neutralne sastojke i njegova vrsta je D.
+
+
+
+class Predjelo : public Jelo{
+    char vrstaJela;
+    public:
+    Predjelo(string ime) : Jelo(ime) {
+        vrstaJela = 'P';
+    }
+
+    void dodajSastojak(Sastojak &s1,int kolicina){
+        if(s1.getVrsta() == SLAN || s1.getVrsta() == NEUTRALAN){
+            Jelo::dodajSastojak(s1, kolicina);
+        }
+        else{
+            cout<<"Ovaj sastojak ("<<s1.getIme()<<")se ne moze dodati u predjelo zato sto nije odgovarajuc"<<endl;
+        }
+    }
+    int cenaJela(){
+        int s = 0;
+        int cenaSaPopustom = 0;
+     
+            for(int i = 0; i < trenutni_broj_sastojaka; i++){
+                if(sat > 9 || sat < 12){
+            cenaSaPopustom = sastojci[i].cenaUGramima(kolicinaUGramima[i]) - (sastojci[i].cenaUGramima(kolicinaUGramima[i])*procenat/100);
+            s+= cenaSaPopustom;
+                }
+                else{
+                    
+                    
+                }
+            }
+
+
+        
+            
+        
+            
+            
+                
+
+        
+    
+       
+        return s;
+
+    }
+
+
+
+
+};
+
+class GlavnoJelo : public Jelo{
+    GlavnoJelo(string ime) : Jelo(ime) {}
+
+};
+
+class Dezert : public Jelo{
+    Dezert(string ime) : Jelo(ime) {}
 
 };
 
@@ -141,10 +227,14 @@ int main(){
     Sastojak s3("Kecap",150,SLAN);
     Sastojak s4("Paradajzs",70,NEUTRALAN);
     Jelo j1("Doner");
-    //j1.dodajSastojak(s1,300);
+    j1.dodajSastojak(s1,300);
+    j1.dodajSastojak(s2,100);
+    j1.dodajSastojak(s3,50);
+    j1.dodajSastojak(s4,30);
+    cout<<j1;
 
    
-    cout<<s1;
+    //cout<<s1;
 
     return 0;
 }
