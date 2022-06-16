@@ -84,7 +84,7 @@ class Flasa{
     int kaucija;
     Vrsta vrsta;
     public:
-    Flasa(Nalepnica *n1,int cenaBezKaucije,float zapremina = 0.33,Vrsta vrsta){
+    Flasa(Nalepnica *n1,int cenaBezKaucije,float zapremina = 0.33,Vrsta vrsta = BEZALKOHOLNO){
         nalepnica=n1;
         this->cenaBezKaucije=cenaBezKaucije;
         this->zapremina=zapremina;
@@ -101,7 +101,18 @@ class Flasa{
         return "Alkoholno";
     }
   }
-  
+  int cenaSaKaucijom(){
+    int cenaSaKaucijom = 0;
+    cenaSaKaucijom = cenaBezKaucije + (cenaBezKaucije*kaucija/100);
+    return cenaSaKaucijom;
+  }
+ 
+  friend bool provera(Flasa &f1, Flasa &f2){
+    if(f1.nalepnica.getNaziv() == f2.nalepnica.getNaziv()){
+
+    }
+
+  }
   
   void ispisFlase(){
     cout<<nalepnica<<endl;
