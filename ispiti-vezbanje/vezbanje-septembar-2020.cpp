@@ -55,6 +55,9 @@ class Sastojak{
         this->cenaPoKilogramu = cenaPoKilogramu;
         this->vrsta = vrsta;
     }
+    Sastojak(){
+
+    }
     string getVrsta(){
         switch(vrsta){
             case SLAN:
@@ -91,7 +94,7 @@ class Sastojak{
 //      Pri uništavanju jela, uništavaju se i svi sadržani sastojci.
 
 class Jelo{
-    private:
+    protected:
     string ime;
     Sastojak *sastojci;
     int *kolicinaUGramima;
@@ -104,20 +107,26 @@ class Jelo{
         trenutni_broj_sastojaka = 0;
         procenat = 0;
         sat = 25;
-
-       
     }
     Jelo(){
         trenutni_broj_sastojaka = 0;
     }
-    void dodajSastojak(Sastojak &s1,int kolicina){
+   virtual void dodajSastojak(Sastojak &s1,int kolicina){
         Sastojak *temp = new Sastojak[trenutni_broj_sastojaka];
 
     }
+   
+
 };
 
 
 int main(){
+    Sastojak s1("Belo meeso",250,SLAN);
+    Sastojak s2("Salata",100,NEUTRALAN);
+    Sastojak s3("Kecap",150,SLAN);
+    Sastojak s4("Paradajzs",70,NEUTRALAN);
+
+    cout<<s1;
 
     return 0;
 }
