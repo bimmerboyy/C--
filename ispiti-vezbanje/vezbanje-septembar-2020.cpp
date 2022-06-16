@@ -56,7 +56,7 @@ class Sastojak{
         this->vrsta = vrsta;
     }
     Sastojak(){
-
+        
     }
     string getVrsta(){
         switch(vrsta){
@@ -70,9 +70,10 @@ class Sastojak{
         }
     }
     float cenaUGramima(int kolicinaUGramima){
-        int kolicinaPoKilogarmu = (float)kolicinaUGramima / 1000;
+        kolicinaUGramima = 100;
+        int kolicinaPoKilogarmu = (float)kolicinaUGramima /1000;
         return cenaPoKilogramu * kolicinaPoKilogarmu;
-
+       
     }
     friend ostream& operator<<(ostream& out,Sastojak &s1){
         out<<s1.ime<<"-"<<s1.cenaPoKilogramu<<"/kg"<<endl;
@@ -121,11 +122,11 @@ class Jelo{
 
 
 int main(){
-    Sastojak s1("Belo meeso",250,SLAN);
+    Sastojak s1("Belo meso",250,SLAN);
     Sastojak s2("Salata",100,NEUTRALAN);
     Sastojak s3("Kecap",150,SLAN);
     Sastojak s4("Paradajzs",70,NEUTRALAN);
-
+    s1.cenaUGramima(200);
     cout<<s1;
 
     return 0;
