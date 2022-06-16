@@ -130,11 +130,7 @@ class Flasa{
  
 };
 
-// 3. Staklena flaša pića je flaša pića kod koje se cena sa kaucijom računa tako što se na cenu bez kaucije doda 5% ukoliko
-//     je zapremina manja od 0,5 litara ili 10% ukoliko je zapremina veća ili jednaka od 0,5 litara.
-//     Preklopiti metodu ispis da ispisuje podatke o flaši i poruku da je flaša staklena.
-// 4. Plastična flaša pića je flaša pića kod koje je cena sa kaucijom jednaka ceni bez kaucije. Preklopiti metodu za ispis da 
-//     ispisuje podatke o flaši i poruku da je flaša plastnična.
+
 
 class Staklena : Flasa{
     public:
@@ -153,10 +149,12 @@ class Staklena : Flasa{
 
     }
     friend ostream& operator<<(ostream& out,Staklena &s1){
+        out<<"Flasa je staklena"<<endl;
         out<<s1.nalepnica.getIdentifikator()<<". "<<s1.nalepnica.getNaziv()<<endl;
         out<<"Cena bez kaucije:"<<s1.cenaBezKaucije<<"cena sa kaucijom:"<<s1.cenaSaKaucijom()<<endl;
         out<<"zapremina:"<<s1.zapremina<<endl;
         out<<"Vrsta:"<<s1.getVrsta()<<endl;
+        
         
         return out;
     }
@@ -164,11 +162,43 @@ class Staklena : Flasa{
 
 };
 
+class Plasticna : Flasa{
+    public:
+    Plasticna(Nalepnica n1,int cenaBezKaucije,float zapremina = 0.33,Vrsta vrsta = BEZALKOHOLNO) : Flasa(n1,cenaBezKaucije,zapremina,vrsta){
+
+    }
+    friend ostream& operator<<(ostream& out,Plasticna &p1){
+        out<<"Flasa je plastnična"<<endl;
+        out<<p1.nalepnica.getIdentifikator()<<". "<<p1.nalepnica.getNaziv()<<endl;
+        out<<"Cena bez kaucije:"<<p1.cenaBezKaucije<<"cena sa kaucijom:"<<p1.cenaBezKaucije<<endl;
+        out<<"zapremina:"<<p1.zapremina<<endl;
+        out<<"Vrsta:"<<p1.getVrsta()<<endl;
+        
+        
+        return out;
+    }
+
+};
+// 5. Formirati funkciju UKUPNO, van klasa koja formira dinamički niz staklenih i plastičnih flaša
+//     čije podatke unosi korisnik sa tastature i zatim računa i vraća ukupan zbir svih flaša sa kaucijom.
+// U main funkciji napraviti po jedan objekat svake klase i testirati sve metode, kao i funkciju UKUPNO.
+
+// float ukupno(){
+
+// }
+
 
 int Nalepnica::brojac = 0; 
 
 int main(){
     Nalepnica n1("Pepsi");
-    n1.ispis();
+    Nalepnica n2("Kola");
+    Nalepnica n3("Fanta");
+    Flasa f1(n1,60,0.33,BEZALKOHOLNO);
+    Flasa f2(n1,60,0.33,BEZALKOHOLNO);
+    Staklena s1(n3,80,0.5,BEZALKOHOLNO);
+    cout<<f1;
+
+    
     return 0;
 }
