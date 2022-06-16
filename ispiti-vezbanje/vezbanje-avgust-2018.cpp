@@ -67,15 +67,7 @@ class Nalepnica{
 
 };
 
-// 2. Flaša pića ima sledeće podatke: 
-//     nalepnicu, cenu bez kaucije (u koju nije uračunata cena flaše), 
-//     zapreminu (podrazumevano 0,33 litara) i vrstu pića. 
-//     Vrsta pića može biti BEZALKOHOLNO (podrazumevano) i ALKOHOLNO.
-//     Svi podaci se unose prilikom stvaranja objekta i mogu se odštampati, a samo se cena može promeniti.
-//     Kreirati metodu koja može da izračuna cenu flaše pića sa kaucojom
-//     (ima razlike za staklenu i plastičnu flašu).
-//     Metodu PROVERA koja proverava da li su dve flaše jednake (flaše su jednake ukoliko imaju isti naziv nalepnice,
-//     cenu flaše sa kaucijom i vrstu pića. Omogućiti metodu za ispis.
+
 
 enum Vrsta {BEZALKOHOLNO,ALKOHOLNO};
 
@@ -92,6 +84,7 @@ class Flasa{
         this->cenaBezKaucije=cenaBezKaucije;
         this->zapremina=zapremina;
         this->vrsta=vrsta;
+        kaucija = 0;
     }
     Flasa(){
 
@@ -107,7 +100,7 @@ class Flasa{
         return "Alkoholno";
     }
   }
-  int cenaSaKaucijom(){
+ virtual int cenaSaKaucijom(){
     int cenaSaKaucijom = 0;
     cenaSaKaucijom = cenaBezKaucije + (cenaBezKaucije*kaucija/100);
     return cenaSaKaucijom;
@@ -126,11 +119,53 @@ class Flasa{
     }
     friend ostream& operator<<(ostream& out,Flasa &f1){
         out<<f1.nalepnica.getIdentifikator()<<". "<<f1.nalepnica.getNaziv()<<endl;
+        out<<"Cena bez kaucije:"<<f1.cenaBezKaucije<<"cena sa kaucijom:"<<f1.cenaSaKaucijom()<<endl;
+        out<<"zapremina:"<<f1.zapremina<<endl;
+        out<<"Vrsta:"<<f1.getVrsta()<<endl;
         
+        return out;
     }
+    
   
  
 };
+
+// 3. Staklena flaša pića je flaša pića kod koje se cena sa kaucijom računa tako što se na cenu bez kaucije doda 5% ukoliko
+//     je zapremina manja od 0,5 litara ili 10% ukoliko je zapremina veća ili jednaka od 0,5 litara.
+//     Preklopiti metodu ispis da ispisuje podatke o flaši i poruku da je flaša staklena.
+// 4. Plastična flaša pića je flaša pića kod koje je cena sa kaucijom jednaka ceni bez kaucije. Preklopiti metodu za ispis da 
+//     ispisuje podatke o flaši i poruku da je flaša plastnična.
+
+class Staklena : Flasa{
+    public:
+    Staklena(Nalepnica n1,int cenaBezKaucije,float zapremina = 0.33,Vrsta vrsta = BEZALKOHOLNO) : Flasa(n1,cenaBezKaucije,zapremina,vrsta){
+
+    }
+    int cenaSaKaucijom(){
+        int cenaSaKaucijom = 0;
+        if(zapremina < 0.5){
+            cenaSaKaucijom = cenaBezKaucije + (cenaBezKaucije*5/100);
+        }
+        else if(zapremina >= 0.5){
+            cenaSaKaucijom = cenaBezKaucije + (cenaBezKaucije*10/100);
+        }
+        return cenaSaKaucijom;
+
+    }
+    friend ostream& operator<<(ostream& out,Staklena &s1){
+        out<<s1.nalepnica.getIdentifikator()<<". "<<s1.nalepnica.getNaziv()<<endl;
+        out<<"Cena bez kaucije:"<<s1.cenaBezKaucije<<"cena sa kaucijom:"<<s1.cenaSaKaucijom()<<endl;
+        out<<"zapremina:"<<s1.zapremina<<endl;
+        out<<"Vrsta:"<<s1.getVrsta()<<endl;
+        
+        return out;
+    }
+
+
+};
+
+
+int Nalepnica::brojac = 0; 
 
 int main(){
     Nalepnica n1("Pepsi");
