@@ -25,13 +25,13 @@
 // U main funkciji napraviti po jedan objekat svake klase i testirati sve metode, kao i funkciju UKUPNO.
 
 
+
+
+
+
 #include<iostream>
+#include<string>
 
-
-//1. Nalepnica ima naziv i jednoznačni automatski generisan identifikator kojem može da se pristupi. 
-//     Naziv se zadaje sa standardnog ulaza prilikom stvaranje objekta.
-//     Prilikom kopiranja voditi računa da se kopira naziv a da se identifikator sam kreira. 
-//     Omogućiti metodu za ispis. 
 
 using namespace std;
 
@@ -55,8 +55,59 @@ class Nalepnica{
     void ispis(){
         cout<<id<<"."<<naziv<<endl;
     }
-    
+   string getNaziv(){
+        return naziv;
+    }
+    int getIdentifikator(){
+        return id;
+    }
 
+};
+
+// 2. Flaša pića ima sledeće podatke: 
+//     nalepnicu, cenu bez kaucije (u koju nije uračunata cena flaše), 
+//     zapreminu (podrazumevano 0,33 litara) i vrstu pića. 
+//     Vrsta pića može biti BEZALKOHOLNO (podrazumevano) i ALKOHOLNO.
+//     Svi podaci se unose prilikom stvaranja objekta i mogu se odštampati, a samo se cena može promeniti.
+//     Kreirati metodu koja može da izračuna cenu flaše pića sa kaucojom
+//     (ima razlike za staklenu i plastičnu flašu).
+//     Metodu PROVERA koja proverava da li su dve flaše jednake (flaše su jednake ukoliko imaju isti naziv nalepnice,
+//     cenu flaše sa kaucijom i vrstu pića. Omogućiti metodu za ispis.
+
+enum Vrsta {BEZALKOHOLNO,ALKOHOLNO};
+
+class Flasa{
+    protected:
+    Nalepnica *nalepnica;
+    int cenaBezKaucije;
+    float zapremina;
+    int kaucija;
+    Vrsta vrsta;
+    public:
+    Flasa(Nalepnica *n1,int cenaBezKaucije,float zapremina = 0.33,Vrsta vrsta){
+        nalepnica=n1;
+        this->cenaBezKaucije=cenaBezKaucije;
+        this->zapremina=zapremina;
+        this->vrsta=vrsta;
+    }
+  void setCenaBezKaucije(int cenaBezKaucije) {
+    this->cenaBezKaucije=cenaBezKaucije;
+  }
+  string getVrsta(){
+    switch(vrsta){
+        case BEZALKOHOLNO:
+        return "Bezalkoholno";
+        case ALKOHOLNO:
+        return "Alkoholno";
+    }
+  }
+  
+  
+  void ispisFlase(){
+    cout<<nalepnica<<endl;
+    cout<<"Cena:"<<cenaBezKaucije<<endl;
+    cout<<"Vrsta:"<<getVrsta();
+  }
 };
 
 int main(){
