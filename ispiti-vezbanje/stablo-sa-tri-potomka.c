@@ -51,18 +51,19 @@ void printPostorder(struct tree *tree){
 }
 
 struct tree* addTree(struct tree *tree, int elem,char side){
-    if(root == NULL){
-        root = createTree(elem);
-        return root;
+    if(tree == NULL){
+        tree = createTree(elem);
+        return tree;
     }
     if(side == 'L'){
-        tree->left = addTree(tree->left,elem,'L');
+        tree->left = createTree(elem);
         return tree->left;
     }
     if(side == 'R'){
-        tree->right = addTree(tree->right,elem,'R');
+        tree->right = createTree(elem);
         return tree->right;
     }
+    return tree;
 }
 
 int main(){
