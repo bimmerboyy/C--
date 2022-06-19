@@ -71,19 +71,7 @@ struct tree* addTree(struct tree *tree, int elem,char side){
     return tree;
 }
 
-bool daLiJeKompletno(struct tree* tree,int n){
-  int s = 0;
-    if(root!=NULL){
-        if(n!=0){
-            s += daLiJeKompletno(tree->left, n-1) ;
-            s += daLiJeKompletno(tree->right, n-1);
-        }
-        else{
-            s += tree->info;
-        }
-    }
-    return s;
-}
+
 
 
 int main(){
