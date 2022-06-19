@@ -4,6 +4,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<stdbool.h>
 
 
 typedef struct tree{
@@ -59,11 +60,21 @@ struct tree* addTree(struct tree *tree, int elem,char side){
         tree->left = createTree(elem);
         return tree->left;
     }
+    if(side == 'M'){
+        tree->middle = createTree(elem);
+    }
     if(side == 'R'){
         tree->right = createTree(elem);
         return tree->right;
     }
+
     return tree;
+}
+
+bool daLiJeKompletno(struct tree* tree,int n,int zadnjiNivo){
+    if(tree){
+       
+    }
 }
 
 int main(){
