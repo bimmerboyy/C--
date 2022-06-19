@@ -1,6 +1,7 @@
 //Napraviti stablo koje ima max tri potomka i napraviti funkciju da li je stablo kompletno
 
 
+#include <bits/types/cookie_io_functions_t.h>
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -69,6 +70,14 @@ struct tree* addTree(struct tree *tree, int elem,char side){
     }
 
     return tree;
+}
+
+bool daLiJePrazno(struct tree *tree){
+    if(tree == NULL){
+        return true;
+    }
+    int rear,front;
+    //struct node *red = (struct node *)malloc(sizeof(struct node)); 
 }
 
 
