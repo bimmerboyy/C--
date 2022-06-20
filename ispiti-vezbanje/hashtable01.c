@@ -26,12 +26,14 @@ unsigned int hash(char *name) {
     //For petljom prolazimo kroz niz imena koji je max 256 i on ce imati nasumicnu vrednost npr 86/256
     //Tu vrednost ubacuje u hash vrednost 
     for (int i = 0; i < lenght; i++){
+        //Ubacuje neku nsumicnu vrednost i kada nadje ostatak doda ga npr ako je niz imena 120 a ostatak cuva hash recimo 7
+        //Tada ce hash vrednost biti 127 i ponovo ce se mnozit i tako 5 puta
+        //Peti put kada nadje taj ostatak on ce ga uabciti na tu verdnost ostatka
         hashValue += name[i];
-        printf("\nNiz imena je:%d\n",name[i]);
-        printf("\nHash vrednost je:%d\n",hashValue);
+        //Zatim pomnozi tu vrednist sa vrednscu imena i nadje ostatak
         hashValue = (hashValue * name[i]) % TABLE_SIZE;
         
-        printf("Kada se ubaci u tabelu hash vrednost je:%d\n",hashValue);
+        
     }
     return hashValue;
 
