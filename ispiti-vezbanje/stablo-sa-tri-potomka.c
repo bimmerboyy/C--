@@ -76,8 +76,7 @@ bool daLiJePrazno(struct tree *tree){
     if(tree == NULL){
         return true;
     }
-    int rear,front;
-    //struct node *red = (struct node *)malloc(sizeof(struct node)); 
+    
 }
 
 
