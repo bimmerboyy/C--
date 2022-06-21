@@ -53,6 +53,22 @@ void display(){
     printf("\nKraj");
 }
 
+struct Stutedni *brisanje(struct Stdudenti *item){
+    int key = item->kljuc;
+
+}
+
 int main(){
-    
+    fakeitem = (struct Studenti *) malloc(sizeof(struct Studenti));
+    fakeitem->kljuc = -1;
+    fakeitem->ime = NULL;
+
+    insert("Tarik",1);
+    insert("Nikola",2);
+    insert("Ermin",3);
+    insert("Aldin",4);
+    insert("Benjamin",5);
+    insert("Rekac",6);
+    insert("Emin",7);
+    display();
 }
