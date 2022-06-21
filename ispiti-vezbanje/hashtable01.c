@@ -51,24 +51,61 @@ void initHashTable(){
 }
 //Ispis tabele ukoliko je prazna ispisace samo prazna polja a ukoliko nije ispisace imena 
 void printTable(){
+    printf("Start\n");
     for(int i = 0; i < TABLE_SIZE; i++){
         if(hashTable[i] == NULL){
-            printf("\t%i\t---",i);
+            printf("\t%i\t\n---",i);
         }
         else{
             printf("\t%i\t %s \n",i,hashTable[i]->name);
         }
     }
+    printf("\nEnd");
 }
 
 bool hashTableInsert(PERSON *p){
     if(p == NULL) return false;
-}
+    //Kreiramo indeks koji ce pokazivati gde se nalazi ime u nizu
+    int index = hash(p->name);
+    //Ukoliko nije slobodno mesto javlja se koalizija 
+    if(hashTable[index] == NULL){
+        return false;
+    }
+    //u suprotnom ako ima slobodno mesto ubacujemo osobu na to mesto
+    hashTable[index] = p;
+    return true;
 
+}
+//Pronalazenje osoba u tabeli po njihovim imenima
+PERSON *hashTableLookup(char *name){
+   int index = hash(name); 
+   if(hashTable[index] != NULL && strncmp(hashTable[index]->name,name,TABLE_SIZE) == 0){
+    return hashTable[index];
+   }
+   else{
+    return NULL;
+   }
+
+}
 
 int main(){
     initHashTable();
+      PERSON Tarik = {.name = {'T','a','r','i','k'}, .age = 19};
+      PERSON Nikola = {.name = {'N','i','k','o','l','a'}, .age = 19};
+      PERSON Ermin = {.name = {'E','r','m','i','n'}, .age = 19};
+
+
+      PERSON *prs = hashTableLookup("Tarik");
+
+    // PERSON Tarik = {.name = "Tarik", .age = 19};
+    // PERSON Nikola = {.name = "Nikola", .age = 19};
+    // PERSON Ermin = {.name = "Ermin", .age = 19};
+
+    hashTableInsert(&Tarik);
+    hashTableInsert(&Nikola);
+    hashTableInsert(&Ermin);
     printTable();
+
     // printf("Tarik => %u\n",hash("Tarik"));
     // printf("Nikola => %u\n",hash("Nikola"));
     // printf("Ermin => %u\n",hash("Ermin"));
