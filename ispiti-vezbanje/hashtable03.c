@@ -8,6 +8,7 @@ koristiti linearno hesiranje
 #include<stdlib.h>
 #include<string.h>
 #include<stdbool.h>
+#include <sys/types.h>
 
 #define SIZE 20
 
@@ -53,8 +54,22 @@ void display(){
     printf("\nKraj");
 }
 
-struct Stutedni *brisanje(struct Stdudenti *item){
+struct Stutedni *brisanje(struct Studenti *item){
     int key = item->kljuc;
+    
+    int hashIndex = hashCode(key);
+    while(hashArray[hashIndex] != NULL){
+        if(hashArray[hashIndex]->kljuc == key){
+            struct Studenti *temp = hashArray[hashIndex];
+
+            hashArray[hashIndex] = fakeitem;
+            return temp;
+        }
+        ++hashIndex;
+
+        hashIndex %= SIZE;
+    }
+    return NULL;
 
 }
 
