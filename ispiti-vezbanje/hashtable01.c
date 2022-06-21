@@ -16,6 +16,8 @@ typedef struct person{
 
 }PERSON;
 
+PERSON hashTable[TABLE_SIZE];
+
 //Pocinjemo od 5
 unsigned int hash(char *name) {
     //Uzima prosecnu duzinu imena to je kod nas 5 jer Tarik i Ermin imaju 5 slova a Nikola 6
