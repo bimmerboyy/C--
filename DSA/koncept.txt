@@ -1,0 +1,146 @@
+koncept:
+
+- struktura podataka:  način organizacije podataka
+-algoritam - način obrade podataka
+
+-podatak: osnovni element programskog sistema i manipulacija podatkokm je njegova osnovna svrha.
+
+tip podatka: skup vrednosti i operacija čije izvršavanje je dozvoljeno nad skupom datih vrendosti.
+
+podela: primitivni i apstraktni.
+
+tip: apstraktni tip  podataka : skup podataka i operacija ( logička forma)
+strukutra: memorijsa i algoritamska reprezentacija (fizička forma)
+
+
+
+Algoritam: precizni opis postupka rešavanja nekog problema u konačnom broju koraka. 
+-precizno definisana računarska procedura koja dobija neke podatke na ulazu, obrađuje ih i proizvodi neki izlaz.
+
+-sastoji se od jasno definisanog niza koraka koji se mogu fizički izvršiti  na računaru.
+*mora imati konačan broj koraka
+*mora biti nedvosmislen
+*mora biti ispravan ( za svaki ulaz mora vratiti odgovarajući izlaz)
+
+može biti izražen:
+-rečima prirodnog jezika
+-u grafičkoj formi dijagrama toka podataka
+-u programskom jeziku.
+
+elementi strukturnog algoritma:
+-sekvenca ( niz operacija)
+-selekcija (if/else/case)
+-iteracija(for, while<-->do, repeat)
+
+
+Pseudojezik:
+-blizak paskalu
+-uobičajne ključne reči + beskonačan loop
+-kraj end_reč
+-višestruka dodela a=b=c
+-razmena  a <--> b
+- .. označava opseg, [] indeks
+- može sadržati engleske reči 
+- nema komentara
+
+
+kod dizajna algoritma obraća se pažnja na :
+-ispravnost
+-efikasnost
+
+-efikasnost se meri potrošnjom resursa (vremena i prostora)
+-vreme je bitnije nego prostor, memorije se stalno razvijaju.
+
+vreme zavisi od:
+-skupa instrukcija i vremena za svaku instrukciju
+-kvalit mašinskog koda generisanog kompajlrom
+-ulaznih podataka
+
+složenost:
+naredba serije P; Q;  ts = tp + tq
+grane  if c then p else q  ts = tc + max(tp,tq)
+naredba petlje ts = n * tp
+
+Asimptotsko vreme izvršavanja:
+-približno vreme
+-uzima se najveća funckija bez konstanti
+
+-O zapis se koristi za precizno definisanje pojma da je neka funckija manja od druge:
+o(1) - konstantno : umetanje na početak lančane liste
+o(log n)  - binarna pretraga
+o(n) - linearni algiritam sekvencijalno pretraživanje
+o(n log n) polovljenje problema  ali ipak obrađuje sve podatke
+O(n²)  - kvadratna - babl sort, unos matrice
+O(n^k) - polimonijalni
+o(k ^ n) - eksponencijalni.
+
+-optimizacija je važna ako se algoritam izvršava veliki broj puta ili ima velike dimenzije
+-pri izboru algoritma sortiranja - nije bitna samo opšta složenost već i uobičajni uslovi gde se pokreće.
+-genralno lošiji u nekim uslovima može biti bolji .
+-poželjniji su algoritmi sa što manjom prostornom složenošću, ali obično se ušteda vremena dobija  povećanim korišćenjem memorije i obrnuto.
+
+strukture:
+-linearne : element je u vezi samo sa prethodnikom  i sledbenikom
+- nelinearne - jedan element može biti u vezi sa više njih.
+
+mogu biti:
+-statičke : fiksne veličine određene pri prevođenju
+-dinamičke: mogu menjati svoju veličinu.
+
+memorijska reprezentacija:
+-sekvencijala: fizički i logički poredak isti, smeštaju se u kontinualni prosto. pristup svakom elementu je direktan, zahteva poznavanje početne adrese.
+-ulančana: fizički i logički nepovezani, na nasumičnim mestima u memoriji, postoje pokazivači.
+
+Pokazivači:
+-vrednost je adresa.
+-omogućava dinamičku dodelu memorije (heap)
+-potrebno je oslobodniti memoriju nakon upotrebe
+-može biti null - ne pokazuje ni na šta.
+
+Niz:
+-linearna  uređena strukura koja se sastoji od konačnog broja homogenih elemenata
+-mogu biti jednodimenzionalni i višedimenzionalni.
+-1D: koristi se indeks za pozicioniranje
+-svakom indeksu odgovara jedan element
+- +D nizvoi: predstavljaju generalizaciju jendodimenzionalnih nizova.
+-2d Niz - matrica se može smatradi 1d nizom čiji su elementi 1d nizovi.
+-niz sa n dimenzija ima n opsega indeksa.
+operacije:
+-selekcija: navođenjem imena niza i po jendog indeksa za svaku dimenziju
+-da bi  se više elemenata obradilo često se koriste petlje u  kojima brojač predstavlja indeks.
+-neki jezici imaju  nizovske operatore.
+- u memoriji se  predstavljaju sekvencijalno 
+-u slučaju umetanja i brisanja  mora se  indeks svih elemenata iza tog indeksa.
+
+-matricu u memoriju možemo smestiti na 2 načina (linearizacija):
+- po kolonama ( column major)
+- po vrstama ( row major)
+
+retke matirce / nizovi se smeštaju tako što se nenulti elementi smeštaju u memoriju, što može biti optimizovano na dva načina:
+-sa jednim vektorksim zapisom od tri polja: vrednost, kolona, red
+-sa 3 zasebna vektora: v - vrednost, c - kolona, r- indeks prvog c koji odgovara tom redu.
+
+
+Ulančane liste:
+-prednsot je dinamička alokacija memorie, lako brisanje  i dodavanje
+-mana je pristup, fizički != logičkom poretu.
+-svaki element liste sadrži informaciju i pokazivač na sledbenika.
+-prvi čvor : head, zadnji tail. Tail nema sledebinika (null)
+-ako je prazna head je null.
+vrste: 
+po načinu povezanosti: jednostruke, dvostruke, kružne
+- po organizaciji: uređene i neuređene.
+operacije:
+pretraga, umetanje, brisanje, inverzija, povezivanje, kopiranje, nalaženje itog čvora.
+-operacije na pokazivačima:
+-testiranje da li je null, provera jednakosti sa drugim,  dodela vrednost (null ili drugog)
+
+-kružne liste: last pokazuje na frst
+u pretraživanju moramo proveriti da li smo došli do last da ne bi došlo do beskonačne petlje.
+
+dvostruko ulančane liste:
+-koriso je jer svaki čvor ima pokazivač  na prethodni.
+-mana je zauzeće prostora.
+-u svakoj operaciji treba ažurirati oba pokazivača
+
+
