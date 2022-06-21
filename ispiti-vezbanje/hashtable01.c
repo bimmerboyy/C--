@@ -16,7 +16,9 @@ typedef struct person{
 
 }PERSON;
 
-PERSON hashTable[TABLE_SIZE];
+//Definisemo hash tabelu sa pointerom iz razloga da mi mogli da je postavimo na null
+
+PERSON *hashTable[TABLE_SIZE];
 
 //Pocinjemo od 5
 unsigned int hash(char *name) {
@@ -38,15 +40,37 @@ unsigned int hash(char *name) {
         
     }
     return hashValue;
-
-    
     //return 5; Da ne bi ponavljao stalno 5 uzmemo duzinu niza  u koju ubacujemo imena
+}
+
+//Postavljamo tabelu na NULL
+void initHashTable(){
+    for(int i = 0; i < TABLE_SIZE; i++){
+        hashTable[i] = NULL;
+    }
+}
+//Ispis tabele ukoliko je prazna ispisace samo prazna polja a ukoliko nije ispisace imena 
+void printTable(){
+    for(int i = 0; i < TABLE_SIZE; i++){
+        if(hashTable[i] == NULL){
+            printf("\t%i\t---",i);
+        }
+        else{
+            printf("\t%i\t %s \n",i,hashTable[i]->name);
+        }
+    }
+}
+
+bool hashTableInsert(PERSON *p){
+    if(p == NULL) return false;
 }
 
 
 int main(){
-    printf("Tarik => %u\n",hash("Tarik"));
-    printf("Nikola => %u\n",hash("Nikola"));
-    printf("Ermin => %u\n",hash("Ermin"));
+    initHashTable();
+    printTable();
+    // printf("Tarik => %u\n",hash("Tarik"));
+    // printf("Nikola => %u\n",hash("Nikola"));
+    // printf("Ermin => %u\n",hash("Ermin"));
     return 0;
 }
