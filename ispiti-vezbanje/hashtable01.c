@@ -87,19 +87,40 @@ PERSON *hashTableLookup(char *name){
    }
 
 }
+PERSON *hashTableDelete(char *name){
+   int index = hash(name); 
+   if(hashTable[index] != NULL && strncmp(hashTable[index]->name,name,TABLE_SIZE) == 0){
+     PERSON *prs = hashTable[index];
+     hashTable[index] = NULL;
+     return prs;
+   }
+   else{
+    return NULL;
+   }
+
+}
 
 int main(){
     initHashTable();
-      PERSON Tarik = {.name = {'T','a','r','i','k'}, .age = 19};
-      PERSON Nikola = {.name = {'N','i','k','o','l','a'}, .age = 19};
-      PERSON Ermin = {.name = {'E','r','m','i','n'}, .age = 19};
+    //   PERSON Tarik = {.name = {'T','a','r','i','k'}, .age = 19};
+    //   PERSON Nikola = {.name = {'N','i','k','o','l','a'}, .age = 19};
+    //   PERSON Ermin = {.name = {'E','r','m','i','n'}, .age = 19};
 
 
-      PERSON *prs = hashTableLookup("Tarik");
+   
 
-    // PERSON Tarik = {.name = "Tarik", .age = 19};
-    // PERSON Nikola = {.name = "Nikola", .age = 19};
-    // PERSON Ermin = {.name = "Ermin", .age = 19};
+    PERSON Tarik = {.name = "Tarik", .age = 19};
+    PERSON Nikola = {.name = "Nikola", .age = 19};
+    PERSON Ermin = {.name = "Ermin", .age = 19};
+
+       PERSON *prs = hashTableLookup("Tarik");
+
+      if(prs == NULL){
+        printf("Nisam nasao\n ");
+      }
+      else{
+        printf("Nasao sam %s",prs->name);
+      }
 
     hashTableInsert(&Tarik);
     hashTableInsert(&Nikola);
