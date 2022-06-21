@@ -54,23 +54,36 @@ void display(){
     printf("\nKraj");
 }
 
-struct Stutedni *brisanje(struct Studenti *item){
-    int key = item->kljuc;
+// struct Stutedni *brisanje(struct Studenti *item){
+//     int key = item->kljuc;
     
+//     int hashIndex = hashCode(key);
+//     while(hashArray[hashIndex] != NULL){
+//         if(hashArray[hashIndex]->kljuc == key){
+//             struct Studenti *temp = hashArray[hashIndex];
+
+//             hashArray[hashIndex] = fakeitem;
+//             return temp;
+//         }
+//         ++hashIndex;
+
+//         hashIndex %= SIZE;
+//     }
+//     return NULL;
+
+// }
+
+struct Studenti *serach(int key){
     int hashIndex = hashCode(key);
     while(hashArray[hashIndex] != NULL){
-        if(hashArray[hashIndex]->kljuc == key){
-            struct Studenti *temp = hashArray[hashIndex];
-
-            hashArray[hashIndex] = fakeitem;
-            return temp;
+        if(hashArray[hashIndex] ->kljuc == key){
+            return hashArray[hashIndex];
         }
         ++hashIndex;
 
         hashIndex %= SIZE;
     }
     return NULL;
-
 }
 
 int main(){
@@ -85,5 +98,14 @@ int main(){
     insert("Benjamin",5);
     insert("Rekac",6);
     insert("Emin",7);
+   
     display();
+    item = serach(2);
+
+    if(item != NULL){
+        printf("\n\nStudent je pronadjen\n");
+    }
+    else{
+        printf("\n\nStident nije pronadejn\n");
+    }
 }
