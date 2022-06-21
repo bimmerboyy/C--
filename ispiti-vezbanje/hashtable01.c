@@ -62,11 +62,21 @@ void printTable(){
     }
     printf("\nEnd");
 }
-
+//Ubacujemo osobe u tabeli 
 bool hashTableInsert(PERSON *p){
     if(p == NULL) return false;
     //Kreiramo indeks koji ce pokazivati gde se nalazi ime u nizu
     int index = hash(p->name);
+    //Kada se javlja kolaija ubacije osobu na sledece slobodno mesto
+    for(int i = 0; i < TABLE_SIZE; i++){
+        int try = (i + index) % TABLE_SIZE;
+        if(hashTable[try] == NULL){
+            hashTable[try] = p;
+            return true;
+        }
+    }
+    return false;
+
     //Ukoliko nije slobodno mesto javlja se koalizija 
     if(hashTable[index] == NULL){
         return false;
