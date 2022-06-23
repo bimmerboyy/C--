@@ -63,18 +63,13 @@ struct tree *addTree(struct tree *tree, int elem,char side){
 
 bool search(struct tree *tree,int elem,int n){
     if(tree){
-        if(n == 0){
-            if(tree->info == elem){
-                return true;
-            }
+        if(tree->info == elem){
+            printf("nivo : %d\n",n);
+            return true;
         }
-        else{
-            search(tree->left,elem,n-1);
-            search(tree->right,elem,n-1);
-            
-        }
-
+        return false || search(tree->left,elem,n+1) || search(tree->right,elem,n+1);
     }
+    return false;   
 
 }
 
@@ -89,6 +84,13 @@ int main(){
     struct tree *pet = addTree(tri,5,'L');
     struct tree *sest = addTree(dva,6,'R');
     struct tree *sedam = addTree(tri,7,'R');
+    if(search(root,sedam->info,0)){
+        printf("Nalazi se ");
+    }
+    else{
+        printf("Ne nalazi se");
+    }
+   
 
     return 0;
 }
