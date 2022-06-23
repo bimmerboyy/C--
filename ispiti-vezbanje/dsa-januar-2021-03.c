@@ -1,4 +1,4 @@
-//Stabla - Kreirati funkciju za izracunavane zbira elemenata u levom podstablu stabla
+//Stabla - Kreirati funkciju search(int num) koja vraca true ako se zadati el nalazi u stablu i vraca nivo na kome se nalazi
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -59,6 +59,23 @@ struct tree *addTree(struct tree *tree, int elem,char side){
        return tree->right;
     }
     return tree;
+}
+
+bool search(struct tree *tree,int elem,int n){
+    if(tree){
+        if(n == 0){
+            if(tree->info == elem){
+                return true;
+            }
+        }
+        else{
+            search(tree->left,elem,n-1);
+            search(tree->right,elem,n-1);
+            
+        }
+
+    }
+
 }
 
 
