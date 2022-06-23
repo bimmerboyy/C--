@@ -63,13 +63,23 @@ struct tree *addTree(struct tree *tree, int elem,char side){
 int zbirElemenataNaLevomPodstablu(struct tree *tree){
     int s = 0;
     if(tree){
+        if(tree->left == NULL){
+            printf("Usaoo sam");
         s = tree->info;
-        if(tree->left != NULL){
-            tree = tree->left;
-            s += zbirElemenataNaLevomPodstablu(tree->left);
-            s += zbirElemenataNaLevomPodstablu(tree->right);
-            s += tree->info;  
+        s += zbirElemenataNaLevomPodstablu(tree->left);
+        s += zbirElemenataNaLevomPodstablu(tree->right);
+        s += tree->info; 
         }
+        else{
+        s = tree->info;
+        tree = tree->left;
+        s += zbirElemenataNaLevomPodstablu(tree->left);
+        s += zbirElemenataNaLevomPodstablu(tree->right);
+        s += tree->info;
+
+        }
+          
+        
     
     }
     return s;
