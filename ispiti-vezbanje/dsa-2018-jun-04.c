@@ -60,6 +60,10 @@ struct tree *addTree(struct tree *tree, int elem,char side){
     return tree;
 }
 
+int zbirElemenataNaLevomPodstablu(struct tree *tree){
+    
+}
+
 int main(){
     root = createNode(1);
     struct tree *dva = addTree(root,2,'L');
