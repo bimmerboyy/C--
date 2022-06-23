@@ -61,7 +61,7 @@ struct tree *addTree(struct tree *tree, int elem,char side){
     return tree;
 }
 
-int zbirElemenataNaLevomPodstablu(struct tree *tree, bool  prvi_put = true){
+int zbirElemenataNaLevomPodstablu(struct tree *tree, bool  prvi_put){
     int s = 0;
     if(tree){
         if(prvi_put == true){
@@ -85,6 +85,6 @@ int main(){
     struct tree *pet = addTree(tri,5,'L');
     struct tree *sest = addTree(dva,6,'R');
     struct tree *sedam = addTree(tri,7,'R');
-    printf("%d",zbirElemenataNaLevomPodstablu(root));
+    printf("%d",zbirElemenataNaLevomPodstablu(root,true));
     return 0;
 }
