@@ -1,7 +1,8 @@
 //Stabla - Kreirati funkciju za izracunavane zbira elemenata u levom podstablu stabla
 
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 #include <sys/types.h>
 
 
@@ -60,30 +61,21 @@ struct tree *addTree(struct tree *tree, int elem,char side){
     return tree;
 }
 
-int zbirElemenataNaLevomPodstablu(struct tree *tree){
+int zbirElemenataNaLevomPodstablu(struct tree *tree, bool  prvi_put = true){
     int s = 0;
     if(tree){
-        if(tree->left == NULL){
-            printf("Usaoo sam");
-        s = tree->info;
-        s += zbirElemenataNaLevomPodstablu(tree->left);
-        s += zbirElemenataNaLevomPodstablu(tree->right);
-        s += tree->info; 
+        if(prvi_put == true){
+            s += zbirElemenataNaLevomPodstablu(tree -> left, false);
         }
         else{
-        s = tree->info;
-        tree = tree->left;
-        s += zbirElemenataNaLevomPodstablu(tree->left);
-        s += zbirElemenataNaLevomPodstablu(tree->right);
-        s += tree->info;
-
+            s = tree -> info; 
+            s += zbirElemenataNaLevomPodstablu(tree -> left, false);
+            s += zbirElemenataNaLevomPodstablu(tree -> right, false);
         }
-          
-        
-    
     }
     return s;
 }
+
 
 int main(){
     root = createNode(1);
@@ -93,8 +85,6 @@ int main(){
     struct tree *pet = addTree(tri,5,'L');
     struct tree *sest = addTree(dva,6,'R');
     struct tree *sedam = addTree(tri,7,'R');
-    //inorder(root);
-    printf("%d",zbirElemenataNaLevomPodstablu(root)); 
-
+    printf("%d",zbirElemenataNaLevomPodstablu(root));
     return 0;
 }
