@@ -61,7 +61,18 @@ struct tree *addTree(struct tree *tree, int elem,char side){
 }
 
 int zbirElemenataNaLevomPodstablu(struct tree *tree){
+    int s = 0;
+    if(tree){
+        s = tree->info;
+        if(tree->left != NULL){
+            tree = tree->left;
+            s += zbirElemenataNaLevomPodstablu(tree->left);
+            s += zbirElemenataNaLevomPodstablu(tree->right);
+            s += tree->info;  
+        }
     
+    }
+    return s;
 }
 
 int main(){
@@ -72,7 +83,8 @@ int main(){
     struct tree *pet = addTree(tri,5,'L');
     struct tree *sest = addTree(dva,6,'R');
     struct tree *sedam = addTree(tri,7,'R');
-    inorder(root);
+    //inorder(root);
+    printf("%d",zbirElemenataNaLevomPodstablu(root)); 
 
     return 0;
 }
