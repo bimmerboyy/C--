@@ -64,7 +64,7 @@ struct tree *addTree(struct tree *tree, int elem,char side){
 
 void kvadriranjeElemenata(struct tree *tree){
     if(tree){
-        pow(tree->info,2);
+        tree->info = pow(tree->info,2);
         kvadriranjeElemenata(tree->left);
         kvadriranjeElemenata(tree->right);
     }
