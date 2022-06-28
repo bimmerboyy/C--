@@ -16,18 +16,25 @@ void unos(int matrix[SIZE][SIZE],int n){
     }
 }
 void ispis(int matrix[SIZE][SIZE],int n){
+    int maks = 0;
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
-            printf("%d ",matrix[i][j]);
+            printf("%d -> %d = %d\n",i,j,matrix[i][j]);
+            if(maks < matrix[i][j]){
+                maks = matrix[i][j];
+            }
         }
         printf("\n");
     }
+    printf("Grana najvece tezine je:%d",maks);
 }
 
 int main(){
     int n,matrix[SIZE][SIZE];
     printf("Unesite n:");
     scanf("%d",&n);
-    
+    unos(matrix,n);
+    ispis(matrix, n);
+
     return 0;
 }
