@@ -1,9 +1,10 @@
-//Stabla - Kreirati funkciju search(int num) koja vraca true ako se zadati el nalazi u stablu i vraca nivo na kome se nalazi
+//Stabla - Kreirati funkciju za kvadriranje svih elemenata u stablu
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <sys/types.h>
+#include<math.h>
 
 
 typedef struct tree{
@@ -25,7 +26,7 @@ struct tree *createNode(int data){
 void inorder(struct tree *tree){
     if(tree){
     inorder(tree->left);
-    printf("%d",tree->info);
+    printf("%d ",tree->info);
     inorder(tree->right);
     }
     
@@ -34,12 +35,12 @@ void postorder(struct tree *tree){
     if(tree){
     inorder(tree->left);
     inorder(tree->right);
-    printf("%d",tree->info);
+    printf("%d ",tree->info);
     }
 }
 void preorder(struct tree *tree){
     if(tree){
-    printf("%d",tree->info);
+    printf("%d ",tree->info);
     inorder(tree->left);
     inorder(tree->right);
     }
@@ -61,6 +62,14 @@ struct tree *addTree(struct tree *tree, int elem,char side){
     return tree;
 }
 
+void kvadriranjeElemenata(struct tree *tree){
+    if(tree){
+        pow(tree->info,2);
+        kvadriranjeElemenata(tree->left);
+        kvadriranjeElemenata(tree->right);
+    }
+}
+
 
 
 
@@ -74,6 +83,9 @@ int main(){
     struct tree *pet = addTree(tri,5,'L');
     struct tree *sest = addTree(dva,6,'R');
     struct tree *sedam = addTree(tri,7,'R');
+    kvadriranjeElemenata(root);
+    inorder(root);
+
     
    
 
