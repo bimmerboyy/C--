@@ -62,6 +62,26 @@ struct tree *addTree(struct tree *tree, int elem,char side){
     return tree;
 }
 
+void findChild(struct tree *tree,struct tree *father){
+    if(tree){
+        if(father->left != NULL && father->right != NULL){
+            printf("Levo dete:%d\n",father->left->info);
+            printf("Desno dete:%d\n",father->right->info);
+        }
+        if(father->left != NULL && father->right == NULL){
+            printf("Levo dete:%d\n",father->left->info);
+        }
+         if(father->left == NULL && father->right != NULL){
+            printf("Desno dete:%d\n",father->right->info);
+        }
+        else if(father->left == NULL && father->right == NULL){
+            printf("Otac nema dece");
+        }
+
+
+    }
+}
+
 
 
 
@@ -76,7 +96,9 @@ int main(){
     struct tree *pet = addTree(tri,5,'L');
     struct tree *sest = addTree(dva,6,'R');
     struct tree *sedam = addTree(tri,7,'R');
-    inorder(root);
+    //inorder(root);
+    findChild(root,root);
+
 
     
    
