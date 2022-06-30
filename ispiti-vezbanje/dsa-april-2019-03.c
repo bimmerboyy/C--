@@ -11,7 +11,7 @@ struct DataItem{
     int key;
 };
 struct DataItem * hashArray[SIZE];
-struct DataItem * empyItem;
+struct DataItem * emptyItem;
 struct DataItem *item;
 struct DataItem *temp;
 
@@ -46,7 +46,7 @@ struct DataItem* brisanje(struct DataItem *item){
             struct DataItem *temp = item;
         }
 
-        hashArray[hashIndex] = empyItem;
+        hashArray[hashIndex] = emptyItem;
         return temp;
 
         ++hashIndex;
@@ -57,7 +57,20 @@ struct DataItem* brisanje(struct DataItem *item){
     
 }
 
-struct DataItem *emptyItem = (struct DataItem*)malloc(sizeof(struct DataItem));
+struct DataItem *search(int key){
+    
+
+    int hashIndex = hashCode(key);
+
+    while(hashArray[hashIndex] != NULL){
+        if(hashArray[hashIndex]->key == key){
+            
+        }
+    }
+
+
+}
+
 
 void display(){
    
@@ -73,10 +86,15 @@ printf("\n");
 }
 
 int main(){
+    emptyItem = (struct DataItem*)malloc(sizeof(struct DataItem));
+    emptyItem->key = -1;
+    emptyItem->data = -1;
+
     insert(1,1);
     insert(2,2);
     insert(3,3);
     display();
+    brisanje(item);
 
     return 0;
 }
