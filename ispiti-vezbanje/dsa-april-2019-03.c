@@ -64,9 +64,13 @@ struct DataItem *search(int key){
 
     while(hashArray[hashIndex] != NULL){
         if(hashArray[hashIndex]->key == key){
-            
+            return hashArray[hashIndex];
         }
+        ++hashIndex;
+
+        hashIndex %= SIZE;
     }
+    return NULL;
 
 
 }
@@ -94,7 +98,10 @@ int main(){
     insert(2,2);
     insert(3,3);
     display();
-    brisanje(item);
+    struct DataItem *dva = (struct DataItem*)malloc(sizeof(struct DataItem));
+    dva = search(2);
+    brisanje(dva);
+    display();
 
     return 0;
 }
