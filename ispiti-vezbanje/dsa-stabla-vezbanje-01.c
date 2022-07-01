@@ -35,7 +35,28 @@ void postorder(struct tree *tree){
     printf("%d ",tree->data);
 }
 
+struct tree *addTree(struct tree *tree,int elem,char strana){
+    if(tree == NULL){
+        return createNode(elem);
+    }
+    if(strana == 'L'){
+        tree->left = createNode(elem);
+    }
+    if(strana == 'R'){
+        tree->right = createNode(elem);
+    }
+    return tree;
+}
+
+
 int main(){
+    root = createNode(1);
+    struct tree *dva = addTree(root,2,'L');
+    struct tree *tri = addTree(root,3,'R');
+    struct tree *cetiri = addTree(dva,4,'L');
+    struct tree *pet = addTree(tri,5,'L');
+    struct tree *sest = addTree(root,2,'L');
+
 
 
     return 0;
