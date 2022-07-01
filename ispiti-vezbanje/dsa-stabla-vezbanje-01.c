@@ -20,19 +20,26 @@ struct tree *createNode(int info){
 }
 
 void inorder(struct tree *tree){
+    if(tree){
     inorder(tree->left);
     printf("%d ",tree->data);
     inorder(tree->right);
+    }
+    
 }
 void preorder(struct tree *tree){
+    if(tree){
     printf("%d ",tree->data);
     preorder(tree->left);
     preorder(tree->right);
+    }
 }
 void postorder(struct tree *tree){
+    if(tree){
     postorder(tree->left);
     postorder(tree->right);
     printf("%d ",tree->data);
+    }
 }
 
 struct tree *addTree(struct tree *tree,int elem,char strana){
@@ -41,9 +48,11 @@ struct tree *addTree(struct tree *tree,int elem,char strana){
     }
     if(strana == 'L'){
         tree->left = createNode(elem);
+        return tree->left;
     }
     if(strana == 'R'){
         tree->right = createNode(elem);
+        return tree->left;
     }
     return tree;
 }
@@ -55,7 +64,9 @@ int main(){
     struct tree *tri = addTree(root,3,'R');
     struct tree *cetiri = addTree(dva,4,'L');
     struct tree *pet = addTree(tri,5,'L');
-    struct tree *sest = addTree(root,2,'L');
+    struct tree *sest = addTree(dva,6,'R');
+    struct tree *sedam = addTree(root,7,'R');
+    inorder(root);
 
 
 
