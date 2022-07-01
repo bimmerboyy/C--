@@ -57,35 +57,34 @@ struct tree *addTree(struct tree *tree,int elem,char strana){
     return tree;
 }
 
-int brojNivoa(struct tree *tree){
-    int n;
+int brojNivoa(struct tree *tree,int n){
+    int s = 0;
     if(tree){
-        while(tree->left != NULL && tree->right != NULL){
-            brojNivoa(tree->left);
-            brojNivoa(tree->right);
-            n++;
-        }
+
+        
+        brojNivoa(tree->left,n);
+        n++;
+        brojNivoa(tree->right,n);
+        n++;
+        s += n;
+   
+      
        
     }
-    return n;
+    return s;
 }
 
 void ispisStablaPoNivima(struct tree *tree,int n){
     if(tree){
-       if(n == 0){
-        printf("%d",tree->data);
-       }
-       
-       ispisStablaPoNivima(tree->left,n+1);
-       if(n < 0){
+     if(n == 1){
         printf("%d ",tree->data);
-       }
-     
-       ispisStablaPoNivima(tree->right,n+1);
-       
-    }
+     }
+     else if(n > 1){
+        ispisStablaPoNivima(tree->left,n-1);
+        ispisStablaPoNivima(tree->right,n-1);
+     }
 }
-
+}
 
 int main(){
     root = createNode(1);
@@ -95,11 +94,14 @@ int main(){
     struct tree *pet = addTree(tri,5,'L');
     struct tree *sest = addTree(dva,6,'R');
     struct tree *sedam = addTree(tri,7,'R');
-    printf("%d",brojNivoa(root));
-  // ispisStablaPoNivima(root,0);
-    //inorder(root);
+    struct tree *osam = addTree(sedam,8,'R');
 
-
-
+  printf("%d ",brojNivoa(root,0));
     return 0;
 }
+   
+
+
+
+
+    
