@@ -82,15 +82,25 @@ int brojNivoa(struct tree *tree){
 }
 
 
-void ispisStablaPoNivima(struct tree *tree,int n){
+void ispisStablaPoNivima(struct tree *tree){
     if(tree){
         int br = 0;
-        n = brojNivoa(tree);
+      int  n = brojNivoa(tree);
         
         while(br < n){
             printf("%d,",tree->data);
-            ispisStablaPoNivima(tree->left,n+1);
-            ispisStablaPoNivima(tree->right,n+1);
+            
+        
+            if(tree->left != NULL){
+                ispisStablaPoNivima(tree->left);
+                printf("%d,",tree->data);
+                
+
+            }
+            if(tree->right != NULL){
+                ispisStablaPoNivima(tree->right);
+                printf("%d,",tree->data);
+            }
             
             br++;
         
@@ -109,7 +119,7 @@ int main(){
     struct tree *pet = addTree(tri,5,'L');
     struct tree *sest = addTree(dva,6,'R');
     struct tree *sedam = addTree(tri,7,'R');
-   ispisStablaPoNivima(root,0);
+   ispisStablaPoNivima(root);
    
   
 
