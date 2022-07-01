@@ -13,6 +13,26 @@ TREE *root = NULL, *temp;
 
 struct tree *createNode(int info){
   temp = (struct tree *) malloc(sizeof(struct tree));
+  temp->data = info;
+  temp->left = NULL;
+  temp->right = NULL;
+  return temp;
+}
+
+void inorder(struct tree *tree){
+    inorder(tree->left);
+    printf("%d ",tree->data);
+    inorder(tree->right);
+}
+void preorder(struct tree *tree){
+    printf("%d ",tree->data);
+    preorder(tree->left);
+    preorder(tree->right);
+}
+void postorder(struct tree *tree){
+    postorder(tree->left);
+    postorder(tree->right);
+    printf("%d ",tree->data);
 }
 
 int main(){
