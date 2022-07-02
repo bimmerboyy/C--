@@ -3,38 +3,40 @@
 #include<stdlib.h>
 #include<queue>
 
+using namespace std;
 
-typedef struct tree{
+
+struct Tree{
     int data;
-    struct tree *left;
-    struct tree *right;
-}TREE;
+    Tree *left;
+    Tree *right;
+};
 
-TREE *root = NULL,*temp;
+ Tree *root = NULL,*temp;
 
-struct tree *createNode(int elem){
-    temp = (struct tree *) malloc(sizeof(struct tree));
+Tree *createNode(int elem){
+    temp = (Tree *) malloc(sizeof(Tree));
     temp->data = elem;
     temp->left = NULL;
     temp->right = NULL;
     return temp;
 
 }
-void inorder(struct tree *tree){
+void inorder(Tree *tree){
     if(tree){
         inorder(tree->left);
         printf("%d ",tree->data);
         inorder(tree->right);
     }
 }
-void preorder(struct tree *tree){
+void preorder(Tree *tree){
     if(tree){
         printf("%d ",tree->data);
         preorder(tree->left);
         preorder(tree->right);
     }
 }
-void postorder(struct tree *tree){
+void postorder(Tree *tree){
     if(tree){
         postorder(tree->left);
         postorder(tree->right);
@@ -43,7 +45,7 @@ void postorder(struct tree *tree){
     }
 }
 //standart tree
-struct tree *addTree(struct tree *tree,int elem,char side){
+Tree *addTree(Tree *tree,int elem,char side){
     if(tree == NULL){
         return createNode(elem);
     }
@@ -60,7 +62,7 @@ struct tree *addTree(struct tree *tree,int elem,char side){
 
 //BTS
 
-struct tree *addBTS(struct tree *tree,int elem){
+Tree *addBTS(Tree *tree,int elem){
     if(tree == NULL){
         return createNode(elem);
     }
@@ -73,14 +75,14 @@ struct tree *addBTS(struct tree *tree,int elem){
     return tree;
 }
 
-void ispisPoLevelima(struct tree *tree){
+void ispisPoLevelima(Tree *tree){
     if(tree == NULL){
         return;
     }
-    queue<tree*> q;
+    queue<Tree*> q;
     q.push(tree);
     while(!q.empty()){
-        struct tree *current = q.front();
+        Tree *current = q.front();
         printf("%d ",current->data);
         if(current->left != NULL){
             q.push(current->left);
@@ -102,14 +104,15 @@ int main(){
     // addBTS(root,5);
     // addBTS(root,6);
 
-    struct tree *dva = addTree(root,2,'L');
-    struct tree *tri = addTree(root,2,'R');
-    struct tree *cetiri = addTree(dva,4,'L');
-    struct tree *pet = addTree(tri,5,'L');
-    struct tree *sest = addTree(dva,6,'R');
-    struct tree *sedam = addTree(tri,7,'R');
+    Tree *dva = addTree(root,2,'L');
+    Tree *tri = addTree(root,3,'R');
+    Tree *cetiri = addTree(dva,4,'L');
+    Tree *pet = addTree(tri,5,'L');
+    Tree *sest = addTree(dva,6,'R');
+    Tree *sedam = addTree(tri,7,'R');
+    ispisPoLevelima(root);
     
-    inorder(root);
+    //inorder(root);
 
     return 0;
 }
