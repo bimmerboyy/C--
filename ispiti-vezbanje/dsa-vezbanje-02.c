@@ -75,11 +75,19 @@ struct tree *addBTS(struct tree *tree,int elem){
 
 int main(){
     root = createNode(1);
-    addBTS(root,2);
-    addBTS(root,3);
-    addBTS(root,4);
-    addBTS(root,5);
-    addBTS(root,6);
+    // addBTS(root,2);
+    // addBTS(root,3);
+    // addBTS(root,4);
+    // addBTS(root,5);
+    // addBTS(root,6);
+
+    struct tree *dva = addTree(root,2,'L');
+    struct tree *tri = addTree(root,2,'R');
+    struct tree *cetiri = addTree(dva,4,'L');
+    struct tree *pet = addTree(tri,5,'L');
+    struct tree *sest = addTree(dva,6,'R');
+    struct tree *sedam = addTree(tri,7,'R');
+    
     inorder(root);
 
     return 0;
