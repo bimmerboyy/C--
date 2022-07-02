@@ -37,7 +37,7 @@ Output: 4
 
  */
 
- //Stabla - Kreirati funkciju search(int num) koja vraca true ako se zadati el nalazi u stablu i vraca nivo na kome se nalazi
+ 
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -100,6 +100,31 @@ struct tree *addTree(struct tree *tree, int elem,char side){
     return tree;
 }
 
+int dubinaStabla(struct tree *tree){
+    int maks = 0;
+    int temp1 = 0;
+    int temp2 = 0;
+    if(tree){
+        
+        
+        if(tree->left != NULL){
+            temp1++;
+            temp1 += dubinaStabla(tree->left);
+        }
+        if (tree->right != NULL){
+            temp2++;
+            temp2 += dubinaStabla(tree->right);
+        }
+    }
+    if(temp1 > temp2){
+        maks = temp1;
+    }
+    else{
+        maks = temp2;
+    }
+    return maks;
+}
+
 
 
 
@@ -113,6 +138,8 @@ int main(){
     struct tree *pet = addTree(tri,5,'L');
     struct tree *sest = addTree(dva,6,'R');
     struct tree *sedam = addTree(tri,7,'R');
+    
+    printf("Dubina stabla je:%d",dubinaStabla(root));
     
    
 
