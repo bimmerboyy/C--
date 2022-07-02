@@ -40,10 +40,47 @@ void postorder(struct tree *tree){
 
     }
 }
+//standart tree
+struct tree *addTree(struct tree *tree,int elem,char side){
+    if(tree == NULL){
+        return createNode(elem);
+    }
+    if(side == 'L'){
+        tree->left = createNode(elem);
+        return tree->left;
+    }
+    if(side == 'R'){
+        tree->right = createNode(elem);
+        return tree->right;
+    }
+    return tree;
+}
+
+//BTS
+
+struct tree *addBTS(struct tree *tree,int elem){
+    if(tree == NULL){
+        return createNode(elem);
+    }
+    if(elem > tree->data){
+       tree->right = addBTS(tree->right,elem);
+    }
+    if(elem < tree->data){
+       tree->left = addBTS(tree->left,elem);
+    }
+    return tree;
+}
 
 
 
 int main(){
+    root = createNode(1);
+    addBTS(root,2);
+    addBTS(root,3);
+    addBTS(root,4);
+    addBTS(root,5);
+    addBTS(root,6);
+    inorder(root);
 
     return 0;
 }
