@@ -1,5 +1,7 @@
+#include <iostream>
 #include<stdio.h>
 #include<stdlib.h>
+#include<queue>
 
 
 typedef struct tree{
@@ -69,6 +71,25 @@ struct tree *addBTS(struct tree *tree,int elem){
        tree->left = addBTS(tree->left,elem);
     }
     return tree;
+}
+
+void ispisPoLevelima(struct tree *tree){
+    if(tree == NULL){
+        return;
+    }
+    queue<tree*> q;
+    q.push(tree);
+    while(!q.empty()){
+        struct tree *current = q.front();
+        printf("%d ",current->data);
+        if(current->left != NULL){
+            q.push(current->left);
+        }
+        if(current->right != NULL){
+            q.push(current->right);
+        }
+        q.pop();
+    }
 }
 
 
