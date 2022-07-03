@@ -161,43 +161,63 @@ int treeSum(struct tree *tree){
 //     return maks(tree->info,tree,leftSum, rightSum);
 // }
 
-int treeMaks(struct tree *tree){
-    int maks;
-    int levi;
-    int desni;
-    if(tree){
-        maks = tree->info;
+// int treeMaks(struct tree *tree){
+//     int maks;
+//     int levi;
+//     int desni;
+//     if(tree){
+//         maks = tree->info;
         
-        levi = treeMaks(tree->left);
-        desni = treeMaks(tree->right);
-        if(levi == desni){
+//         levi = treeMaks(tree->left);
+//         desni = treeMaks(tree->right);
+//         if(levi == desni){
            
             
-            treeMaks(tree->left);
-            treeMaks(tree->right);
-            desni = tree->info;
-            levi = tree->info;
+//             treeMaks(tree->left);
+//             treeMaks(tree->right);
+//             desni = tree->info;
+//             levi = tree->info;
            
             
             
             
-        }
+//         }
        
         
     
-        printf("levi: %d\n",levi);
-        printf("\ndesni: %d",desni);
-        if(levi > desni){
-            maks = levi;
-        }
-        else{
-            maks = desni;
-        }
+//         printf("levi: %d\n",levi);
+//         printf("\ndesni: %d",desni);
+//         if(levi > desni){
+//             maks = levi;
+//         }
+//         else{
+//             maks = desni;
+//         }
 
 
         
-    }
-    return maks;
+//     }
+//     return maks;
+// }
+
+
+int findMax(struct tree* root)
+{
+    // Base case
+    if (root == NULL)
+        return 0;
+ 
+    // Return maximum of 3 values:
+    // 1) Root's data 2) Max in Left Subtree
+    // 3) Max in right subtree
+    int res = root->info;
+    int lres = findMax(root->left);
+    int rres = findMax(root->right);
+    if (lres > res)
+        res = lres;
+    if (rres > res)
+        res = rres;
+    return res;
 }
 
 int main(){
@@ -211,7 +231,7 @@ int main(){
      struct tree *osam = addTree(sedam,8,'R');
     
 
-    printf("\nmaks:%d",treeMaks(root));
+    printf("\nmaks:%d",findMax(root));
     
     
     
